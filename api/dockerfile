@@ -1,0 +1,27 @@
+# Utilisation d'une image de base Python
+FROM python:3.10
+
+# Définition du répertoire de travail dans le conteneur
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED 1
+# définit une variable d'environnement
+
+# Copie des fichiers de l'API FastAPI dans le conteneur
+COPY . .
+
+RUN apt install curl
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN exit
+RUN apt-get update
+RUN echo msodbcsql18 msodbcsql/ACCEPT_EULA boolean true | debconf-set-selections
+RUN ACCEPT_EULA=Y apt-get install -y mssql-tools18
+RUN echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc \
+    && /bin/bash -c "source ~/.bashrc"
+
+# Installation des dépendances Python
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Commande pour démarrer l'API avec uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
