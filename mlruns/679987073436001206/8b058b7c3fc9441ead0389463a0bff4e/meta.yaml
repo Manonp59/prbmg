@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/679987073436001206/8b058b7c3fc9441ead0389463a0bff4e/artifacts
+end_time: 1713797618280
+entry_point_name: ''
+experiment_id: '679987073436001206'
+lifecycle_stage: active
+run_id: 8b058b7c3fc9441ead0389463a0bff4e
+run_name: kmeans_30
+run_uuid: 8b058b7c3fc9441ead0389463a0bff4e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1713797610152
+status: 3
+tags: []
+user_id: utilisateur
