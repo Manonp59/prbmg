@@ -12,7 +12,7 @@ import mlflow
 from pydantic import BaseModel
 
 
-class DocsInput(BaseModel):
+class PredictionInput(BaseModel):
     input_str: str
 
 class PredictionOuput(BaseModel):
@@ -33,20 +33,17 @@ embeddings_model = AzureOpenAIEmbeddings(
     azure_endpoint = azure_endpoint
 )
 
-driver = os.getenv("DRIVER")
-server = os.getenv("AZURE_SERVER_NAME")
-database = os.getenv("AZURE_DATABASE_NAME")
-username = os.getenv("AZURE_DATABASE_USERNAME")
-password = os.getenv("AZURE_DATABASE_PASSWORD")
+def connect_to_sql_server():
+    load_dotenv()
+    driver = os.getenv("DRIVER")
+    server = os.getenv("AZURE_SERVER_NAME")
+    database = os.getenv("AZURE_DATABASE_NAME")
+    username = os.getenv("AZURE_DATABASE_USERNAME")
+    password = os.getenv("AZURE_DATABASE_PASSWORD")
 
-conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+    conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+    return conn
 
-modelisation_query = f"""
-SELECT *
-FROM clusters_title
-"""
-    
-df = pd.read_sql_query(modelisation_query,conn)
 
 async def has_access(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
     token = credentials.credentials
@@ -68,17 +65,18 @@ async def has_access(credentials: HTTPAuthorizationCredentials = Depends(HTTPBea
         raise credentials_exception
     
 
-def predict_single(model_path, incidents):
+def predict_cluster(model_path, incident:PredictionInput):
 
     with open(model_path, 'rb') as file:
         loaded_model = pickle.load(file)
 
-    data = {'docs':[incidents.docs_str]}
-    df_to_predict = pd.DataFrame(data)
+    input_series = pd.Series({"docs":incident.input_str})
+    embeddings = get_embeddings(input_series)
+    prediction = loaded_model.predict(embeddings)
+    problem_title = get_problem_title(prediction[0])
+    output = PredictionOuput(cluster_number=prediction[0],problem_title=problem_title)
 
-    prediction = loaded_model.predict(df_to_predict)
-
-    return prediction[0]
+    return output 
 
 
 def get_model_path(model_run):
@@ -88,7 +86,8 @@ def get_model_path(model_run):
     run_id = filtered_runs.iloc[0]['run_id']
     run = mlflow.get_run(run_id)
     artifact_uri = run.info.artifact_uri
-    model_path = os.path.join(artifact_uri.replace("file://", ""), model_run, "model.pkl")
+    local_artifact_path = artifact_uri.replace("file://", "")
+    model_path = os.path.join(local_artifact_path, model_run, "model.pkl")
     return model_path
 
 
@@ -105,7 +104,14 @@ def get_embeddings(input:pd.Series)-> pd.DataFrame:
     return embeddings
 
 
-def get_problem_title(cluster_number:int) -> str:
+def get_problem_title(cluster_number:int,table="kmean30_clusters_title") -> str:
+    modelisation_query = f"""
+    SELECT *
+    FROM {table}
+    """
+
+    conn = connect_to_sql_server()
+    df = pd.read_sql_query(modelisation_query,conn)
     row = df[df['cluster'] == cluster_number]
     # Vérifier si le numéro de cluster est présent dans le DataFrame
     if not row.empty:

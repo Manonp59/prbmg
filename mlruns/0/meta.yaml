@@ -1,7 +1,6 @@
-artifact_location: mlflow-artifacts:/0
-creation_time: 1713779414571
+artifact_location: file:///home/utilisateur/DevIA/prbmg/mlruns/0
+creation_time: 1713968876389
 experiment_id: '0'
-last_update_time: 1713786809826
+last_update_time: 1713968876389
 lifecycle_stage: active
 name: Default
-tags: {}

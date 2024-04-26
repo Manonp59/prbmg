@@ -10,7 +10,7 @@ class Incident(BaseModel):
     description: str
     category_full: str
     ci_name: str
-    location_full: str
+    location: str
 
 
 # Model for creating an incident
@@ -18,7 +18,7 @@ class IncidentCreate(BaseModel):
     description: str
     category_full: str
     ci_name: str
-    location_full: str
+    location: str
 
 
 # Model for updating an incident"
@@ -26,7 +26,7 @@ class IncidentUpdate(BaseModel):
     description: str
     category_full: str
     ci_name: str
-    location_full: str
+    location: str
 
 
 

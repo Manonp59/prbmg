@@ -37,7 +37,7 @@ class DBIncidents(Base):
     description: Mapped[str]
     category_full: Mapped[str]
     ci_name: Mapped[str]
-    location_full: Mapped[str]
+    location: Mapped[str]
 
 
 # Define the DBUsers class for the users table 

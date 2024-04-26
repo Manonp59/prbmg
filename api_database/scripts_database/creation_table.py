@@ -58,45 +58,45 @@ with conn.cursor() as cursor:
     cursor.execute(create_table_query)
 
 
-with conn.cursor() as cursor: 
-    create_table_query = """
-    CREATE TABLE incidents_embeddings (
-        incident_number VARCHAR(50) PRIMARY KEY, 
-        description TEXT NOT NULL, 
-        category_full VARCHAR(100) NOT NULL, 
-        ci_name VARCHAR(100) NOT NULL, 
-        location_full VARCHAR(300),
-        docs VARCHAR(8000),
-        resulted_embeddings VARCHAR(MAX)
-    );
-    """
-    cursor.execute(create_table_query)
+# with conn.cursor() as cursor: 
+#     create_table_query = """
+#     CREATE TABLE incidents_embeddings (
+#         incident_number VARCHAR(50) PRIMARY KEY, 
+#         description TEXT NOT NULL, 
+#         category_full VARCHAR(100) NOT NULL, 
+#         ci_name VARCHAR(100) NOT NULL, 
+#         location_full VARCHAR(300),
+#         docs VARCHAR(8000),
+#         resulted_embeddings VARCHAR(MAX)
+#     );
+#     """
+#     cursor.execute(create_table_query)
 
 
-with conn.cursor() as cursor:
-    create_table_query = """
-    CREATE TABLE incidents_clusters (
-    incident_number VARCHAR(50) PRIMARY KEY, 
-        description TEXT NOT NULL, 
-        category_full VARCHAR(100) NOT NULL, 
-        ci_name VARCHAR(100) NOT NULL, 
-        location_full VARCHAR(300),
-        docs VARCHAR(8000),
-        resulted_embeddings VARCHAR(MAX),
-        clusters INT
-    )
-    """
-    cursor.execute(create_table_query)
+# with conn.cursor() as cursor:
+#     create_table_query = """
+#     CREATE TABLE incidents_clusters (
+#     incident_number VARCHAR(50) PRIMARY KEY, 
+#         description TEXT NOT NULL, 
+#         category_full VARCHAR(100) NOT NULL, 
+#         ci_name VARCHAR(100) NOT NULL, 
+#         location_full VARCHAR(300),
+#         docs VARCHAR(8000),
+#         resulted_embeddings VARCHAR(MAX),
+#         clusters INT
+#     )
+#     """
+#     cursor.execute(create_table_query)
 
 
-with conn.cursor() as cursor:
-    create_table_query = """
-    CREATE TABLE clusters_title (
-        cluster INT PRIMARY KEY,
-        problem_title VARCHAR (300)
-    )
-    """
+# with conn.cursor() as cursor:
+#     create_table_query = """
+#     CREATE TABLE clusters_title (
+#         cluster INT PRIMARY KEY,
+#         problem_title VARCHAR (300)
+#     )
+#     """
 
-    cursor.execute(create_table_query)
+#     cursor.execute(create_table_query)
     
 conn.close()

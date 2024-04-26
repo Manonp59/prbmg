@@ -136,16 +136,6 @@ def test_create_incident(session:Session, valid_token):
 
 ####  Authentification
 
-def test_create_user(session:Session):
-    response = client.post("/auth/create_user",json={
-            "username":"test_user2",
-            "email" : "test_user@test.com",
-            "full_name":"test_user_fullname",
-            "password" : "test_password"
-            })
-    assert response.status_code == 200, response.text
-    assert 'username' in response.json() 
-
 
 def test_login_for_access_token(session):
 

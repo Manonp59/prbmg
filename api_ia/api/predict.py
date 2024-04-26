@@ -1,55 +1,42 @@
-from fastapi import FastAPI
+
+from fastapi import APIRouter
 import pickle 
-from api_ia.api.utils import get_embeddings, get_problem_title
+from api_ia.api.utils import get_embeddings, get_problem_title, PredictionOuput, PredictionInput, has_access, get_model_path, predict_cluster
+from api_ia.api.database import get_db, create_db_prediction
 from pydantic import BaseModel
 import numpy as np 
 import ast 
 import uvicorn
 import pandas as pd 
+from fastapi import Depends
+from sqlalchemy.orm import Session
 
 router = APIRouter()
 
-@router.post("", response_model=SinglePredictionOutput)
+@router.post("", response_model=PredictionOuput)
 def predict(
-    order: SinglePredictionInput, 
+    incident: PredictionInput, 
     authenticated: bool = [Depends(has_access)],
     db: Session = Depends(get_db)
-    ) -> SinglePredictionOutput:
+    ) -> PredictionOuput:
 
-    model_name = "first_run_2017"
+    model_name = "kmeans_30"
     model_path = get_model_path(model_name)
-    prediction = predict_single(model_path, order)
+    print(model_path)
+    prediction = predict_cluster(model_path, incident)
 
     # MLops: Save prediction to database
     prediction_dict = {
-        "prediction": int(prediction),
-        "produit_recu": order.produit_recu,
-        "temps_livraison": order.temps_livraison,
-        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+        "cluster_number": int(prediction.cluster_number),
+        "docs": incident.input_str,
+        "problem_title": prediction.problem_title,
         "model":model_name
     }
     create_db_prediction(prediction_dict, db)
 
-    return SinglePredictionOutput(prediction=prediction)
+    return PredictionOuput(cluster_number=prediction.cluster_number, problem_title=prediction.problem_title)
  
-with open('/home/utilisateur/DevIA/prbmg/api_ia/clustering_model/model_kmeans_30.pickle','rb') as f:
-    model = pickle.load(f)
 
-
-
-@app.post("/predict/")
-def cluster_incidents(input:DocsInput):
-    print(input)
-    input_series = pd.Series({"docs":input.input_str})
-    embeddings = get_embeddings(input_series)
-    prediction = model.predict(embeddings)
-    problem_title = get_problem_title(prediction[0])
-    output = PredictionOuput(cluster_number=prediction[0],problem_title=problem_title)
-
-    return output 
-
-if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=80)
 
 
 

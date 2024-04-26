@@ -1,6 +1,6 @@
 # main.py script
 from fastapi import FastAPI, Depends
-import predict
+import api_ia.api.predict as predict
 from .utils import has_access
 from fastapi.params import Depends
 

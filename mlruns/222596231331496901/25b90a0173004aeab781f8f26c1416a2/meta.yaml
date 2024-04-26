@@ -1,0 +1,15 @@
+artifact_uri: file:///home/utilisateur/DevIA/prbmg/mlruns/222596231331496901/25b90a0173004aeab781f8f26c1416a2/artifacts
+end_time: 1714133360339
+entry_point_name: ''
+experiment_id: '222596231331496901'
+lifecycle_stage: active
+run_id: 25b90a0173004aeab781f8f26c1416a2
+run_name: kmeans_30
+run_uuid: 25b90a0173004aeab781f8f26c1416a2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714133153871
+status: 3
+tags: []
+user_id: utilisateur
