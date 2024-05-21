@@ -28,4 +28,4 @@ jobs:
 
       - name: Run Test 
         working-directory: api/test
-        run: pytest --cov=api -v
+        run: pytest -v
