@@ -59,10 +59,10 @@ def make_embeddings(df):
             + df['location_full'])
 
 
-    azure_deployment = os.getenv('embedding_azure_deployment')
-    openai_api_version = os.getenv('embedding_openai_api_version')
-    api_key = os.getenv('embedding_api_key')
-    azure_endpoint = os.getenv('embedding_azure_endpoint')
+    azure_deployment = os.getenv('EMBEDDING_AZURE_DEPLOYMENT')
+    openai_api_version = os.getenv('EMBEDDING_OPENAI_API_VERSION')
+    api_key = os.getenv('EMBEDDING_API_KEY')
+    azure_endpoint = os.getenv('EMBEDDING_AZURE_ENDPOINT')
 
     embeddings_model = AzureOpenAIEmbeddings(
         azure_deployment=azure_deployment,
