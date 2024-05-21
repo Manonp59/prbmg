@@ -35,7 +35,7 @@ h11==0.14.0
 httpcore==1.0.3
 httptools==0.6.1
 httpx==0.26.0
-hydra-core==0.26.0
+hydra-core==1.3.2
 idna==3.6
 iniconfig==2.0.0
 ipykernel==6.29.0
