@@ -2,10 +2,13 @@ import pytest
 import pandas as pd
 from api_ia.embeddings.embeddings import clean_dataset, features_selection
 from api_ia.clustering_model.clustering import modelisation
+from api_ia.api.utils import connect_to_sql_server
 import pytest
 from pandas.testing import assert_frame_equal
 from api_ia.embeddings.embeddings import clean_dataset, features_selection, make_embeddings
 from unittest.mock import Mock, MagicMock
+import numpy as np
+
 
 @pytest.fixture
 def mock_connection():
@@ -114,3 +117,46 @@ def test_make_embeddings():
     assert result_df.columns.tolist() == expected_columns
 
 
+@pytest.fixture
+def sample_dataframe():
+    data = {
+        "resulted_embeddings": ['[0.1, 0.2, 0.3]', '[0.4, 0.5, 0.6]', '[0.7, 0.8, 0.9]']
+    }
+    return pd.DataFrame(data)
+
+
+def test_modelisation(mocker, sample_dataframe):
+    # Mock create_sql_server_engine
+    mock_engine = mocker.MagicMock()
+    mocker.patch('api_ia.api.utils.connect_to_sql_server', return_value=mock_engine)
+    
+    # Mock mlflow
+    mock_mlflow = mocker.patch('api_ia.clustering_model.clustering.mlflow')
+    mock_experiment = mocker.MagicMock()
+    mock_experiment.experiment_id = 1
+    mock_mlflow.get_experiment_by_name.return_value = mock_experiment
+    mock_run = mocker.MagicMock()
+    mock_mlflow.start_run.return_value.__enter__.return_value = mock_run
+    
+    # Mock cfg
+    mock_cfg = mocker.MagicMock()
+    mock_cfg.model.n_clusters = 2
+    mocker.patch('api_ia.clustering_model.clustering.cfg', mock_cfg)
+    
+    # Call the function
+    run_id, df_result = modelisation(sample_dataframe, 'test_run')
+    
+    # Assertions
+    assert run_id == mock_run.info.run_id
+    assert 'clusters' in df_result.columns
+    assert len(df_result) == 3
+    assert np.all(df_result['clusters'].isin([0, 1]))
+    
+    # Verify mlflow calls
+    mock_mlflow.get_experiment_by_name.assert_called_once_with("incidents_clustering")
+    mock_mlflow.create_experiment.assert_not_called()
+    mock_mlflow.start_run.assert_called_once_with(experiment_id=1, run_name='kmeans_2')
+    mock_mlflow.sklearn.log_model.assert_called_once()
+    mock_mlflow.log_params.assert_called_once_with({"n_clusters": 2})
+    mock_mlflow.set_tag.assert_called_once_with("model", "kmeans")
+    mock_mlflow.log_metric.assert_called_once()

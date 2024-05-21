@@ -1,0 +1,31 @@
+
+name: CI 
+
+on:
+  push:
+    branches:
+    - main 
+
+jobs: 
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout code 
+        uses: actions/checkout@v2 
+
+      - name: Set up Python 
+        uses: actions/setup-python@v2
+        with: 
+          python-version: '3.9.19'
+
+      - name: Install requirements 
+        run: pip install -r requirements.txt
+
+      # - name: Set up environment variables
+      #   run: echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+
+      - name: Run Test 
+        working-directory: api/test
+        run: pytest --cov=api -v
