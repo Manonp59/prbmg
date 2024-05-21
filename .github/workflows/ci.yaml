@@ -23,8 +23,23 @@ jobs:
       - name: Install requirements 
         run: pip install -r requirements.txt
 
-      # - name: Set up environment variables
-      #   run: echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+      - name: Set up environment variables
+        run: |
+          echo "API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}" >> $GITHUB_ENV && 
+          echo "AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}" >> $GITHUB_ENV &&
+          echo "AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}" >> $GITHUB_ENV &&
+          echo "AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}" >> $GITHUB_ENV &&
+          echo "AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}" >> $GITHUB_ENV &&
+          echo "DRIVER=${{ secrets.DRIVER }}" >> $GITHUB_ENV &&
+          echo "EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}" >> $GITHUB_ENV &&
+          echo "EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}" >> $GITHUB_ENV &&
+          echo "EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}" >> $GITHUB_ENV &&
+          echo "EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}" >> $GITHUB_ENV &&
+          echo "NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}" >> $GITHUB_ENV &&
+          echo "NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}" >> $GITHUB_ENV &&
+          echo "NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}" >> $GITHUB_ENV &&
+          echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+      
 
       - name: Run Test 
         run: pytest -v
