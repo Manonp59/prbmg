@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine, StaticPool
 from sqlalchemy.orm import sessionmaker, Session
-from database.core import Base, DBIncidents
+from api_database.api.database.core import Base, DBIncidents
 from typing import Generator
-from database.incidents import IncidentCreate, create_db_incident, generate_id
-from database.authenticate import UserCreate, create_db_user
+from api_database.api.database.incidents import IncidentCreate, create_db_incident, generate_id
+from api_database.api.database.authenticate import UserCreate, create_db_user
 import pytest
 from passlib.context import CryptContext
 

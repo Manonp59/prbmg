@@ -1,10 +1,10 @@
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, StaticPool
 from sqlalchemy.orm import sessionmaker, Session
-from database.core import Base, get_db_azure, get_db_sqlite, DBIncidents
-from database.authenticate import create_db_user, UserCreate
-from database.incidents import generate_id
-from main import app
+from api_database.api.database.core import Base, get_db_azure, get_db_sqlite, DBIncidents
+from api_database.api.database.authenticate import create_db_user, UserCreate
+from api_database.api.database.incidents import generate_id
+from api_database.api.main import app
 from typing import Generator
 import pytest 
 from unittest.mock import MagicMock

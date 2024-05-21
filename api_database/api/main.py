@@ -1,6 +1,6 @@
 from fastapi import FastAPI, APIRouter
-from routers.incidents import router as incidents_router
-from routers.authenticate import router as authentificate_router
+from api_database.api.routers.incidents import router as incidents_router
+from api_database.api.routers.authenticate import router as authentificate_router
 
 test_router = APIRouter()
 

@@ -1,8 +1,8 @@
 from sqlalchemy import create_engine, StaticPool
 from sqlalchemy.orm import sessionmaker, Session
-from database.core import Base
+from api_database.api.database.core import Base
 from typing import Generator
-from database.authenticate import User, UserCreate, create_db_user, get_password_hash, verify_password, get_user, authenticate_user, has_access, create_access_token
+from api_database.api.database.authenticate import User, UserCreate, create_db_user, get_password_hash, verify_password, get_user, authenticate_user, has_access, create_access_token
 import pytest
 from datetime import timedelta, datetime, timezone
 from jose import jwt

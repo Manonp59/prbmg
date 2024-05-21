@@ -3,9 +3,9 @@ from fastapi.params import Depends
 from sqlalchemy.orm import Session
 from typing import List
 from typing import List, Annotated
-from database.core import NotFoundError, get_db_azure
-from database.authenticate import oauth2_scheme, has_access, User
-from database.incidents import Incident, IncidentCreate, IncidentUpdate, read_db_incident, read_db_one_incident, \
+from api_database.api.database.core import NotFoundError, get_db_azure
+from api_database.api.database.authenticate import oauth2_scheme, has_access, User
+from api_database.api.database.incidents import Incident, IncidentCreate, IncidentUpdate, read_db_incident, read_db_one_incident, \
     create_db_incident, update_db_incident, delete_db_incident
 
 PROTECTED = Annotated[User, Depends(has_access)]
