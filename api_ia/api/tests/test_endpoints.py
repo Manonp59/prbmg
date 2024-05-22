@@ -21,15 +21,21 @@ def mock_jwt_decode(monkeypatch):
     yield "mock_token"
 
 
-def test_predict_endpoint(mock_jwt_decode):
-    # Préparer les données de test
-    data = {"input_str":"somme document text"}
+@pytest.fixture
+def mock_get_model_path(monkeypatch):
+    # Mock the get_model_path function to return a valid path
+    monkeypatch.setattr("api_ia.api.utils.get_model_path", lambda x: "/path/to/mock/model.pkl")
 
-    # Envoyer une requête POST à l'endpoint /predict
-    response = client.post("/predict", json=data,headers={"Authorization":f"Bearer {mock_jwt_decode}"})
-    # Vérifier le code de statut de la réponse
+def test_predict_endpoint(mock_jwt_decode, mock_get_model_path):
+    # Prepare test data
+    data = {"input_str": "some document text"}
+
+    # Send a POST request to the /predict endpoint
+    response = client.post("/predict", json=data, headers={"Authorization": f"Bearer {mock_jwt_decode}"})
+
+    # Verify the response status code
     assert response.status_code == 200
 
-    # Vérifier le contenu de la réponse
+    # Verify the response content
     assert "cluster_number" in response.json()
     assert "problem_title" in response.json()
