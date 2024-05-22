@@ -1,12 +1,13 @@
 from fastapi.testclient import TestClient
 from api_ia.api.main import app
 import pytest 
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, mock_open
 from sqlalchemy.orm import sessionmaker, Session
 from api_ia.api.database import Base, get_db
 from typing import Generator
 from sqlalchemy import create_engine, StaticPool
 from api_ia.api.utils import PredictionInput
+import pickle 
 
 from fastapi.testclient import TestClient
 from api_ia.api.main import app
@@ -25,6 +26,15 @@ def mock_jwt_decode(monkeypatch):
 def mock_get_model_path(monkeypatch):
     # Mock the get_model_path function to return a valid path
     monkeypatch.setattr("api_ia.api.utils.get_model_path", lambda x: "/path/to/mock/model.pkl")
+
+@pytest.fixture
+def mock_open_file(monkeypatch):
+    # Mock the open function to simulate reading a model file
+    mock_model = MagicMock()
+    mock_model.predict.return_value = [0]
+    mock_file = mock_open(read_data=pickle.dumps(mock_model))
+    monkeypatch.setattr("builtins.open", mock_file)
+    return mock_file
 
 def test_predict_endpoint(mock_jwt_decode, mock_get_model_path):
     # Prepare test data
