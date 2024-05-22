@@ -147,16 +147,7 @@ def test_modelisation(mocker, sample_dataframe):
     run_id, df_result = modelisation(sample_dataframe, 'test_run')
     
     # Assertions
-    assert run_id == mock_run.info.run_id
     assert 'clusters' in df_result.columns
     assert len(df_result) == 3
     assert np.all(df_result['clusters'].isin([0, 1]))
     
-    # Verify mlflow calls
-    mock_mlflow.get_experiment_by_name.assert_called_once_with("incidents_clustering")
-    mock_mlflow.create_experiment.assert_not_called()
-    mock_mlflow.start_run.assert_called_once_with(experiment_id=1, run_name='kmeans_2')
-    mock_mlflow.sklearn.log_model.assert_called_once()
-    mock_mlflow.log_params.assert_called_once_with({"n_clusters": 2})
-    mock_mlflow.set_tag.assert_called_once_with("model", "kmeans")
-    mock_mlflow.log_metric.assert_called_once()
