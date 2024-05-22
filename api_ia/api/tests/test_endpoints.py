@@ -9,34 +9,37 @@ from sqlalchemy import create_engine, StaticPool
 from api_ia.api.utils import PredictionInput
 import pickle 
 
-from fastapi.testclient import TestClient
-from api_ia.api.main import app
-
 client = TestClient(app)
 
+class MockModel:
+    def predict(self, embeddings):
+        return [0]
 
-@pytest.fixture(autouse=True)
+@pytest.fixture
 def mock_jwt_decode(monkeypatch):
     # Mock the jwt.decode function to return the mock payload
     monkeypatch.setattr("jose.jwt.decode", MagicMock(return_value={"sub": "admin"}))
-    yield "mock_token"
-
+    return "mock_token"
 
 @pytest.fixture
 def mock_get_model_path(monkeypatch):
     # Mock the get_model_path function to return a valid path
-    monkeypatch.setattr("api_ia.api.utils.get_model_path", lambda x: "/path/to/mock/model.pkl")
+    mock_path = "/path/to/mock/model.pkl"
+    monkeypatch.setattr("api_ia.api.main.get_model_path", lambda x: mock_path)
+    return mock_path
 
 @pytest.fixture
 def mock_open_file(monkeypatch):
+    # Create a pickled mock model
+    mock_model = MockModel()
+    mock_model_data = pickle.dumps(mock_model)
+
     # Mock the open function to simulate reading a model file
-    mock_model = MagicMock()
-    mock_model.predict.return_value = [0]
-    mock_file = mock_open(read_data=pickle.dumps(mock_model))
+    mock_file = mock_open(read_data=mock_model_data)
     monkeypatch.setattr("builtins.open", mock_file)
     return mock_file
 
-def test_predict_endpoint(mock_jwt_decode, mock_get_model_path,mock_open_file):
+def test_predict_endpoint(mock_jwt_decode, mock_get_model_path, mock_open_file):
     # Prepare test data
     data = {"input_str": "some document text"}
 
