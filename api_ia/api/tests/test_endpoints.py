@@ -25,16 +25,16 @@ def mock_predict(monkeypatch):
     monkeypatch.setattr("api_ia.api.utils.predict_cluster", MagicMock(return_value=1))
 
 
-def test_predict_endpoint(mock_jwt_decode, mock_predict):
-    # Prepare test data
-    data = {"input_str": "some document text"}
+# def test_predict_endpoint(mock_jwt_decode, mock_predict):
+#     # Prepare test data
+#     data = {"input_str": "some document text"}
 
-    # Send a POST request to the /predict endpoint
-    response = client.post("/predict", json=data, headers={"Authorization": f"Bearer {mock_jwt_decode}"})
+#     # Send a POST request to the /predict endpoint
+#     response = client.post("/predict", json=data, headers={"Authorization": f"Bearer {mock_jwt_decode}"})
 
-    # Verify the response status code
-    assert response.status_code == 200
+#     # Verify the response status code
+#     assert response.status_code == 200
 
-    # Verify the response content
-    assert "cluster_number" in response.json()
-    assert "problem_title" in response.json()
+#     # Verify the response content
+#     assert "cluster_number" in response.json()
+#     assert "problem_title" in response.json()

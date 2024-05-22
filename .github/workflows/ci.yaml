@@ -14,10 +14,6 @@ jobs:
     steps: 
       - name: Checkout code 
         uses: actions/checkout@v2 
-      
-      - name: List files after checkout
-        run: ls -la
-
 
       - name: Set up Python 
         uses: actions/setup-python@v2
