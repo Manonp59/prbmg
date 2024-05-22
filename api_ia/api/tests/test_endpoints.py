@@ -36,7 +36,7 @@ def mock_open_file(monkeypatch):
     monkeypatch.setattr("builtins.open", mock_file)
     return mock_file
 
-def test_predict_endpoint(mock_jwt_decode, mock_get_model_path):
+def test_predict_endpoint(mock_jwt_decode, mock_get_model_path,mock_open_file):
     # Prepare test data
     data = {"input_str": "some document text"}
 
