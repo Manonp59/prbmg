@@ -11,9 +11,6 @@ import pickle
 
 client = TestClient(app)
 
-class MockModel:
-    def predict(self, embeddings):
-        return [0]
 
 @pytest.fixture
 def mock_jwt_decode(monkeypatch):
@@ -21,20 +18,14 @@ def mock_jwt_decode(monkeypatch):
     monkeypatch.setattr("jose.jwt.decode", MagicMock(return_value={"sub": "admin"}))
     return "mock_token"
 
-@pytest.fixture
-def mock_get_model_path(monkeypatch):
-    # Mock the get_model_path function to return a valid path
-    mock_path = "/path/to/mock/model.pkl"
-    monkeypatch.setattr("api_ia.api.utils.get_model_path", lambda x: mock_path)
-    return mock_path
 
-@pytest.fixture
-def mock_open_file(monkeypatch, mock_get_model_path):
-    # Return the model path instead of a mock file object
-    return mock_get_model_path
+@pytest.fixture(autouse=False)
+def mock_predict(monkeypatch):
+    # Mock the jwt.decode function to return the mock payload
+    monkeypatch.setattr("api_ia.api.utils.predict_cluster", MagicMock(return_value=1))
 
 
-def test_predict_endpoint(mock_jwt_decode, mock_get_model_path, mock_open_file):
+def test_predict_endpoint(mock_jwt_decode, mock_predict):
     # Prepare test data
     data = {"input_str": "some document text"}
 
