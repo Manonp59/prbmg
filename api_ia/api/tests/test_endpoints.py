@@ -25,7 +25,7 @@ def mock_jwt_decode(monkeypatch):
 def mock_get_model_path(monkeypatch):
     # Mock the get_model_path function to return a valid path
     mock_path = "/path/to/mock/model.pkl"
-    monkeypatch.setattr("api_ia.api.main.get_model_path", lambda x: mock_path)
+    monkeypatch.setattr("api_ia.api.utils.get_model_path", lambda x: mock_path)
     return mock_path
 
 @pytest.fixture
