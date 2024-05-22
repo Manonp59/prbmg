@@ -29,15 +29,10 @@ def mock_get_model_path(monkeypatch):
     return mock_path
 
 @pytest.fixture
-def mock_open_file(monkeypatch):
-    # Create a pickled mock model
-    mock_model = MockModel()
-    mock_model_data = pickle.dumps(mock_model)
+def mock_open_file(monkeypatch, mock_get_model_path):
+    # Return the model path instead of a mock file object
+    return mock_get_model_path
 
-    # Mock the open function to simulate reading a model file
-    mock_file = mock_open(read_data=mock_model_data)
-    monkeypatch.setattr("builtins.open", mock_file)
-    return mock_file
 
 def test_predict_endpoint(mock_jwt_decode, mock_get_model_path, mock_open_file):
     # Prepare test data
