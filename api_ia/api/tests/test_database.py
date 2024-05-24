@@ -24,10 +24,14 @@ def session() -> Generator[Session, None, None]:
 
 def test_create_prediction(session:Session) -> None: 
     mock_prediction = {
-        "docs" : "docs str test",
-        "cluster_number" : 4,
-        "problem_title" : "example title",
-        "model" :"test_model"
+        "incident_number": "123grz",
+        "description": "description test", 
+        "category_full": "category full",
+        "ci_name": "ci_name test", 
+        "location_full": "location_test",
+        "cluster_number": 4,
+        "problem_title": "example title",
+        "model":"test_model"
     }
     
     prediction = create_db_prediction(mock_prediction,session)
@@ -36,7 +40,7 @@ def test_create_prediction(session:Session) -> None:
     
     assert prediction_in_db
     assert len(prediction_in_db.prediction_id) == 14
-    assert prediction_in_db.docs == "docs str test"
+    assert prediction_in_db.description == "description test"
     assert prediction_in_db.cluster_number == 4
     assert prediction_in_db.problem_title == "example title"
     assert prediction_in_db.model == "test_model"

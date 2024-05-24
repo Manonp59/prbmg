@@ -25,6 +25,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
+
+
 @app.middleware("http")
 async def verify_api_key(request: Request, call_next):
     """

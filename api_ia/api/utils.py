@@ -2,18 +2,20 @@ import pandas as pd
 from dotenv import load_dotenv
 import os 
 from langchain_openai import AzureOpenAIEmbeddings
-import numpy as np 
 import pyodbc
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from fastapi import  HTTPException, status, Depends
-from jose import JWTError, jwt
 import pickle
 import mlflow
 from pydantic import BaseModel
+import string
+
 
 
 class PredictionInput(BaseModel):
-    input_str: str
+    incident_number: str
+    description: str 
+    category_full: str 
+    ci_name: str 
+    location_full: str 
 
 class PredictionOuput(BaseModel):
     cluster_number: int 
@@ -45,32 +47,15 @@ def connect_to_sql_server():
     return conn
 
 
-async def has_access(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
-    token = credentials.credentials
-    SECRET_KEY = os.getenv("API_IA_SECRET_KEY")
-    ALGORITHM = "HS256"
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-    except JWTError:
-        raise credentials_exception
-    if username == "admin":
-        return True
-    else:
-        raise credentials_exception
-    
-
 def predict_cluster(model_path, incident:PredictionInput):
 
     with open(model_path, 'rb') as file:
         loaded_model = pickle.load(file)
 
-    input_series = pd.Series({"docs":incident.input_str})
+    docs = incident.description + " " + incident.category_full + " " + incident.location_full + " " + incident.ci_name 
+    punctuation_table = str.maketrans("", "", string.punctuation + "“”’")
+    docs = docs.translate(punctuation_table)
+    input_series = pd.Series({"docs":docs})
     embeddings = get_embeddings(input_series)
     prediction = loaded_model.predict(embeddings)
     problem_title = get_problem_title(prediction[0])
@@ -90,13 +75,6 @@ def get_model_path(model_run):
     model_path = os.path.join(local_artifact_path, model_run, "model.pkl")
     return model_path
 
-
-def generate_token(to_encode):
-    SECRET_KEY = os.environ.get("API_IA_SECRET_KEY")
-    ALGORITHM = "HS256"
-    to_encode_dict = {"sub": to_encode}
-    encoded_jwt = jwt.encode(to_encode_dict, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
 
 
 def get_embeddings(input:pd.Series)-> pd.DataFrame:
@@ -122,6 +100,3 @@ def get_problem_title(cluster_number:int,table="kmeans30_clusters_title") -> str
         # Si le numéro de cluster n'est pas trouvé, retourner un message d'erreur
         return f"No problem title found for cluster {cluster_number}"
 
-
-if __name__ == "__main__":
-    print(generate_token("admin"))
