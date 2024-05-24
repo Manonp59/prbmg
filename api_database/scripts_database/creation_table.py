@@ -12,6 +12,7 @@ database = os.getenv("AZURE_DATABASE_NAME")
 username = os.getenv("AZURE_DATABASE_USERNAME")
 password = os.getenv("AZURE_DATABASE_PASSWORD")
 
+
 conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
 
@@ -32,6 +33,7 @@ with conn.cursor() as cursor:
         description TEXT NOT NULL, 
         category_full VARCHAR(100) NOT NULL, 
         ci_name VARCHAR(100) NOT NULL, 
+        location_full VARCHAR(300),
         owner_group VARCHAR(100) NOT NULL,
         urgency VARCHAR(10) NOT NULL, 
         priority INT NOT NULL,
@@ -41,21 +43,6 @@ with conn.cursor() as cursor:
     cursor.execute(create_table_query)
 
 
-with conn.cursor() as cursor:
-    create_table_query = """
-    CREATE TABLE incidents_location (
-        incident_number VARCHAR(50) PRIMARY KEY, 
-        description TEXT NOT NULL, 
-        category_full VARCHAR(100) NOT NULL, 
-        ci_name VARCHAR(100) NOT NULL, 
-        location_full VARCHAR(300),
-        owner_group VARCHAR(100) NOT NULL,
-        urgency VARCHAR(10) NOT NULL, 
-        priority INT NOT NULL,
-        SLA VARCHAR(100)
-    );
-    """
-    cursor.execute(create_table_query)
 
 
 # with conn.cursor() as cursor: 

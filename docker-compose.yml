@@ -3,8 +3,15 @@ version: '3.8'
 services:
   
   api_database:
-    build: ./api
+    build: ./api_database
     ports:
       - 8000:8000
     env_file:
       - .env
+
+  api_ia:
+    build: ./api_ia
+    ports:
+     - 8001:8000
+    env_file:
+    - .env

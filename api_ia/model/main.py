@@ -1,20 +1,17 @@
-from training import training
+from api_ia.model.training import training
 import argparse
 
 # Create an argument parser
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description="Run training with specified run name")
 
-# Add arguments
-parser.add_argument('run_name')
-parser.add_argument('start_date')   
-parser.add_argument('end_date')
+# Define the run_name argument
+parser.add_argument('run_name', type=str, help='The name of the run')
 
 # Parse the command-line arguments
 args = parser.parse_args()
 
 # Access the arguments
 run_name = args.run_name
-start_date = args.start_date
-end_date = args.end_date
 
-training(run_name,start_date,end_date)
+# Call the training function with the provided run name
+training(run_name)

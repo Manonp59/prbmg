@@ -3,9 +3,9 @@
 # Variables
 resourceGroupName="RG_PLATTEAU"
 location="francecentral"
-serverName="prbmg-sql-server"
+serverName="prbmg"
 adminLogin="manon"
-adminPassword="Youpie-59"  # Remplacez par votre mot de passe
+adminPassword=$(grep -oP '(?<=AZURE_DATABASE_PASSWORD=").*?(?=")' .env)
 databaseName="prbmg-bdd"
 
 # Connexion à Azure

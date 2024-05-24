@@ -6,16 +6,29 @@ from dotenv import load_dotenv
 import pandas as pd 
 import os 
 import pyodbc
+import requests
+
+load_dotenv()
+
+database_api_key = os.getenv('API_DATABASE_SECRET_KEY')
+
+def get_incidents():
+    url = "http://127.0.0.1:8000/incidents/"
+    headers = {"X-API-Key":"ipNOJ2OiSAvkUAsjE554SVnwYyBKcXFT"}
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()  # Assurez-vous que la requête est réussie
+    incidents = response.json()
+    incidents = pd.DataFrame(incidents)
+    return incidents
 
 
-def training(run_name,start_date="2017-01-01",end_date="2018-01-01"):
+def training(run_name):
 
     engine = create_sql_server_engine()
-    table_name = 'incidents_location'
-    # Requête SQL pour récupérer toute la table
-    query = f"SELECT * FROM {table_name}"
+
     # Exécution de la requête et récupération des données dans un DataFrame Pandas
-    df = pd.read_sql(query, engine)
+    df = get_incidents()
+    print(df.columns)
     df_clean = clean_dataset(df)
     df_clean.to_sql(run_name +'_cleandataset', engine, index=False, if_exists='replace')
     print('df_clean ok')

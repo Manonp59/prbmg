@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 import json
 from api_ia.clustering_model.utils import create_sql_server_conn, create_sql_server_engine
+import time
 
 
 ##### Nettoyage des données #####
@@ -71,7 +72,19 @@ def make_embeddings(df):
         azure_endpoint = azure_endpoint
     )
 
-    embeddings = embeddings_model.embed_documents(docs)
+    batch_size = 250
+    embeddings = []
+
+    for i in range(0, len(docs), batch_size):
+        print(i)
+        start_batch = i
+        end_batch = i + batch_size
+        batch = docs[start_batch:end_batch]
+        batch_embeddings = embeddings_model.embed_documents(batch)
+        embeddings.extend(batch_embeddings)
+        if i + batch_size < len(docs):
+            time.sleep(5)
+    
 
     # Convertir les embeddings en tableaux numpy
     embeddings_np = np.array(embeddings)

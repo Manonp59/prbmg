@@ -1,11 +1,10 @@
 from sqlalchemy import create_engine, StaticPool
 from sqlalchemy.orm import sessionmaker, Session
-from api_database.api.database.core import Base, DBIncidents
+from api_database.api.functions_database import Base, DBIncidents
 from typing import Generator
-from api_database.api.database.incidents import IncidentCreate, create_db_incident, generate_id
-from api_database.api.database.authenticate import UserCreate, create_db_user
+from api_database.api.functions_database import IncidentCreate, create_db_incident, generate_id
 import pytest
-from passlib.context import CryptContext
+
 
 
 @pytest.fixture
@@ -32,7 +31,12 @@ def session() -> Generator[Session, None, None]:
             Zabbix event ID: 1060797202""",
             category_full = "Incidents/Infrastructure/System/Exchange On'prem",
             ci_name = "S101X01X",
-            location = "Lestrem",)
+            location_full = "Lestrem",
+            owner_group = "CORP_ISC_L1",
+            urgency = "3 - Low",
+            priority = 4,
+            SLA = "ISC SLA INC P4")
+    
     db_session.add(db_incident)
     db_session.commit()
 
@@ -58,28 +62,16 @@ def test_create_incidents(session:Session) -> None:
             Zabbix event ID: 1060797202""",
             category_full = "Incidents/Infrastructure/System/Exchange On'prem",
             ci_name = "S101X01X",
-            location = "Lestrem",
+            location_full = "Lestrem",
+            owner_group = "CORP_ISC_L1",
+            urgency = "3 - Low",
+            priority = 4,
+            SLA = "ISC SLA INC P4"
             ), 
             session)
     assert len(incident.incident_number) == 14
     assert incident.category_full == "Incidents/Infrastructure/System/Exchange On'prem"
     assert incident.ci_name == "S101X01X"
-    assert incident.location == "Lestrem"
+    assert incident.location_full == "Lestrem"
 
 
-def test_create_user(session:Session) -> None: 
-    user = create_db_user( 
-        UserCreate( 
-            username="test_user",
-            email = "test_user@test.com",
-            full_name="test_user_fullname",
-            password = "test_password"
-            ), 
-            session)
-    
-    
-    assert user.username == "test_user"
-    assert user.email == "test_user@test.com"
-    assert user.full_name=="test_user_fullname"
-    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-    assert pwd_context.verify("test_password", user.hashed_password)

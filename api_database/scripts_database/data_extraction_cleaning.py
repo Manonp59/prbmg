@@ -96,12 +96,25 @@ ci_name.to_csv('/home/utilisateur/DevIA/prbmg/api_database/data/cleaned/ci_locat
 
 conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
-with conn.cursor() as cursor: 
-    insert_query = """
-    INSERT INTO incidents_location (incident_number, description, category_full, ci_name, location_full, owner_group, urgency, priority, sla)
-    SELECT i.incident_number, i.description, i.category_full, i.ci_name, l.location_full, i.owner_group, i.urgency, i.priority, i.sla
-    FROM incidents i
-    LEFT JOIN ci_location l ON i.ci_name = l.ci_name;
+
+with conn.cursor() as cursor:
+    add_column_query = """
+    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+                   WHERE TABLE_NAME = 'incidents' AND COLUMN_NAME = 'location_full')
+    BEGIN
+        ALTER TABLE incidents ADD location_full VARCHAR(300);
+    END
     """
-    cursor.execute(insert_query)
+    cursor.execute(add_column_query)
+    conn.commit()
+
+with conn.cursor() as cursor:
+    update_query = """
+    UPDATE incidents
+    SET location_full = l.location_full
+    FROM ci_location l
+    WHERE incidents.ci_name = l.ci_name;
+    """
+    cursor.execute(update_query)
+    conn.commit()
 
