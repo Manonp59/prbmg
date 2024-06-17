@@ -19,7 +19,7 @@ jobs:
     - name: Build and Push Docker Images using Docker Compose
       run: |
         echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        docker-compose build
-        docker-compose push
+        docker compose build
+        docker compose push
       env:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
