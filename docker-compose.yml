@@ -12,6 +12,6 @@ services:
   api_ia:
     build: ./api_ia
     ports:
-     - 8001:8000
+     - 8001:8001
     env_file:
     - .env
