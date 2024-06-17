@@ -48,7 +48,7 @@ def connect_to_sql_server():
     return conn
 
 
-def predict_cluster(model_path, incident:PredictionInput):
+def predict_cluster(incident:PredictionInput,model_path="mlruns/222596231331496901/825074a911564ecaba8db484d020bf52/artifacts/kmeans_30/model.pkl"):
 
     with open(model_path, 'rb') as file:
         loaded_model = pickle.load(file)
@@ -65,21 +65,18 @@ def predict_cluster(model_path, incident:PredictionInput):
     return output 
 
 
-def get_model_path(model_run):
-    experiment = mlflow.get_experiment_by_name("incidents_clustering")
-    runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
-    filtered_runs = runs[runs['tags.mlflow.runName'] == model_run]
-    run_id = filtered_runs.iloc[0]['run_id']
-    run = mlflow.get_run(run_id)
-    artifact_uri = run.info.artifact_uri
-    local_artifact_path = artifact_uri.replace("file://", "")
-    
-    # Obtention du chemin relatif par rapport au répertoire de travail
-    cwd = os.getcwd()  # Répertoire de travail courant
-    relative_model_path = os.path.relpath(local_artifact_path, cwd)
-    
-    model_path = os.path.join(relative_model_path, model_run, "model.pkl")
-    return model_path
+# def get_model_path(model_run):
+#     experiment = mlflow.get_experiment_by_name("incidents_clustering")
+#     runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
+#     filtered_runs = runs[runs['tags.mlflow.runName'] == model_run]
+#     run_id = filtered_runs.iloc[0]['run_id']
+#     run = mlflow.get_run(run_id)
+#     artifact_uri = run.info.artifact_uri
+#     print(artifact_uri)
+#     local_artifact_path = artifact_uri.replace("file://", "")
+#     model_path = os.path.join(local_artifact_path, model_run, "model.pkl")
+#     return model_path
+
 
 
 def get_embeddings(input:pd.Series)-> pd.DataFrame:
