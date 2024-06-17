@@ -72,6 +72,7 @@ def get_model_path(model_run):
     run_id = filtered_runs.iloc[0]['run_id']
     run = mlflow.get_run(run_id)
     artifact_uri = run.info.artifact_uri
+    print(artifact_uri)
     local_artifact_path = artifact_uri.replace("file://", "")
     model_path = os.path.join(local_artifact_path, model_run, "model.pkl")
     return model_path
