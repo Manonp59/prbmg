@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI, Request, HTTPException
-from api_ia.api.utils import PredictionOuput, PredictionInput, get_model_path, predict_cluster
+from api_ia.api.utils import PredictionOuput, PredictionInput, predict_cluster
 from api_ia.api.database import get_db, create_db_prediction
 from fastapi import Depends
 from sqlalchemy.orm import Session
