@@ -1,4 +1,4 @@
-name: Docker-ACI-CD
+name: CD
 
 on:
   push:
