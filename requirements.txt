@@ -124,7 +124,7 @@ nbformat==5.9.2
 nest-asyncio==1.6.0
 notebook==7.0.7
 notebook_shim==0.2.3
-numpy==1.22.0
+numpy==1.23.5
 omegaconf==2.3.0
 openai==1.23.2
 openpyxl==3.1.2
