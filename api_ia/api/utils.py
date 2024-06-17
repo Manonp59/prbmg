@@ -83,7 +83,7 @@ def get_model_path(model_run):
     relative_model_path = os.path.relpath(local_artifact_path, start=base_dir)
 
     # Combiner le chemin relatif avec le nom du modèle
-    model_path = os.path.join("./mlruns", relative_model_path, model_run, "model.pkl")
+    model_path = os.path.join(relative_model_path, model_run, "model.pkl")
 
     return model_path
 
