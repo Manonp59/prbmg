@@ -53,8 +53,8 @@ def predict(
     ) -> PredictionOuput:
 
     model_name = "kmeans_30"
-    model_path = get_model_path(model_name)
-    prediction = predict_cluster(model_path, incident)
+    # model_path = get_model_path(model_name)
+    prediction = predict_cluster(incident)
 
     # MLops: Save prediction to database
     prediction_dict = {
