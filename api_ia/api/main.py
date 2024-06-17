@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI, Request, HTTPException
-from api_ia.api.utils import PredictionOuput, PredictionInput, predict_cluster
+from api_ia.api.utils import PredictionOuput, PredictionInput, predict_cluster, get_model_path
 from api_ia.api.database import get_db, create_db_prediction
 from fastapi import Depends
 from sqlalchemy.orm import Session
@@ -53,8 +53,8 @@ def predict(
     ) -> PredictionOuput:
 
     model_name = "kmeans_30"
-    # model_path = get_model_path(model_name)
-    prediction = predict_cluster(incident)
+    model_path = get_model_path(model_name)#
+    prediction = predict_cluster(model_path,incident)
 
     # MLops: Save prediction to database
     prediction_dict = {
