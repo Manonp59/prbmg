@@ -15,6 +15,9 @@ jobs:
       - name: Checkout code 
         uses: actions/checkout@v2 
 
+      - name: List files in repository
+        run: ls -R
+
       - name: Set up Python 
         uses: actions/setup-python@v2
         with: 
