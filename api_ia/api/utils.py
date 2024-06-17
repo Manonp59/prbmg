@@ -23,6 +23,7 @@ class PredictionOuput(BaseModel):
 
 load_dotenv()
 
+
 azure_deployment = os.getenv('EMBEDDING_AZURE_DEPLOYMENT')
 openai_api_version = os.getenv('EMBEDDING_OPENAI_API_VERSION')
 api_key = os.getenv('EMBEDDING_API_KEY')
