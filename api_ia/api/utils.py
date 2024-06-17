@@ -48,7 +48,7 @@ def connect_to_sql_server():
     return conn
 
 
-def predict_cluster(incident:PredictionInput,model_path):
+def predict_cluster(model_path,incident:PredictionInput):
 
     with open(model_path, 'rb') as file:
         loaded_model = pickle.load(file)
