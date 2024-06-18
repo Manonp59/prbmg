@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
+from django.http import Http404
+from prbmg import settings
 from .forms import LoginForm,UpdateUserForm, SignUpForm, UploadFileForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -132,7 +134,7 @@ def update_user(request):
     return render(request, 'update_user.html', {'form':form})
 
 def handle_uploaded_file(f):
-    df = pd.read_csv(io.StringIO(f.read().decode('utf-8')), index_col=False,delimiter=";")
+    df = pd.read_csv(io.StringIO(f.read().decode('utf-8')), index_col=False)
     print(df.columns)
     mask_origin_request = df["Origin of Request"] == "Monitoring"
     mask_requesting_person = df["Requesting Person"] == "REST API - ZABBIX"
@@ -150,7 +152,6 @@ def handle_uploaded_file(f):
     df = df.drop_duplicates(subset='incident_number')
     df = df.dropna(subset='incident_number')
     
-    print(df.shape)
     return df
 
 API_URL = "http://127.0.0.1:8001/predict"
@@ -159,6 +160,8 @@ API_KEY = os.getenv('API_IA_SECRET_KEY')
 def process_clustering(df):
     result_list = []
     headers = {"X-API-Key": API_KEY}
+    df['cluster_number'] = None
+    df['problem_title'] = None
     for index, row in df.iterrows():
         data = {
             "incident_number": row['incident_number'],
@@ -168,13 +171,16 @@ def process_clustering(df):
             "location_full": row['location_full']
         }
         
-        print(data)
         response = requests.post(API_URL, json=data, headers=headers)
         if response.status_code == 200:
-            result_list.append(response.json())
+            result = response.json()
+            df.at[index, 'cluster_number'] = result.get('cluster_number')
+            df.at[index, 'problem_title'] = result.get('problem_title')
         else:
-            result_list.append({"error": f"Error for incident {row['incident_number']}"})
-    return result_list
+            df.at[index, 'cluster_number'] = 'Error'
+            df.at[index, 'problem_title'] = f"Error for incident {row['incident_number']}"
+
+    return df
 
 def get_location(df):
     API_URL = "http://127.0.0.1:8002/ci_location"
@@ -198,18 +204,34 @@ def get_location(df):
 @login_required(login_url='login')
 def upload_file(request):
     message = ''
+    if not os.path.exists(settings.MEDIA_ROOT):
+        os.makedirs(settings.MEDIA_ROOT)
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             df = handle_uploaded_file(request.FILES['file'])
             df = get_location(df)
             df.to_csv("test.csv")
-            df = df.dropna(subset="location_full")
-            print(df.shape)
-            result = process_clustering(df)
-            return render(request, 'upload.html', {'form': form, 'message': 'File uploaded successfully!', 'dataframe':df.head().to_html(),"result":result})
+            df['location_full']= df['location_full'].fillna(value="")
+            df = process_clustering(df)
+            file_name = "clustered_data.csv"
+            file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+            df.to_csv(file_path, index=False)
+            return render(request, 'upload.html', {'form': form, 'message': 'File uploaded successfully!', 'download_link': settings.MEDIA_URL + "clustered_data.csv","file_path":file_name})
         else:
             message = 'Form is not valid'
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form, 'message': message})
+
+
+@login_required(login_url='login')
+def download_file(request, file_path):
+    file_path = os.path.join(settings.MEDIA_ROOT, file_path)
+    print(file_path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = f'attachment; filename={os.path.basename(file_path)}'
+            return response
+    raise Http404

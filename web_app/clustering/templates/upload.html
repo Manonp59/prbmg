@@ -12,23 +12,13 @@
     {% if message %}
         <p class="success">{{ message }}</p>
     {% endif %}
+
     {% if dataframe %}
-    <h2>Uploaded Data</h2>
         {{ dataframe|safe }}
     {% endif %}
-    {% if result %}
-    <h2>Clustering Results</h2>
-    <ul>
-    {% for res in result %}
-        <li>
-            Incident: {{res.incident_number}}
-            Cluster Number: {{ res.cluster_number }}<br>
-            Problem Title: {{ res.problem_title }}
-            {% if res.error %}
-                <br>Error: {{ res.error }}
-            {% endif %}
-        </li>
-    {% endfor %}
-    </ul>   
+
+    {% if download_link %}
+        <h2>Download Transformed Data</h2>
+        <a href="{% url 'download_file' file_path='clustered_data.csv' %}" class="btn btn-primary">Download CSV</a>
     {% endif %}
 {% endblock content %}

@@ -15,8 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
-from clustering.views import login_page, update_user, logout_user, home, signup_page, upload_file
+from clustering.views import login_page, update_user, logout_user, home, signup_page, upload_file, download_file
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +27,7 @@ urlpatterns = [
     path("update_user/", update_user,name="update_user"),
     path('logout/', logout_user, name="logout"),
     path('signup/', signup_page,name="signup"), 
-    path('clustering/', upload_file,name="clustering")
- ]
+    path('clustering/', upload_file,name="clustering"),
+    path('download/<str:file_path>/', download_file, name='download_file'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
