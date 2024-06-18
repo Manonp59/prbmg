@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %} </title>
+</head>
+<body>
+<nav>
+    {% if user.is_authenticated %}
+    <section><p>You are connected as {{request.user}}</p> <a class="bouton_bleu" href="{% url 'logout' %}">Logout</a></section>
+    {% else %}
+    <section><a href="{% url 'signup' %}">Sign up</a><a href="{% url 'login' %}">Login</a></section>
+    {% endif %}
+</nav>
+    {% block content%}{% endblock %}
+</body>
+</html>

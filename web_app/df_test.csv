@@ -1,0 +1,739 @@
+Origin of Request,Incident Number,Creation Date,[Last update],Solution Date,SLA Target,Expected end date,Time to Solve (hh:mm),Time to Solve (mm),Incident: Solution Late (mm),Meta Status (Incident),Incident Status,Owner Group,SUPPLIER,Incident: Group closing Incident,Incident: Support Person Closing the Incident,Solved by (Group),Solved by (Support Person),Incident: Rating for Speed of Service,Incident: Evaluation for the Quality of Service,Description,Category (Full),Requesting Person,Requesting Person: Location (Full),Requesting Person: Location (Last Level),Requesting Person: Department (Full),Recipient,Recipient: VIP Level,Recipient: Department (Full),Recipient: Location (Full),Severity Level,Urgency,Priority,CI: Name,Root Cause,Activity which caused incident,Accountability of the root cause,Location (Full),Equipment: Type (Full),Qty Child Incidents,Quality of Service,Solution,Immediate Solution,SLA,Entered by,Category (Last Level),Equipment: Functional use (Infrastructure),Resolution time,Last resolution date,Resolution Group,Equipment: Asset Tag,Title,CI: CI Number,CI : SLA Uplift,OOH Tickets
+Monitoring,I230427_000036,27/04/2023 12:15,27/04/2023 17:08,27/04/2023 17:08,28/04/2023 18:15,,         4:54,04:54,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,JOSHI Akshay,CORP_ISC_L1,JOSHI Akshay,,,"Trigger: Process h21archive != 14
+Responsible team: CORP_ISC_Wintel
+Trigger description: 
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:h21archive, Host:S260A181, RT:CORP_ISC_Wintel
+Host: S260A181
+Host group: ST/Windows, TMES, Windows/ST
+Host description: 
+Zabbix event ID: 1061949823",Incidents/Infrastructure/System/Manufacturing Apps,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,S260A181,,,,,,0.0,,"
+Asper TMES_Monitoring_Referential_PROD%20V12.2 , updated Process h21archive count & alert resolved
+Analysis in progress (Operation Action) : 0:35
+ 
+Assigned To :
+ 
+CORP_ISC_EM / KISHANK Swaroop
+ 
+Action :
+ 
+Analysis in progress => In progress
+ 
+OLA Target :
+ 
+27/04/2023 14:30:45
+ 
+Late :
+ 
+0
+ 
+Comment or Description :
+ 
+Asper TMES_Monitoring_Referential_PROD%20V12.2 , updated Process h21archive count & alert resolved",0.0,ISC SLA INC P4,REST API - ZABBIX,Manufacturing Apps,,04:51,27/04/2023 17:06,CORP_ISC_EM,,S260A181: Process h21archive != 14,S260A181,0.0,
+Phone,I230428_000022,28/04/2023 08:16,28/04/2023 08:18,28/04/2023 08:17,02/05/2023 05:16,,         0:02,00:02,0.0,Completed,Closed,ASIA_SD,ASIA_SERVICEDESK,ASIA_SD,QIAN Wei,ASIA_SD,QIAN Wei,"5,00","5,00",he chuan call that workday mobile  issue ,Incidents/Assistance/[Other],QIAN Wei,ASIA/[CHINA]/[LIANYUNGANG ST],[LIANYUNGANG ST],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[CHINA COORDINATION]/[CHINA MANUFACTURING & EHS & IS]/[IS DEPARTMENT - CHINA]/[IS USER SERVICES & SUPPORT - ASIA],QIAN Wei,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[CHINA COORDINATION]/[CHINA MANUFACTURING & EHS & IS]/[IS DEPARTMENT - CHINA]/[IS USER SERVICES & SUPPORT - ASIA],ASIA/[CHINA]/[LIANYUNGANG ST],2 - Medium,2 - Medium,3.0,,,,,ASIA/[CHINA]/[LIANYUNGANG ST],,0.0,5.0,now it is OK ,1.0,8 h office,QIAN Wei,[Other],,00:02,28/04/2023 08:17,ASIA_SD,,workday mobile,,,
+Monitoring,I230428_000204,28/04/2023 20:18,16/08/2023 16:34,07/08/2023 20:20,02/05/2023 17:18,,       748:03,748:03:00,44643.0,Completed,Closed,CORP_ISC_L1,,CORP_ADM_NET,HERMANT Laurent,CORP_ADM_NET,HERMANT Laurent,,,"Trigger: High memory utilization (used > 95%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: The system is running out of free memory.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Memory, RT:CORP_ISC_Wintel
+Host: S101A242
+Host group: Lestrem/Windows, RECH, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1063166395After receving that email threath, and server reboot didn't reduce the memroy usage, i have decided to uninstall F-Secure Server Security v15.30
+But now to reinstall from scratch, i need EDR uninstalled too.
+Anthony Lemai is stuck on that EDR uninstallation so he will work with Tethris support soon.
+C:\TEMP\TEHTRIS EDR - 1.7.0.msimsiexec.exe /argument quiet give right error on files inside folder C:\Program Files (x86)\eGambit\dasowner is local systemdespite with full admin rights account we are not able to uninstall EDR Tehris
+ 
+De : Jatinderjeet.Singh@fujitsu.com <Jatinderjeet.Singh@fujitsu.com> Envoyé : vendredi 14 avril 2023 08:38À : HERMANT Laurent <LAURENT.HERMANT@roquette.com>Cc : r01d-rqt-wintel@fujitsu.com; r01d-rqt-storage-backup@fujitsu.com; Pamarthi.Srinivasarao@fujitsu.com; Mali, Kishor <kishor.mali@fujitsu.com>; Rocaniere, Patrick <patrick.rocaniere@fujitsu.com>; Digital S&P Mgmt <DigitalS&PMgmt@roquette.com>; RQT-Change@fujitsu.com; UCHIL Bharat <Bharat.Uchil@roquette.com>; Rhitvij.sharma@fujitsu.com; MARCHIO Raphaël <Raphael.MARCHIO@roquette.com>; PATEL Riddhav <RIDDHAV.PATEL@roquette.com>Objet : RE: ***P1 I230307_000091 , S101A242 ***
+ 
+Hi Laurent,
+Could you please provide update on this as still we are receiving alert for high memory.
+ 
+ 
+ 
+Thanks & Regards,
+Jatinder Singh
+IT Engineer L2 (Wintel/Virtualization)
+Fujitsu Consulting India  Private Limited
+Mobile: +91 98725 07720 
+E-mail: Jatinderjeet.singh@fujitsu.com",Incidents/Infrastructure/System/Laboratories Apps,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S101A242,Windows Server,Incident/other process,Infrastructure teams,,,0.0,,"Business Impact: NoRCA for Incident: Some F-Secure services not properly uninstalled, so vendor team provided uninstall file. Now we uninstall all F-Secure services and reinstall the F-Secure.Frequent issue: NoRelate to Problem / Change:  No
+Hi Team,we opened a case with F-Secure vendor team (05060772) they find out RCA is some F-Secure services not properly uninstalled. so they provided one file to uninstall all F-Secure services. Now we uninstalled & rebooted and reinstalled the F-Secure on that affected server (S101A242). The F-Secure services are running up & fine. Hence, we are closing this incident.
+F-Secure AVIR and Tehtris are both now re-installed sucessfully & stable
+The alert has been closed in zabbix",0.0,8 h office,REST API - ZABBIX,Laboratories Apps,,71:00:00,01/05/2023 19:17,CORP_ISC_Wintel,,S101A242: High memory utilization (used > 95%),S101A242,1.0,
+Monitoring,I230414_000270,14/04/2023 21:41,14/04/2023 22:15,14/04/2023 22:15,15/04/2023 05:41,,         0:35,00:35,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,DURGESH KUMAR Jha,CORP_ISC_L1,DURGESH KUMAR Jha,,,"Trigger: SAP Solman detect problem on M10~JAVA~s101a229_M10_11 such as P101P0Z2
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230414180009;M10~JAVA~s101a229_M10_11;005056A5D24B1EDDB6DBADED0A5DDDB7;P101P0Z2;Critical;
+Opened at: 1681488
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1681488, RT:CORP_ISC_SAP, TriggerValue:M10~JAVA~s101a229_M10_11 such as P101P0Z2
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1050280721",Incidents/Infrastructure/ERP/SAP/SSM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,2 - Medium,2.0,SEAP50S,,,,,,0.0,,"
+Current ratting is green in solamon alert inbox now also printer is pinging.C:\Users\9939775>ping p101p0z2Pinging p101p0z2.roquette.corp.priv [10.2.127.141] with 32 bytes of data:Reply from 10.2.127.141: bytes=32 time=47ms TTL=56Reply from 10.2.127.141: bytes=32 time=47ms TTL=56Reply from 10.2.127.141: bytes=32 time=42ms TTL=56Request timed out.Ping statistics for 10.2.127.141:    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),Approximate round trip times in milli-seconds:    Minimum = 42ms, Maximum = 47ms, Average = 45ms",0.0,ISC SLA INC P2,REST API - ZABBIX,SSM,,00:34,14/04/2023 22:15,CORP_ISC_L1,,SEAP50S: SAP Solman detect problem on M10~JAVA~s101a229_M10_11 such as P101P0Z2,SEAP50S,0.0,
+Monitoring,I230419_000239,19/04/2023 20:14,25/04/2023 13:35,25/04/2023 13:35,25/04/2023 20:24,,        23:12,23:12,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,BHAGYASHRI Khairnar,CORP_ISC_L1,BHAGYASHRI Khairnar,,,"Trigger: E: Disk space is low (used > 90%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 591.12 GB of 600 GB (98.52 %)
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S130A10
+Host group: La Madeleine/Windows, SCCMDHCP, Windows/La Madeleine
+Host description: 
+Zabbix event ID: 1055007189",Incidents/Infrastructure/System/SCCM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,S130A10,,,,,,0.0,,"
+25GB space available now, hence closing this ticket.
+25GB space available now, hence closing this ticket.
+ 
+ ",0.0,ISC SLA INC P4,REST API - ZABBIX,SCCM,,135:50:00,25/04/2023 12:04,CORP_ISC_SCCM,,S130A10: E: Disk space is low (used > 90%),S130A10,0.0,
+Phone,I230417_000075,17/04/2023 12:48,27/04/2023 06:30,17/04/2023 12:49,17/04/2023 20:48,,         0:02,00:02,0.0,Completed,Closed,FR_SD_Service Desk and Sales offices,HPE_SD,FR_SD_Service Desk and Sales offices,GUEDDARI Hind,FR_SD_Service Desk and Sales offices,GUEDDARI Hind,,,"Mandatory Information: the user call has report that connect for application the plant   : ( wrong login wrong password Old incident (Y/N):no Recent changes (Installation, Computer, IOS update...):naError message :na Clear Screenshot attached (Y/N):naReal time assistance (Y/N):Netbios :c109c3mbPhone number :naLocation (building/floor/room :  beinheim TROUBLESHOOTING STEPS :remote control : ok assist user the reset pw for application : ok test :ok ----Closed automatically after 10 days",Incidents/Software/[Application Software]/[Other],DIMITROV Kiril,EUROPE/[FRANCE]/[BEINHEIM],[BEINHEIM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[BEINHEIM PLANT]/[PRODUCTION BEINHEIM]/[EQUIPE 4],DIMITROV Kiril,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[BEINHEIM PLANT]/[PRODUCTION BEINHEIM]/[EQUIPE 4],EUROPE/[FRANCE]/[BEINHEIM],2 - Medium,2 - Medium,3.0,,,,,EUROPE/[FRANCE]/[BEINHEIM],,0.0,,"incident resolu 
+ ----Closed automatically after 10 days",1.0,8 h office,GUEDDARI Hind,[Other],,00:02,17/04/2023 12:49,FR_SD_Service Desk and Sales offices,,Access application plant issue,,,
+Phone,I230414_000229,14/04/2023 19:04,24/04/2023 06:30,14/04/2023 19:06,15/04/2023 11:04,,         0:03,00:03,0.0,Completed,Closed,FR_SD_Service Desk and Sales offices,HPE_SD,FR_SD_Service Desk and Sales offices,GUEDDARI Hind,FR_SD_Service Desk and Sales offices,GUEDDARI Hind,,,"Mandatory Information: the user call has report that retrieve a file from the server Old incident (Y/N):no Recent changes (Installation, Computer, IOS update...):nainform user to make request in esyvista ----Closed automatically after 10 days",Incidents/Infrastructure/System/Files Server,NOCQ Florence,EUROPE/[FRANCE]/[LESTREM],[LESTREM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[SUPPLY CHAIN]/[GLOBAL LOGISTICS & TRANSPORTATION]/[GLOBAL TRANSPORTATION]/[TRANSPORTATION OVERSEAS AND GLOBAL TRADE]/[ADMINISTRATION DOUANES],NOCQ Florence,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[SUPPLY CHAIN]/[GLOBAL LOGISTICS & TRANSPORTATION]/[GLOBAL TRANSPORTATION]/[TRANSPORTATION OVERSEAS AND GLOBAL TRADE]/[ADMINISTRATION DOUANES],EUROPE/[FRANCE]/[LESTREM],2 - Medium,2 - Medium,3.0,,,,,EUROPE/[FRANCE]/[LESTREM],,0.0,,"demane d'information 
+resolu ----Closed automatically after 10 days",1.0,ISC SLA INC P3,GUEDDARI Hind,Files Server,,00:03,14/04/2023 19:06,FR_SD_Service Desk and Sales offices,,assistance for file in server,,,
+Monitoring,I230406_000218,06/04/2023 21:21,07/04/2023 12:21,07/04/2023 12:21,07/04/2023 13:21,,        15:00,15:00,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_Storage_Backup,SANT Sandeep,CORP_ISC_Storage_Backup,SANT Sandeep,,,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3, Opened at:1680795, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1043185829",Incidents/Infrastructure/System/Server,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S101A779,Backup,,,,,0.0,,"
+Backup for the client server S101A953 earlier failed with Ec 156 - snapshot encountered error.
+ 
+Later backups completed good on 6th April .
+3659006    Backup    0    Done    113619397    Apr 6, 2023 9:33:48 PM    HYPERV_2016_CLU-GEO-101_PROD    daily    S101A953.roquette.corp.priv    00:24:35    rs23509b.roquette.corp.priv    Apr 6, 2023 9:58:23 PM    root    stu_disk_worm_rs23509w        1        261503        100%    166103        3658595    85388    Apr 6, 2023 9:33:48 PM    00:24:35                        Instant Recovery Disk    Standard    sesp11b.roquette.corp.priv    40000    99.4%                
+3658595    Snapshot    0    Done        Apr 6, 2023 8:30:19 PM    HYPERV_2016_CLU-GEO-101_PROD    -    S101A953.roquette.corp.priv    01:30:02    rs23509b.roquette.corp.priv    Apr 6, 2023 10:00:21 PM    root    stu_disk_worm_rs23509w        1                100%            3658595        Apr 6, 2023 9:30:32 PM    00:29:49                        Instant Recovery Disk    Standard    sesp11b.roquette.corp.priv    40000                    ",0.0,ISC SLA INC P3,REST API - ZABBIX,Server,,15:00,07/04/2023 12:21,CORP_ISC_Storage_Backup,,S101A779: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD; completed with status ENDED_NOT_OK - aborted;,S101A779,1.0,
+Monitoring,I230404_000021,04/04/2023 08:54,04/04/2023 12:25,04/04/2023 12:25,05/04/2023 00:54,,         3:31,03:31,0.0,Completed,Closed,CORP_ISC_L1,,CORP_FUNC_BI_Centre de Service,KATARU Raghunatha,CORP_FUNC_BI_Centre de Service,KATARU Raghunatha,,,"Trigger: Thresholded job JOBS.PCD_MD01_FEX_0395_01; in workflow PCD_MD01_FEX_0395; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000004;PCD_MD01_FEX_0395;JOBP;0420181110;JOBS.PCD_MD01_FEX_0395_01;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000004;PCD_MD01_FEX_0395;JOBP;0420181110;JOBS.PCD_MD01_FEX_0395_01;P3, Opened at:1680578, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1040880938",Incidents/Infrastructure/ERP/Scheduling/One Automation,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S101A779,,,,,,0.0,,"
+Issue Description
+""- Error while extracting data: DataSource 0CO_PC_ACT_1, package 000000
+- Error in data extraction (extractor KKBW_ACT_BW_GET_DATA)""
+Corrective Actions performed
+- Checked the error message and delete the error request. Then repeated the step and ensured to complete all the steps in the process chain successfully.
+",0.0,ISC SLA INC P3,REST API - ZABBIX,One Automation,,03:31,04/04/2023 12:25,CORP_FUNC_BI_Centre de Service,,S101A779: Thresholded job JOBS.PCD_MD01_FEX_0395_01; in workflow PCD_MD01_FEX_0395; completed with status ENDED_NOT_OK - aborted;,S101A779,1.0,
+Monitoring,I230331_000239,01/04/2023 01:45,01/04/2023 02:39,01/04/2023 02:39,01/04/2023 17:45,,         0:54,00:54,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,ABHAYJEET Lnu,CORP_ISC_L1,ABHAYJEET Lnu,,,"Trigger: High memory utilization (>90% for 5m)
+Responsible team: CORP_ISC_NIX
+Trigger description: The system is running out of free memory.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Memory, RT:CORP_ISC_NIX
+Host: SMTP99A
+Host group: La Madeleine/Linux, Linux/La Madeleine, ZABX
+Host description: 
+Zabbix event ID: 1037687362",Incidents/Infrastructure/Network/Monitoring,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,SMTP99A,,,,,,0.0,,"
+systemctl restart dasc : we cleared the cache memory. 
+We have checked and hence approving the closure of this incident. thanks.",0.0,ISC SLA INC P3,REST API - ZABBIX,Monitoring,,00:53,01/04/2023 02:38,CORP_ISC_L1,,SMTP99A: High memory utilization (>90% for 5m),SMTP99A,0.0,
+Monitoring,I230420_000059,20/04/2023 12:55,30/04/2023 06:30,20/04/2023 16:40,21/04/2023 18:55,,         3:46,03:46,0.0,Completed,Closed,,,CORP_ISC_L1,DURGESH KUMAR Jha,CORP_ISC_L1,DURGESH KUMAR Jha,,,"Trigger: Unavailable by ICMP ping
+Responsible team: CORP_ISC_Network
+Trigger description: 
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Status, RT:CORP_ISC_Network
+Host: WAPD05C
+Host group: Network/Wuhan, WIFI, Wuhan/Network
+Host description: 
+Zabbix event ID: 1055629071Trigger: Unavailable by ICMP ping
+Responsible team: CORP_ISC_Network
+Trigger description: 
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Status, RT:CORP_ISC_Network
+Host: WAPD05B
+Host group: Network/Wuhan, WIFI, Wuhan/Network
+Host description: 
+Zabbix event ID: 1055629015----Closed automatically after 10 days",Incidents/Infrastructure/Network/WIFI,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,WAPD05C,,,,,,0.0,,"
+=============================================================Following is a summary of the actions and resolution steps we have taken to resolve this incident:Summary: - What you have observed and brief issue description.Action :- It would be step by step actions you have taken to resolve the incident1. Zabbix alert was resolved.2. Now swtich and WAP is reachable.3.SWED05A uptime is 28 weeks, 2 days, 2 hours, 23 minutes  C:\Users\9940014>ping SWED05APinging SWED05A.roquette.corp.priv [10.33.252.30] with 32 bytes of data:Reply from 10.33.252.30: bytes=32 time=310ms TTL=247Reply from 10.33.252.30: bytes=32 time=317ms TTL=247Reply from 10.33.252.30: bytes=32 time=312ms TTL=247Reply from 10.33.252.30: bytes=32 time=316ms TTL=247Ping statistics for 10.33.252.30:    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),Approximate round trip times in milli-seconds:    Minimum = 310ms, Maximum = 317ms, Average = 313msC:\Users\9940014>ping WAPD05BPinging WAPD05B.roquette.corp.priv [10.33.208.13] with 32 bytes of data:Reply from 10.33.208.13: bytes=32 time=304ms TTL=57Reply from 10.33.208.13: bytes=32 time=306ms TTL=57Reply from 10.33.208.13: bytes=32 time=310ms TTL=57Reply from 10.33.208.13: bytes=32 time=307ms TTL=57Ping statistics for 10.33.208.13:    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),Approximate round trip times in milli-seconds:    Minimum = 304ms, Maximum = 310ms, Average = 306ms3.WAPD05B is up for 1 hour 9 minutes4.As per Local IT Wang confirmed due to ISP circuit issue cause switch and AP down =================================================================================Cause/Analysis: Cause of the issue in brief.================================================================================We have proceeded to close this incident.KB reference : If any",0.0,ISC SLA INC P4,REST API - ZABBIX,WIFI,,00:07,20/04/2023 13:02,CORP_ISC_L1,,WAPD05C: Unavailable by ICMP ping,WAPD05C,0.0,
+Phone,I230406_000154,06/04/2023 16:45,12/04/2023 20:19,12/04/2023 19:51,13/04/2023 12:35,,         4:17,04:17,0.0,Completed,Closed,CORP_CIT,HPE,CORP_CIT,ELKEBBAJ AMINA,CORP_CIT,ELKEBBAJ AMINA,,,"Hello,
+ 
+There is a DNS issue on host C101A02S, kindly check bellow ping and ping-a of ip adress 10.2.4.102 and host : C101A02S
+ 
+C:\Users\adm_9932673R>ping -a 10.2.4.102
+ 
+Pinging C101PEBC.roquette.corp.priv [10.2.4.102] with 32 bytes of data:
+Reply from 10.2.4.102: bytes=32 time=29ms TTL=124
+Reply from 10.2.4.102: bytes=32 time=28ms TTL=124
+Reply from 10.2.4.102: bytes=32 time=28ms TTL=124
+Reply from 10.2.4.102: bytes=32 time=34ms TTL=124
+ 
+Ping statistics for 10.2.4.102:
+ Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+ Minimum = 28ms, Maximum = 34ms, Average = 29ms
+ 
+ 
+ 
+C:\Users\adm_9932673R>ping C101A02S
+ 
+Pinging C101A02S.roquette.corp.priv [10.2.4.102] with 32 bytes of data:
+Reply from 10.2.4.102: bytes=32 time=41ms TTL=124
+Reply from 10.2.4.102: bytes=32 time=28ms TTL=124
+Reply from 10.2.4.102: bytes=32 time=28ms TTL=124
+Reply from 10.2.4.102: bytes=32 time=36ms TTL=124
+ 
+Ping statistics for 10.2.4.102:
+ Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+ Minimum = 28ms, Maximum = 41ms, Average = 33ms",Incidents/[Hardware]/[Computer]/[Desktop]/[Wifi - Lan],EL AOUIRI Ahmed-Amine,EUROPE/[FRANCE]/[LESTREM],[LESTREM],"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[IS USER SERVICES & SUPPORT]",EL AOUIRI Ahmed-Amine,,"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[IS USER SERVICES & SUPPORT]",EUROPE/[FRANCE]/[LESTREM],2 - Medium,3 - Low,3.0,,,,,EUROPE/[FRANCE]/[LESTREM],EQUIPMENT/[COMPUTERS],0.0,,"
+We have send Reminder3 mail to user but no response.
+As we don’t receive any response, we are proceeding with the case closure. Kindly open new incident if you face any issue again.
+Please find attached mail for reference.",0.0,8 h office,EL AOUIRI Ahmed-Amine,[Wifi - Lan],,47:03:00,12/04/2023 19:49,CORP_ISC_Network,G6FN111002TH,DNS ISsue,,,
+Phone,I230407_000046,07/04/2023 11:58,17/04/2023 06:30,07/04/2023 12:01,10/04/2023 08:58,,         0:03,00:03,0.0,Completed,Closed,INDIA_SD,INDIA_SERVICEDESK,INDIA_SD,SHINDE Hitesh,INDIA_SD,SHINDE Hitesh,,,Unable To Send Scan To Mail From Printer ----Closed automatically after 10 days,Incidents/Assistance/Printer,GHATGE Aishwarya,INDIA/[INDIA]/[MUMBAI],[MUMBAI],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[HUMAN RESOURCES]/[HR COORDINATION - ASIA]/[HR CORE INGREDIENTS INDIA],GHATGE Aishwarya,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[HUMAN RESOURCES]/[HR COORDINATION - ASIA]/[HR CORE INGREDIENTS INDIA],INDIA/[INDIA]/[MUMBAI],2 - Medium,2 - Medium,3.0,,Printing,,,INDIA/[INDIA]/[MUMBAI],,0.0,,User Unable To Send Scan To Mail From Printer Assisted User How To Send Scanned Documents To Mail. ----Closed automatically after 10 days,1.0,8 h office,SHINDE Hitesh,Printer,,00:03,07/04/2023 12:01,INDIA_SD,,Unable To Send Scan To Mail From Printer,,,
+Monitoring,I230416_000201,17/04/2023 00:32,17/04/2023 16:31,17/04/2023 02:27,17/04/2023 02:32,,         1:56,01:56,0.0,Completed,Closed,CORP_ISC_EM,,CORP_ISC_L1,BENDRE Shreya,CORP_ISC_L1,BENDRE Shreya,,,"Trigger: Location Vecquemont unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI103 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137854Trigger: Location Shanghai unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI252 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137481",Incidents/Infrastructure/Network/Monitoring,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,1 - High,1.0,SAEUA02C,,,,,,0.0,,"
+1. Observed that the data collection for Zabbix server 'utilization of availability manager internal processes' is stopped2. Noticed that the queue size is very high on all the proxies3. NIX team has logged the Zabbix main server and restarted the Zabbix server service to make the data collection happen4. After the service restart, the data collection started on the Zabbix main server.5. Identified all the alerts were resolved in few minutes.6. Monitored the new alerts for some time, also checked the graphs of utilization of availability manager internal processes to see if there is any spike in the data.7. We have observed that the queue size is having high count due to transaction/long running queries issues. This is already being checked over the database side.
+Comment or Description :
+ 
+1. Observed that the data collection for Zabbix server 'utilization of availability manager internal processes' is stopped
+ 
+2. Noticed that the queue size is very high on all the proxies
+ 
+3. NIX team has logged the Zabbix main server and restarted the Zabbix server service to make the data collection happen
+ 
+4. After the service restart, the data collection started on the Zabbix main server.
+ 
+5. Identified all the alerts were resolved in few minutes.
+ 
+6. Monitored the new alerts for some time, also checked the graphs of utilization of availability manager internal processes to see if there is any spike in the data.
+ 
+7. We have observed that the queue size is having high count due to transaction/long running queries issues. This is already being checked over the database side.
+As checked by EM Team, data collection was stopped for all devices due to high utilization of availability manager internal processes. With reference to parent incident number I230416_000149  closing the incident.",0.0,ISC SLA INC P1,REST API - ZABBIX,Monitoring,,01:16,17/04/2023 01:48,CORP_ISC_L1,,SAEUA02C: Location Vecquemont unavailable,SAEUA02C,0.0,
+Self Service,I230414_000195,14/04/2023 17:41,28/04/2023 06:30,18/04/2023 15:12,17/04/2023 15:56,,        18:17,18:17,617.0,Completed,Closed,FR_SD_Service Desk and Sales offices,HPE_SD,FR_SD_Service Desk and Sales offices,BENSEGHIR Fadoua,FR_SD_Service Desk and Sales offices,BENSEGHIR Fadoua,,,"Bonjour, je n'arrive plus à extraire les données d'Aspen depuis Excel. Dans les compléments COM, j'essaye de cocher l'item en pièce jointe, et il se décoche automatiquement. Serait-il possible de regarder quel est le problème s'il vous plait? merci d'avance, Cordialement Charlotte Maucotel Callback preference: TeamsPhone Number: N/AUnavailability period: N/A----Closed automatically after 10 days",Incidents/Software/Business Application/MES/ASPEN,MAUCOTEL Charlotte,EUROPE/[FRANCE]/[LESTREM],[LESTREM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[LESTREM PLANT]/[DIRECTION EXPLOITATION SUCRES]/[POLE DEXTROSE G2 D5 D9],MAUCOTEL Charlotte,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[LESTREM PLANT]/[DIRECTION EXPLOITATION SUCRES]/[POLE DEXTROSE G2 D5 D9],EUROPE/[FRANCE]/[LESTREM],,2 - Medium,3.0,,,,,EUROPE/[FRANCE]/[LESTREM],EQUIPMENT/[COMPUTERS],0.0,,"
+incident résolu----Closed automatically after 10 days",0.0,8 h office,MAUCOTEL Charlotte,ASPEN,STATION DE TRAVAIL INFORMATIQUE,19:31,18/04/2023 15:12,FR_SD_Service Desk and Sales offices,O2021300_002_39,,,,
+Monitoring,I230422_000045,22/04/2023 14:03,02/05/2023 06:30,22/04/2023 15:07,23/04/2023 06:03,,         1:04,01:04,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,DURGESH KUMAR Jha,CORP_ISC_L1,DURGESH KUMAR Jha,,,"Trigger: SAP Solman detect problem on R10~JAVA~s101d496_R10_11 such as Java instance not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230422102258;R10~JAVA~s101d496_R10_11;005056A5D24B1EDDB89CDC7B50AFE2B6;Java instance not available;High;The J2EE instance s101d496_R10_11 or parts of it are not running. Please check the alert details to see which components do not respond. Restart the instance if necessary.Analysis Tools:View instance status in http://seap50a.roquette.corp.priv:51113/sapmc/sapmc.html?SID=R10&NR=11&HOST=s101d496 SAP Management Console.Manually check the http://sapmiir10.roquette.corp.priv:51100/ Http availability of the instance.
+Opened at: 1682151
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682151, RT:CORP_ISC_SAP, TriggerValue:R10~JAVA~s101d496_R10_11 such as Java instance not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1057437777Trigger: SAP Solman detect problem on R10~JAVA such as Java System not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230422102258;R10~JAVA;005056A5D24B1EDDB89CDC7B50AFC2B6;Java System not available;Critical;The availability checks to J2EE system R10 failed. Please check the alert details to see which components did not respond.
+Opened at: 1682151
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682151, RT:CORP_ISC_SAP, TriggerValue:R10~JAVA such as Java System not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1057437770----Closed automatically after 10 days",Incidents/Infrastructure/ERP/SAP/SSM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,SEAP50S,,,,,,0.0,,"
+Log segment got full in R10 , we have triggered log backup and it got free now. R10 is up and running fine
+Ratting is geen in solman alert inbox. Hence closing.----Closed automatically after 10 days",0.0,ISC SLA INC P3,REST API - ZABBIX,SSM,,00:14,22/04/2023 14:18,CORP_ISC_SAP,,SEAP50S: SAP Solman detect problem on R10~JAVA~s101d496_R10_11 such as Java instance not available,SEAP50S,0.0,
+Self Service,I230427_000188,27/04/2023 18:06,07/05/2023 06:30,27/04/2023 20:24,02/05/2023 18:06,,         2:19,02:19,0.0,Completed,Closed,SP_PROX,SPAIN_SERVICEDESK,SP_SD,VARGAS MAYSER Katrin,SP_SD,VARGAS MAYSER Katrin,,,necesito poder modificar cosas en: share point--> communBen-->Seguridad-->fichas de seguridad laboratorio.Callback preference: TeamsPhone Number: N/AUnavailability period: N/A----Closed automatically after 10 days,Incidents/[Password]/[Other],MONERA MARTINEZ Nerea,EUROPE/[SPAIN]/[BENIFAYO],[BENIFAYO],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[QUALITY]/[QUALITY EUROPE]/[BENIFAYO PLANT QUALITY]/[LABORATORY COORDINATION],MONERA MARTINEZ Nerea,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[QUALITY]/[QUALITY EUROPE]/[BENIFAYO PLANT QUALITY]/[LABORATORY COORDINATION],EUROPE/[SPAIN]/[BENIFAYO],,3 - Low,4.0,,Authorization,,,EUROPE/[SPAIN]/[BENIFAYO],,0.0,,"
+KV: Solucionado----Closed automatically after 10 days",0.0,2 working days,MONERA MARTINEZ Nerea,[Other],,00:00,,,,,,,
+Monitoring,I230422_000093,23/04/2023 02:27,23/04/2023 02:34,23/04/2023 02:34,23/04/2023 10:27,,         0:07,00:07,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,ANIL LAXMAN Miraje,CORP_ISC_L1,ANIL LAXMAN Miraje,,,"Trigger: SAP Solman detect problem on s260a70 such as EVENT_ID_1945
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230422224658;s260a70;005056A5D24B1EDDB8A9DA8A7A28DB91;EVENT_ID_1945;Critical;
+Opened at: 1682196
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682196, RT:CORP_ISC_SAP, TriggerValue:s260a70 such as EVENT_ID_1945
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1057889968",Incidents/Infrastructure/ERP/SAP/SSM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,2 - Medium,2.0,SEAP50S,,,,,,0.0,,"
+Incident/Request Description –SEAP50S: SAP Solman detect problem on s260a70 such as EVENT_ID_1945Following is a summary of the actions and steps we have taken to resolve this incident:Summary:SEAP50S: SAP Solman detect problem on s260a70 such as EVENT_ID_1945++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Action:-Current raing is green+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++We have proceeded to close this incident.KB reference : If any.",0.0,ISC SLA INC P2,REST API - ZABBIX,SSM,,00:06,23/04/2023 02:33,CORP_ISC_L1,,SEAP50S: SAP Solman detect problem on s260a70 such as EVENT_ID_1945,SEAP50S,0.0,
+Monitoring,I230419_000109,19/04/2023 13:52,29/04/2023 06:30,19/04/2023 16:26,20/04/2023 05:52,,         2:35,02:35,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,SAURABH Shisode,CORP_ISC_L1,SAURABH Shisode,,,"Trigger: Interface VLAN_108(): Link down
+Responsible team: {EVENT.TAGS.RT}
+Trigger description: This trigger expression works as follows:
+1. Can be triggered if operations status is down.
+2. 1=1 - user can redefine Context macro to value - 0. That marks this interface as not important. No new trigger will be fired if this interface is down.
+3. {TEMPLATE_NAME:METRIC.diff()}=1) - trigger fires only if operational status was up(1) sometime before. (So, do not fire 'ethernal off' interfaces.)
+WARNING: if closed manually - won't fire again on next poll, because of .diff.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Interface VLAN_108()
+Host: FWE999
+Host group: Crest/Network, FWEB, Network/Crest
+Host description: 
+Zabbix event ID: 1054767599Trigger: Location Crest unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWE999 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1054329912----Closed automatically after 10 days",Incidents/Infrastructure/Network/Firewall,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,FWE999,,,,,,0.0,,"
+Hi team,Alert is resolved after changing the faulty patch cord, RFO mail is attached for your reference.Latched incidents are also resolved.
+Assigned To :
+ 
+CORP_ISC_Network / JAGADEESH B
+ 
+Action :
+ 
+Analysis in progress => In progress
+ 
+OLA Target :
+ 
+19/04/2023 10:00:00
+ 
+Late :
+ 
+190
+ 
+Comment or Description :
+ 
+Hi team,
+Alert is resolved after changing the fault----Closed automatically after 10 days",0.0,ISC SLA INC P3,REST API - ZABBIX,Firewall,,01:17,19/04/2023 15:09,CORP_ISC_Network,,FWE999: Interface VLAN_108(): Link down,FWE999,1.0,
+Phone,I230419_000223,19/04/2023 19:42,03/05/2023 18:33,03/05/2023 18:32,21/04/2023 06:35,,       315:58,315:58:00,17998.0,Completed,Closed,FR_ADP_PLANIF,HPE_Prox,FR_ADP_PLANIF,CAMUS Sylvain,FR_ADP_PLANIF,CAMUS Sylvain,,,In Cyberark :account SWE946A username RFL0CADM1N_FA should be affected to R_101_Network_LANaccount SWE946B username RFL0CADM1N_FA should be affected to R_101_Network_LANaccount SWE946A username RFL0CADM1N_RO should be affected to R_101_Network-Restrictedaccount SWE946B username RFL0CADM1N_RO should be affected to R_101_Network-RestrictedCan you please have a look on this issue please ?,Incidents/Infrastructure/Network,CAMUS Sylvain,EUROPE/[FRANCE]/[LESTREM],[LESTREM],"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[AREA MANAGEMENT]/[DIGITAL EUROPE]/[ON SITE SERVICES & ASSET]",DELANGUE Benoit,,"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[AREA MANAGEMENT]/[DIGITAL EUROPE]/[INFRA & OPS EUROPE]",EUROPE/[FRANCE]/[LESTREM],2 - Medium,2 - Medium,3.0,,,,,EUROPE/[FRANCE]/[LESTREM],,0.0,,"
+21/04/2023 .User confirmed able to access the switch from RFL0CADM1N_FA by both SWE946A and SWE946b servers.Kindly check the other  switch access as below (user is unbale to see the below )account SWE946A username RFL0CADM1N_RO should be affected to R_101_Network-Restrictedaccount SWE946B username RFL0CADM1N_RO should be affected to R_101_Network-RestrictedSDT : 28/04 The account xxx_RO are already in the safe  R_101_Network-Restricted",0.0,ISC SLA INC P3,CAMUS Sylvain,Network,,217:33:00,28/04/2023 21:15,CORP_ADM_SYS,,Access denied on switch,,,
+Email,I230426_000167,26/04/2023 17:36,26/04/2023 17:52,26/04/2023 17:52,27/04/2023 09:36,,         0:16,00:16,0.0,Completed,Closed,CORP_FUNC_EDI_Centre_de_service,,CORP_FUNC_EDI_Centre_de_service,SANGNIER Johann,CORP_FUNC_EDI_Centre_de_service,SANGNIER Johann,,,Bonjour J’aurais besoin d’un nouveau paramétrage pour le   TACKIDEX BO56 26/04/2023    INDUSTRY  1113394     856673 France 91100   415618  Roquette Uo Industry   IMCD France SAS  FR93775734635     IMCD/DSV OURSEL   137572ALR    TACKIDEX BO56   25 Kg  Bag   11133945100001574     TACKIDEX BO56 ,Incidents/Infrastructure/ERP/Mainframe/EDI,SANGNIER Johann,EUROPE/[FRANCE]/[LESTREM],[LESTREM],"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[DIGITAL BUSINESS SOLUTIONS]/[BS DELIVERY & SHARED SERVICES]/[EXT - CENTRE DE SERVICES SOPRA]",SANGNIER Johann,,"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[DIGITAL BUSINESS SOLUTIONS]/[BS DELIVERY & SHARED SERVICES]/[EXT - CENTRE DE SERVICES SOPRA]",EUROPE/[FRANCE]/[LESTREM],2 - Medium,2 - Medium,3.0,,,SR,,EUROPE/[FRANCE]/[LESTREM],,0.0,,"
+SJO 26/04 :Bonjour,J'ai paramétré le code produit dans la table edi.",0.0,ISC SLA INC P3,SANGNIER Johann,EDI,,00:15,26/04/2023 17:52,CORP_FUNC_EDI_Centre_de_service,,Paramétrage TACKIDEX BO56,,,
+Monitoring,I230402_000042,02/04/2023 18:15,02/04/2023 19:40,02/04/2023 19:40,03/04/2023 10:15,,         1:26,01:26,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,KANCHAN VASANT Wagmare,CORP_ISC_L1,KANCHAN VASANT Wagmare,,,"Trigger: High memory utilization (>90% for 5m)
+Responsible team: CORP_ISC_NIX
+Trigger description: The system is running out of free memory.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Memory, RT:CORP_ISC_NIX
+Host: SPTP98A
+Host group: Linux/Portage, Portage/Linux, ZABX
+Host description: 
+Zabbix event ID: 1039387163",Incidents/Infrastructure/Network/Monitoring,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,SPTP98A,,,,,,0.0,,"
+CORP_ISC_EM / REST API - ZABBIX
+Incoming information
+The alert was resolved.
+Problem has been resolved at 15:42:24 on 2023.04.02Trigger: High memory utilization (>90% for 5m)Trigger description: The system is running out of free memory.Trigger severity: AverageTrigger nseverity: 3Trigger tags: Application:Memory, RT:CORP_ISC_NIXHost: SPTP98AHost group: Linux/Portage, Portage/Linux, ZABXHost description:Zabbix event ID: 1039387163
+CORP_ISC_L1 / KANCHAN VASANT Wagmare
+Analysis in progress (Operation Action) : In progress
+CORP_ISC_EM / REST API - ZABBIX
+ 
+Incoming information
+ 
+The alert was resolved.
+ 
+Problem has been resolved at 15:42:24 on 2023.04.02Trigger: High memory utilization (>90% for 5m)Trigger description: The system is running out of free memory.Trigger severity: AverageTrigger nseverity: 3Trigger tags: Application:Memory, RT:CORP_ISC_NIXHost: SPTP98AHost group: Linux/Portage, Portage/Linux, ZABXHost description:Zabbix event ID: 1039387163
+ ",0.0,ISC SLA INC P3,REST API - ZABBIX,Monitoring,,01:24,02/04/2023 19:39,CORP_ISC_L1,,SPTP98A: High memory utilization (>90% for 5m),SPTP98A,0.0,
+Monitoring,I230405_000279,06/04/2023 04:23,06/04/2023 04:37,06/04/2023 04:37,06/04/2023 12:23,,         0:15,00:15,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,VIKAS Desai,CORP_ISC_L1,VIKAS Desai,,,"Trigger: SAP Solman detect problem on PXI~JAVA such as Java System not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230406004130;PXI~JAVA;005056A5D24B1EDDB5806040F192DEF2;Java System not available;Critical;The availability checks to J2EE system PXI failed. Please check the alert details to see which components did not respond.
+Opened at: 1680734
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1680734, RT:CORP_ISC_SAP, TriggerValue:PXI~JAVA such as Java System not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1042554631",Incidents/Infrastructure/ERP/SAP/SSM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,2 - Medium,2.0,SEAP50S,,,,,,0.0,,"
+The CORP_ISC_L1 Team has completed the resolution of this ticket.====================================================Incident/Request Description – SEAP50S: SAP Solman detect problem on PXI~JAVA such as Java System not available====================================================
+As check in alert inbox PXI~JAVA such as Java System not available is in green state hence close this incident .
+Please check attachment 
+====================================================We have proceeded to close this incident.",0.0,ISC SLA INC P2,REST API - ZABBIX,SSM,,00:14,06/04/2023 04:37,CORP_ISC_L1,,SEAP50S: SAP Solman detect problem on PXI~JAVA such as Java System not available,SEAP50S,0.0,
+Monitoring,I230403_000299,03/04/2023 21:34,04/04/2023 13:53,04/04/2023 13:53,05/04/2023 03:34,,        16:19,16:19,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_Storage_Backup,SHARMA Urmit,CORP_ISC_Storage_Backup,SHARMA Urmit,,,"Trigger: E: Disk space is low (used > 90%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 1.14 TB of 1.27 TB (90.05 %)
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S101A892
+Host group: LACH, Lestrem/Windows, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1040464794",Incidents/Infrastructure/System/Laboratories Apps,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,S101A892,Backup,,,,,0.0,,"
+The CORP_ISC_Storage_Backup Team has completed the resolution of this ticket.
+=============================================================
+Trigger: E: Disk space is low (used > 90%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 1.14 TB of 1.27 TB (90.05 %)
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S101A892
+Host group: LACH, Lestrem/Windows, Windows/Lestrem
+Host description:
+Zabbix event ID: 1040464794
+=============================================================
+Following is a summary of the actions and resolution steps we have taken to resolve this incident:
+Summary: S101A892: E: Disk space is low (used > 90%)
+Action :- We have logged into the server 'S101A892' and checked, some space has cleared.
+Hence, we are closing this incident.
+============================================================
+Cause/Analysis: There was an space related issue 'E: Disk space is low (used > 90%)' on server 'S101A892', now alert was resolved.
+============================================================
+Hence, we have proceeded to close this incident.
+",0.0,ISC SLA INC P4,REST API - ZABBIX,Laboratories Apps,,16:19,04/04/2023 13:53,CORP_ISC_Storage_Backup,,S101A892: E: Disk space is low (used > 90%),S101A892,1.0,
+Kiosk,I230420_000176,20/04/2023 17:52,20/04/2023 17:53,20/04/2023 17:53,21/04/2023 14:52,,         0:02,00:02,0.0,Completed,Closed,FR_ADP_PLANIF,HPE_Prox,FR_PROX_LESTREM,BOONE Florent,FR_PROX_LESTREM,BOONE Florent,,,Après redémarrage tout est rentré dans l'ordre,Incidents/[Hardware]/[Computer]/[Laptop]/[Other],VIENNE Angélique,EUROPE/[FRANCE]/LA MADELEINE,LA MADELEINE,"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL FINANCE]/[CONSOLIDATION & TAX]/[TAX]/[FISCALITE FRANCE]",VIENNE Angélique,,"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL FINANCE]/[CONSOLIDATION & TAX]/[TAX]/[FISCALITE FRANCE]",EUROPE/[FRANCE]/LA MADELEINE,2 - Medium,2 - Medium,3.0,,Assistance,,,EUROPE/[FRANCE]/LA MADELEINE,,0.0,,Après redémarrage tout est rentré dans l'ordre,1.0,8 h office,BOONE Florent,[Other],,00:02,20/04/2023 17:53,FR_ADP_PLANIF,,laptop freezer,,,
+Self Service,I230406_000119,06/04/2023 14:39,06/04/2023 19:50,06/04/2023 18:57,07/04/2023 21:31,,         3:26,03:26,0.0,Completed,Closed,FR_SD_Service Desk and Sales offices,HPE_SD,FR_SD_Service Desk and Sales offices,GHALMI Alaa,FR_SD_Service Desk and Sales offices,GHALMI Alaa,"5,00","5,00","en télétravail, depuis le changement de mon PC et l'absence de Big-Ip, je ne peux plus envoyer d'impression vers les imprimantes réseau Roquette, je ne peux plus aussi accéder à l'ELN Biovia.Je demande la réinstallation de Big-Ip ou une correction de ce problème...Callback preference: TeamsPhone Number: N/AUnavailability period: N/A",Incidents/Infrastructure/Network/VPN,QUETTIER Claude,EUROPE/[FRANCE]/[LESTREM],[LESTREM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[RESEARCH & DEVELOPMENT]/[CHEMISTRY R&D]/[DEPT FONCTIONNALISATION DES AMIDONS SUCR]/[CHIMIE DES AMIDONS GROUPE A],QUETTIER Claude,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[RESEARCH & DEVELOPMENT]/[CHEMISTRY R&D]/[DEPT FONCTIONNALISATION DES AMIDONS SUCR]/[CHIMIE DES AMIDONS GROUPE A],EUROPE/[FRANCE]/[LESTREM],,3 - Low,5.0,,,,,EUROPE/[FRANCE]/[LESTREM],EQUIPMENT/[COMPUTERS],0.0,5.0,"
+",0.0,ISC SLA INC P5,QUETTIER Claude,VPN,STATION DE TRAVAIL INFORMATIQUE,04:17,06/04/2023 18:56,FR_SD_Service Desk and Sales offices,O2022319_001_07,,,,
+Chat,I230420_000225,20/04/2023 21:42,01/05/2023 06:30,21/04/2023 20:31,21/04/2023 13:42,,        22:49,22:49,409.0,Completed,Closed,RAI_GDP,-,RAI_PROX_CANADA,PATEL Sohan,RAI_PROX_CANADA,PATEL Sohan,,,user having error during accessing southscale truck . Check attachment. ----Closed automatically after 10 days,Incidents/Infrastructure/ERP/SAP,LAVINEWAY Amanda,AMERICAS/[CANADA]/[PORTAGE LA PRAIRIE],[PORTAGE LA PRAIRIE],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[SUPPLY CHAIN]/[SUPPLY CHAIN AMERICAS]/[SUPPLY CHAIN  CANADA]/[LOGISTIC & PLANNING - CANADA]/[LOGISTICS & TRANSPORTATION CANADA],LAVINEWAY Amanda,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[SUPPLY CHAIN]/[SUPPLY CHAIN AMERICAS]/[SUPPLY CHAIN  CANADA]/[LOGISTIC & PLANNING - CANADA]/[LOGISTICS & TRANSPORTATION CANADA],AMERICAS/[CANADA]/[PORTAGE LA PRAIRIE],2 - Medium,2 - Medium,3.0,,,Incident/other process,Infrastructure teams,AMERICAS/[CANADA]/[PORTAGE LA PRAIRIE],,0.0,,"
+There was DNS issue which was resolved by WIntel team. Please check whether barcode scanner is working fine now.----Closed automatically after 10 days",0.0,ISC SLA INC P3,PATEL Sohan,SAP,,21:18,21/04/2023 19:00,CORP_ISC_SAP,,SAP,,,
+Monitoring,I230423_000059,23/04/2023 14:38,25/08/2023 01:07,25/08/2023 01:07,24/04/2023 20:38,,      2962:30,2962:30:00,175950.0,Completed,Closed,,,,REST API - ZABBIX,,REST API - ZABBIX,,,"Trigger: Host has been restarted (uptime < 15m)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Status, RT:CORP_ISC_Wintel
+Host: S202T40A
+Host group: Benifayo Espana/Windows, SCCM, Windows/Benifayo Espana
+Host description: 
+Zabbix event ID: 1058369390",Incidents/Infrastructure/System/SCCM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,S202T40A,,,,,,0.0,,"
+The alert has been closed in zabbix",0.0,ISC SLA INC P4,REST API - ZABBIX,SCCM,,00:00,,,,S202T40A: Host has been restarted (uptime < 15m),S202T40A,0.0,
+Phone,I230411_000002,11/04/2023 05:51,11/04/2023 05:52,11/04/2023 05:52,11/04/2023 13:51,,         0:01,00:01,0.0,Completed,Closed,ASIA_SD,ASIA_SERVICEDESK,ASIA_SD,XU Zhi,ASIA_SD,XU Zhi,"5,00","5,00",Reset the NT password for 2401306T,Incidents/[Password]/Windows,XU Zhi,ASIA/[CHINA]/[LIANYUNGANG ST],[LIANYUNGANG ST],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[CHINA COORDINATION]/[CHINA MANUFACTURING & EHS & IS]/[IS DEPARTMENT - CHINA]/[IS USER SERVICES & SUPPORT - ASIA],XU Zhi,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[CHINA COORDINATION]/[CHINA MANUFACTURING & EHS & IS]/[IS DEPARTMENT - CHINA]/[IS USER SERVICES & SUPPORT - ASIA],ASIA/[CHINA]/[LIANYUNGANG ST],2 - Medium,2 - Medium,3.0,,Assistance,Incident/other process,End user teams,ASIA/[CHINA]/[LIANYUNGANG ST],,0.0,5.0,OK now for this incident !,1.0,8 h office,XU Zhi,Windows,,00:01,11/04/2023 05:52,ASIA_SD,,password,,,
+eBonding Orange,I230423_000015,23/04/2023 08:56,24/04/2023 15:14,24/04/2023 12:36,23/04/2023 16:56,,        27:41,27:41:00,1181.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,REDDY Mallela Peda,CORP_ISC_L1,REDDY Mallela Peda,,,"Creation date in OCEANE : 2023-04-23 03:13 (UTC), 
+OCEANE description: IDB_UID.1-ROQ014 - AD change by a non-authorized user
+2023-04-23 03:25:46,BOUAZIZ Mehdi:========================================
+PHASE : FINAL ANALYSIS
+=> DIAGNOSIS :
+On 2023-04-23 03:13:36 UTC, the incident was triggered because the user ADM_2400112Y has generated the event Failure Audit: An attempt was made to reset an account's password (event code : 4724) on the host S260T01A.roquette.corp.priv.
+Regarding the LDAP information, the user involved is 'null' with the email CONGQIANG.ADM_WANG@roquette.com from the department 'null'.
+=> RECOMMENDATIONS : Investigate the behavior of the account
+=> NEXT ACTION : Waiting for customer feedback about the impact, the detection quality, the investigation quality, any improvement proposal.
+========================================
+2023-04-23 03:21:18,BOUAZIZ Mehdi:Apr 23 11:13:27 S260T01A.roquette.corp.priv AgentDevice=WindowsLog	AgentLogFile=Security	PluginVersion=7.3.1.22	Source=Microsoft-Windows-Security-Auditing	Computer=S260T01A.roquette.corp.priv	OriginatingComputer=10.35.240.4	User=	Domain=	EventID=4724	EventIDCode=4724	EventType=16	EventCategory=13824	RecordNumber=2176008611	TimeGenerated=1682219603	TimeWritten=1682219603	Level=Log Always	Keywords=Audit Failure	Task=SE_ADT_ACCOUNTMANAGEMENT_USERACCOUNT	Opcode=Info	Message=An attempt was made to reset an account's password.  Subject:  Security ID:  ROQUETTE\ADM_2400112Y  Account Name:  ADM_2400112Y  Account Domain:  ROQUETTE  Logon ID:  0x1DCE849F7  Target Account:  Security ID:  ROQUETTE\9923191P  Account Name:    Account Domain:  ROQUETTE
+2023-04-23 03:20:46,BOUAZIZ Mehdi:==========
+PHASE : FIRST ANALYSIS
+=> DETECTION RULE : IDB_UID.1-ROQ014 - AD change by a non-authorized user
+=> DETECTION OBJECTIVE : Detect an AD modification make by a non-authorized user.  The detection whitelist 3 types of possible modifications: Modification by an admin // Change of password // Group modification The detection is based on different request to the AD (use of LDAP Import tool).  If the rule triggers too many times, please check if the AD tool is ok.
+=> DETECTION TIME : 2023-04-23 03:13:36 UTC
+=> DETECTION PIVOT TYPE : source_user_name
+=> DETECTION ORIGIN : ADM_2400112Y
+=> LOG SOURCE NAME : WindowsAuthServer @ S260T01A.roquette.corp.priv
+=> LOG SOURCE TIME : 2023-04-23 03:13:23
+=> EVENT NAME : Failure Audit: An attempt was made to reset an account's password
+=> EVENT CODE : 4724
+=> SOURCE USER NAME : ADM_2400112Y
+=> OCCURRENCE NUMBER : 2
+=> LAST OCCURRENCE DATE : 2023-04-23 03:14:17
+=> NEXT ACTION : L2 CyberSOC will perform further investigations
+=> CLIENT ASSET OWNER : Intrusion
+==========
+",Incidents/Security/Cyber attack/Insider breach,SOC Orange,EUROPE/[FRANCE],[FRANCE],,SOC Orange,,,EUROPE/[FRANCE],,2 - Medium,2.0,,,,,EUROPE/[FRANCE],,1.0,,"
+The user can reset a password but only with bastion . he must use the account ADM_BAST_260-01 or ADM_BAST_260-02
+Incident solved
+2023-04-24 09:44:47,DEMISTO Interface Cyber SOC Fr:Hello,
+We thank you for your feedback.
+This security incident has been handled by our services. We will now close this ticket.
+If you have any additional request, please open a new ticket and mention the ticket reference.
+Best regards,
+The CyberSOC.
+",0.0,ISC SLA INC P2,SOC Orange,Insider breach,,27:25:00,24/04/2023 12:21,CORP_GDH,,,,,
+eBonding Orange,I230419_000173,19/04/2023 16:46,19/04/2023 17:56,19/04/2023 16:54,19/04/2023 20:46,,         0:09,00:09,0.0,Completed,Closed,CORP_OT_101_GAD,,CORP_OT_101_GAD,WAZE David,CORP_OT_101_GAD,WAZE David,,,"Creation date in OCEANE : 2023-04-19 10:16 (UTC), 
+OCEANE description: IDB_UID.1-ROQ210 - OT - Multiple authentication failures on privileged account (brute-force)
+2023-04-19 11:15:01,MARTIN Jonathan:Apr 19 12:16:19 10.8.162.31 Kiwi_Syslog_Server Apr 19 12:16:19 O202DC111.Global-OT.Local MSWinEventLog	2	Security	1290024	Wed Apr 19 12:16:13 2023	4771	Microsoft-Windows-Security-Auditing		N/A	Audit Failure	O202DC111.Global-OT.Local	14339	Kerberos pre-authentication failed.Account Information:	Security ID:		S-1-5-21-2976678680-3980993653-1215907661-23877	Account Name:		BSP-AD-SITEADM20201Service Information:	Service Name:		krbtgt/global-ot.localNetwork Information:	Client Address:		::ffff:10.8.169.71	Client Port:		63695Additional Information:	Ticket Options:		0x40810010	Failure Code:		0x18	Pre-Authentication Type:	2Certificate Information:	Certificate Issuer Name:			Certificate Serial Number: 		Certificate Thumbprint:		Certificate information is only provided if a certificate was used for pre-authentication.Pre-authentication types, ticket options and failure codes are defined in RFC 4120.If the ticket was malformed or damaged during transit and could not be decrypted, then many fields in this event might not be present.
+2023-04-19 11:13:59,MARTIN Jonathan:==========
+PHASE : FIRST ANALYSIS
+=> DETECTION RULE : IDB_UID.1-ROQ210 - OT - Multiple authentication failures on privileged account (brute-force)
+=> DETECTION OBJECTIVE : The purpose is to detect too many authentication failure with privilege account
+=> DETECTION TIME : 2023-04-19 10:16:20 UTC
+=> DETECTION PIVOT TYPE : Username
+=> DETECTION ORIGIN : BSP-AD-SITEADM20201
+=> LOG SOURCE NAME : WindowsAuthServer @ O101DC011.Global-ot.local, WindowsAuthServer @ O202DC111.Global-ot.local
+=> LOG SOURCE TIME : 2023-04-19 12:16:13, 2023-04-19 12:15:11, 2023-04-19 12:15:10
+=> EVENT NAME : Failure Audit: Kerberos pre-authentication failed
+=> EVENT CODE : 4771
+=> SOURCE IP : 10.8.162.31, 10.8.169.71
+=> SOURCE NETWORK NAME : OT_BENIFAYO_ADMIN, _Private-RFC1918
+=> SOURCE USER NAME : None
+=> OCCURRENCE NUMBER : 10
+=> FIRST OCCURRENCE DATE : 2023-04-19 12:15:10
+=> LAST OCCURRENCE DATE : 2023-04-19 12:16:13
+=> NEXT ACTION : L1 CyberSOC will perform further investigations
+=> CLIENT ASSET OWNER : CORP_OT_101_GAD
+==========
+",Incidents/Security/OT/Lestrem GAD,SOC Orange,EUROPE/[FRANCE],[FRANCE],,SOC Orange,,,EUROPE/[FRANCE],,2 - Medium,2.0,,,,,EUROPE/[FRANCE],,0.0,,"
+Wrong account password used => legitimateDAW
+Incident solved
+2023-04-19 12:26:18,DEMISTO Interface Cyber SOC Fr:Hello,
+We thank you for your feedback.
+This security incident has been handled by our services. We will now close this ticket.
+If you have any additional request, please open a new ticket and mention the ticket reference.
+Best regards,
+The CyberSOC.
+",0.0,4 h  office,SOC Orange,Lestrem GAD,,00:08,19/04/2023 16:54,CORP_OT_101_GAD,,,,,
+Monitoring,I230424_000311,25/04/2023 03:51,25/04/2023 13:58,25/04/2023 13:58,25/04/2023 19:51,,        10:07,10:07,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,BHAGYASHRI Khairnar,CORP_ISC_L1,BHAGYASHRI Khairnar,,,"Trigger: Interface Gi0/3(C951C00G): VLAN has been changed to 888
+Responsible team: {EVENT.TAGS.RT}
+Trigger description: 
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:Interface Gi0/3(C951C00G)
+Host: SWEU23A
+Host group: GIGA, Keokuk/Network, Network/Keokuk
+Host description: 
+Zabbix event ID: 1059793792",Incidents/Infrastructure/Network/LAN,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,SWEU23A,,,,,,0.0,,"
+Incident/Request Description – SWEU23A: Interface Gi0/3(C951C00G): VLAN has been changed to 888Following is a summary of the actions and resolution steps we have taken to resolve this incident:Summary: -SWEU23A: Interface Gi0/3(C951C00G): VLAN has been changed to 888Action :- The alert was resolved.Problem has been resolved at 01:11:38 on 2023.04.25Trigger: Interface Gi0/3(C951C00G): VLAN has been changed to 4Trigger description:Trigger severity: HighTrigger nseverity: 4Trigger tags: Application:Interface Gi0/3(C951C00G)Host: SWEU23AHost group: GIGA, Keokuk/Network, Network/KeokukHost description:Zabbix event ID: 1059793792Now  VLAN has been changed to 4We have proceeded to close this incident.
+Incident/Request Description – SWEU23A: Interface Gi0/3(C951C00G): VLAN has been changed to 888
+ 
+ 
+ 
+Following is a summary of the actions and resolution steps we have taken to resolve this incident:
+ 
+ 
+ 
+Summary: -SWEU23A: Interface Gi0/3(C951C00G): VLAN has been changed to 888
+ 
+ 
+ 
+Action :- 
+ 
+ 
+ 
+The alert was resolved.
+ 
+ 
+ 
+Problem has been resolved at 01:11:38 on 2023.04.25
+ 
+Trigger: Interface Gi0/3(C951C00G): VLAN has been changed to 4
+ 
+Trigger description:
+ 
+Trigger severity: High
+ 
+Trigger nseverity: 4
+ 
+Trigger tags: Application:Interface Gi0/3(C951C00G)
+ 
+Host: SWEU23A
+ 
+Host group: GIGA, Keokuk/Network, Network/Keokuk
+ 
+Host description:
+ 
+Zabbix event ID: 1059793792
+ 
+ 
+ 
+Now  VLAN has been changed to 4
+ 
+We have proceeded to close this incident.",0.0,ISC SLA INC P3,REST API - ZABBIX,LAN,,07:49,25/04/2023 11:40,CORP_ISC_Network,,SWEU23A: Interface Gi0/3(C951C00G): VLAN has been changed to 888,SWEU23A,0.0,
+Phone,I230404_000302,04/04/2023 17:03,06/04/2023 11:31,06/04/2023 11:31,06/04/2023 17:03,,        16:28,16:28,0.0,Completed,Cancelled,CORP_FUNC_LEVEL2_SAP_Centre de Service,,CORP_FUNC_LEVEL2_SAP_Centre de Service,SHRIVASTAVA Nitin,CORP_FUNC_LEVEL2_SAP_Centre de Service,SHRIVASTAVA Nitin,,,"
+YPMI612_STOCK_ADJUST_ECC
+EA100-000000005200000467
+[STEP = STD_SERVICE]. Lot EA1000000Z de l'article 5200000467 déjà bloqué par 7302296
+FAILED
+",Incidents/Software/Business Application/SAP/SAP Monitoring/QUEUES: MII,SHRIVASTAVA Nitin,EUROPE/[FRANCE]/[LESTREM],[LESTREM],,SHRIVASTAVA Nitin,,,EUROPE/[FRANCE]/[LESTREM],2 - Medium,3 - Low,5.0,,Other,,,EUROPE/[FRANCE]/[LESTREM],,0.0,,"
+Wrong Incident Queue should be monitored as its not part of our daily monitoring ",0.0,2 working days,SHRIVASTAVA Nitin,QUEUES: MII,,16:27,06/04/2023 11:31,CORP_FUNC_LEVEL2_SAP_Centre de Service,,MII,,,
+Monitoring,I230420_000145,20/04/2023 16:24,20/04/2023 16:31,20/04/2023 16:31,21/04/2023 08:24,,         0:07,00:07,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,SAURABH Shisode,CORP_ISC_L1,SAURABH Shisode,,,"Trigger: Thresholded job JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01; in workflow PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000102;PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER;JOBP;0426322696;JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000102;PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER;JOBP;0426322696;JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01;P3, Opened at:1681987, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1055753209",Incidents/Infrastructure/ERP/Scheduling/One Automation,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S101A779,,,,,,0.0,,"
+The CORP_ISC_L1 Team has completed the resolution of this ticket.=============================================================Incident/Request Description:- S101A779: Thresholded job JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01; in workflow PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER; completed with status ENDED_NOT_OK - aborted;=============================================================Summary:- S101A779: Thresholded job JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01; in workflow PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER; completed with status ENDED_NOT_OK - aborted;Action:-1. As checked current workflow is ended ok.2. Please find attachment for logs.3. We are closing this incident.=============================================================Cause/Analysis: No current issue is observing, we are closing the case.",0.0,ISC SLA INC P3,REST API - ZABBIX,One Automation,,00:07,20/04/2023 16:31,CORP_ISC_L1,,S101A779: Thresholded job JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01; in workflow PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER; completed with status ENDED_NOT_OK - aborted;,S101A779,1.0,
+Monitoring,I230401_000078,02/04/2023 01:29,02/04/2023 02:19,02/04/2023 02:19,03/04/2023 07:29,,         0:51,00:51,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,REDDY Mallela Peda,CORP_ISC_L1,REDDY Mallela Peda,,,"Trigger: Interface Ethernet1/18(SWU200H-B Eth1/15): High bandwidth usage (>90% )
+Responsible team: {EVENT.TAGS.RT}
+Trigger description: The network interface utilization is close to its estimated maximum bandwidth.
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Interface Ethernet1/18(SWU200H-B Eth1/15)
+Host: SWI200B
+Host group: GIGA, Lestrem/Network, Network/Lestrem
+Host description: 
+Zabbix event ID: 1038725405",Incidents/Infrastructure/Network/LAN,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,SWI200B,,,,,,0.0,,"
+The CORP_ISC_L1 Team has completed the resolution of this ticket.==========================================================Incident/Request Description –SWI200B: Interface Ethernet1/18(SWU200H-B Eth1/15): High bandwidth usage (>90% )==========================================================
+ Action :- It would be step by step actions you have taken to resolve the incident 1.
+CORP_ISC_EM / REST API - ZABBIX
+Incoming information
+The alert was resolved.
+Problem has been resolved at 22:15:58 on 2023.04.01Trigger: Interface Ethernet1/18(SWU200H-B Eth1/15): High bandwidth usage (>90% )Trigger description: The network interface utilization is close to its estimated maximum bandwidth.Trigger severity: WarningTrigger nseverity: 2Trigger tags: Application:Interface Ethernet1/18(SWU200H-B Eth1/15)Host: SWI200BHost group: GIGA, Lestrem/Network, Network/LestremHost description:Zabbix event ID: 1038725405
+ =====================================================We have proceeded to close this incident.",0.0,ISC SLA INC P4,REST API - ZABBIX,LAN,,00:50,02/04/2023 02:19,CORP_ISC_L1,,SWI200B: Interface Ethernet1/18(SWU200H-B Eth1/15): High bandwidth usage (>90% ),SWI200B,0.0,
+Monitoring,I230407_000062,07/04/2023 12:48,07/04/2023 14:40,07/04/2023 14:40,08/04/2023 04:48,,         1:52,01:52,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,BHAGYASHRI Khairnar,CORP_ISC_L1,BHAGYASHRI Khairnar,,,"Trigger: Event ID - 701 Event -  There is insufficient system memory in resource pool 'internal' to run this query.
+Responsible team: CORP_ISC_Wintel
+Trigger description: There is insufficient system memory in resource pool 'internal' to run this query.
+Opened at: 1680851
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: App_Source:MSSQL$LFR10101, Application:Event log Application, EVENT_ID:701, Host:S101A650, Opened at:1680851, RT:CORP_ISC_Wintel
+Host: S101A650
+Host group: Lestrem/Windows, SQLS, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1043753725",Incidents/Infrastructure/System/SQLS,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S101A650,,,,,,0.0,,"
+Incident/Request Description – S101A650: Event ID - 701 Event -  There is insufficient system memory in resource pool 'internal' to run this query.=============================================================
+Action :- 
+1. In zabbix alert has resolved============================================================
+We have proceeded to close this incident.",0.0,ISC SLA INC P3,REST API - ZABBIX,SQLS,,01:51,07/04/2023 14:40,CORP_ISC_L1,,S101A650: Event ID - 701 Event -  There is insufficient system memory in resource pool 'internal' to run this query.,S101A650,0.0,
+Monitoring,I230428_000234,28/04/2023 22:15,01/05/2023 12:04,,29/04/2023 14:15,,         0:00,00:00,0.0,Completed,Closed,,,,ABHAYJEET Lnu,,ABHAYJEET Lnu,,,"Trigger: ""NetBackup Remote Manager and Monitor Service"" (NetBackup Remote Manager and Monitor Service) is not running (startup type automatic)
+Responsible team: CORP_ISC_Wintel
+Trigger description: The service has a state other than ""Running"" for the last three times.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Services, RT:CORP_ISC_Wintel
+Host: S202S11
+Host group: Benifayo Espana/Windows, SARE, Windows/Benifayo Espana
+Host description: 
+Zabbix event ID: 1063161389Trigger: E: Disk space is low (used > 85%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: Space used >85
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S202S11
+Host group: Benifayo Espana/Windows, SARE, Windows/Benifayo Espana
+Host description: 
+Zabbix event ID: 1058219868",Incidents/Infrastructure/ERP/Backup,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S202S11,,,,,,0.0,,,0.0,ISC SLA INC P3,REST API - ZABBIX,Backup,,01:50,29/04/2023 00:06,CORP_ISC_L1,,S202S11: 'NetBackup Remote Manager and Monitor Service' (NetBackup Remote Manager and Monitor Service) is not running (startup type automatic),S202S11,0.0,
+Monitoring,I230417_000273,18/04/2023 02:29,18/04/2023 02:38,18/04/2023 02:37,19/04/2023 08:29,,         0:08,00:08,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,AIMAN Mulla,CORP_ISC_L1,AIMAN Mulla,,,"Trigger: SAP Solman detect problem on HRP~ABAP such as IDoc Errors
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230417224854;HRP~ABAP;005056A5D24B1EDDB7AC28A57B21B1F0;IDoc Errors;Medium;Errors have been detected during IDoc processing in the system.
+Opened at: 1681764
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1681764, RT:CORP_ISC_SAP, TriggerValue:HRP~ABAP such as IDoc Errors
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1053360538",Incidents/Infrastructure/ERP/SAP/SSM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,SEAP50S,,,,,,0.0,,"
+Incident/Request Description – SEAP50S: SAP Solman detect problem on HRP~ABAP such as IDoc Errors=========================================================Following is a summary of the actions and steps we have taken to resolve this incident:Summary: - SEAP50S: SAP Solman detect problem on HRP~ABAP such as IDoc Errors=========================================================Action :-Checked the status of the mentioned AI is green in SAP Solman.We have proceeded to close this incident.",0.0,ISC SLA INC P4,REST API - ZABBIX,SSM,,00:08,18/04/2023 02:37,CORP_ISC_L1,,SEAP50S: SAP Solman detect problem on HRP~ABAP such as IDoc Errors,SEAP50S,0.0,
+eBonding Orange,I230406_000112,06/04/2023 14:28,11/04/2023 18:44,06/04/2023 16:37,07/04/2023 06:28,,         2:10,02:10,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,BENDRE Shreya,CORP_ISC_L1,BENDRE Shreya,,,"Creation date in OCEANE : 2023-04-06 08:45 (UTC), 
+OCEANE description: IMF_LOG.1-ROQ139 : AUDISPD log loss
+2023-04-06 08:56:37,AHAMADA Anita:==========
+PHASE : FINAL ANALYSIS
+=> DETECTION RULE : IMF_LOG.1-ROQ139 : AUDISPD log loss
+=> DETECTION OBJECTIVE : Detect AuditD service which have stopped sending event logs from Linux OS server, thus inducing the dysfunction of the related detection rules.
+=> DETECTION TIME : 2023-04-06 08:45:21 UTC
+=> DETECTION PIVOT TYPE : observer_name
+=> DETECTION ORIGIN : LinuxServer @ seau60s
+=> LOG SOURCE NAME : LinuxServer @ seau60s
+=> RECOMMENDATION : Check if the source device is still sending events or not, check that the collection path is not broken and restart the collection.
+==========
+",Incidents/Security/Violation of an explicit or implied security policy/Security research,SOC Orange,EUROPE/[FRANCE],[FRANCE],,SOC Orange,,,EUROPE/[FRANCE],,3 - Low,3.0,,,,,EUROPE/[FRANCE],,0.0,,"
+As we checked on server auditd service is in failed state  so we have restarted it now service is activie and running. -------------------
+root@seau60s:/var/run$ systemctl status auditd● auditd.service - Security Auditing Service   Loaded: loaded (/usr/lib/systemd/system/auditd.service; enabled; vendor preset: disabled)   Active: active (running) since Thu 2023-04-06 13:00:31 CEST; 36s ago     Docs: man:auditd(8)           https://github.com/linux-audit/audit-documentation  Process: 94888 ExecStartPost=/sbin/augenrules --load (code=exited, status=0/SUCCESS)  Process: 94882 ExecStart=/sbin/auditd (code=exited, status=0/SUCCESS) Main PID: 94883 (auditd)    Tasks: 4 (limit: 512)   CGroup: /system.slice/auditd.service           ├─94883 /sbin/auditd           └─94885 /sbin/audispd
+Apr 06 13:00:31 seau60s augenrules[94888]: backlog 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog_wait_time 15000Apr 06 13:00:31 seau60s augenrules[94888]: enabled 1Apr 06 13:00:31 seau60s augenrules[94888]: failure 1Apr 06 13:00:31 seau60s augenrules[94888]: pid 94883Apr 06 13:00:31 seau60s augenrules[94888]: rate_limit 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog_limit 8192Apr 06 13:00:31 seau60s augenrules[94888]: lost 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog_wait_time 15000-------------------------------
+CORP_ISC_NIX / MOHIT Sonawane
+Analysis in progress (Operation Action) : In progress
+As we checked on server auditd service is in failed state so we have restarted it
+now service is activie and running.-------------------
+root@seau60s:/var/run$ systemctl status auditd● auditd.service - Security Auditing ServiceLoaded: loaded (/usr/lib/systemd/system/auditd.service; enabled; vendor preset: disabled)Active: active (running) since Thu 2023-04-06 13:00:31 CEST; 36s agoDocs: man:auditd(8)https://github.com/linux-audit/audit-documentationProcess: 94888 ExecStartPost=/sbin/augenrules --load (code=exited, status=0/SUCCESS)Process: 94882 ExecStart=/sbin/auditd (code=exited, status=0/SUCCESS)Main PID: 94883 (auditd)Tasks: 4 (limit: 512)CGroup: /system.slice/auditd.service├─94883 /sbin/auditd└─94885 /sbin/audispd
+Apr 06 13:00:31 seau60s augenrules[94888]: backlog 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog_wait_time 15000Apr 06 13:00:31 seau60s augenrules[94888]: enabled 1Apr 06 13:00:31 seau60s augenrules[94888]: failure 1Apr 06 13:00:31 seau60s augenrules[94888]: pid 94883Apr 06 13:00:31 seau60s augenrules[94888]: rate_limit 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog_limit 8192Apr 06 13:00:31 seau60s augenrules[94888]: lost 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog 0Apr 06 13:00:31 seau60s augenrules[94888]: backlog_wait_time 15000
+Incident solved
+2023-04-11 13:14:07,DEMISTO Interface Cyber SOC Fr:Hello,
+We thank you for your feedback.
+This security incident has been handled by our services. We will now close this ticket.
+If you have any additional request, please open a new ticket and mention the ticket reference.
+Best regards,
+The CyberSOC.
+",0.0,ISC SLA INC P3,SOC Orange,Security research,,02:06,06/04/2023 16:34,CORP_ISC_NIX,,,,,
+Monitoring,I230429_000053,29/04/2023 22:15,01/05/2023 16:23,,30/04/2023 14:15,,         0:00,00:00,0.0,Completed,Closed,CORP_ISC_L1,,,SHARMA Urmit,,SHARMA Urmit,,,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000029;SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD;JOBP;0429779993;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000029;SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD;JOBP;0429779993;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3, Opened at:1682786, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1064150413Trigger: Job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_W_ORA_WIN_LOG_PROD; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000029;SARE.FEX_0053_101_W_ORA_WIN_LOG_PROD;JOBP;0429900785;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000029;SARE.FEX_0053_101_W_ORA_WIN_LOG_PROD;JOBP;0429900785;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3, Opened at:1682815, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1064462619",Incidents/Infrastructure/ERP/Scheduling/One Automation,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,3.0,S101A779,,,,,,0.0,,,0.0,ISC SLA INC P3,REST API - ZABBIX,One Automation,,42:04:00,01/05/2023 16:19,CORP_ISC_Storage_Backup,,S101A779: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD; completed with status ENDED_NOT_OK - aborted;,S101A779,1.0,
+Phone,I230421_000040,21/04/2023 10:58,01/05/2023 06:30,21/04/2023 11:20,24/04/2023 07:58,,         0:23,00:23,0.0,Completed,Closed,INDIA_SD,INDIA_SERVICEDESK,INDIA_SD,SHINDE Hitesh,INDIA_SD,SHINDE Hitesh,,,Digital Signature USB Token Not Working  ----Closed automatically after 10 days,Incidents/Software/[Application Software]/[Other],MULIYIL SUREKHA,INDIA/[INDIA]/[MUMBAI],[MUMBAI],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[GBU CORE INGREDIENTS & PLM]/[CORE INGREDIENTS - GREATER ASIA]/[CORE INGREDIENTS INDIA]/[CORE INGREDIENTS - NORTH & EAST]/[CORE INGREDIENTS - CUSTOMER CARE INDIA]/[CORE INGREDIENTS - CUSTOMER CARE DOMESTI],MULIYIL SUREKHA,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[GBU CORE INGREDIENTS & PLM]/[CORE INGREDIENTS - GREATER ASIA]/[CORE INGREDIENTS INDIA]/[CORE INGREDIENTS - NORTH & EAST]/[CORE INGREDIENTS - CUSTOMER CARE INDIA]/[CORE INGREDIENTS - CUSTOMER CARE DOMESTI],INDIA/[INDIA]/[MUMBAI],2 - Medium,2 - Medium,3.0,,Software Incident,,,INDIA/[INDIA]/[MUMBAI],,0.0,,As Checked The DSC Is Not Working In PDF So Changed Some settings In PDF Acrobate Reader And reinstalled The DSC Setup And Resolved.----Closed automatically after 10 days,1.0,8 h office,SHINDE Hitesh,[Other],,00:23,21/04/2023 11:20,INDIA_SD,,Digital Signature USB Token Not Working,,,
+Phone,I230418_000120,18/04/2023 14:06,18/04/2023 14:17,18/04/2023 14:11,19/04/2023 11:06,,         0:06,00:06,0.0,Completed,Closed,INDIA_PROX_CREST,INDIA_SERVICEDESK,INDIA_PROX_CREST,KAVERIPAKAM Mahesh,INDIA_PROX_CREST,KAVERIPAKAM Mahesh,"4,00","4,00","The document's size is 94 MB, and he wants it compressed. ",Incidents/Assistance/[Other],ULSA Praveenkumar,INDIA/[INDIA]/[GOKAK],[GOKAK],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[GBU CORE INGREDIENTS & PLM]/[CORE INGREDIENTS - GREATER ASIA]/[INDIA COORDINATION]/[INDIA MANUFACTURING]/[GOKAK PLANT]/[CREST INTEGRATION]/[CREST QUALITY],KAVERIPAKAM Mahesh,,,INDIA/[INDIA]/[GOKAK],2 - Medium,2 - Medium,3.0,,Assistance,SR,End user teams,INDIA/[INDIA]/CREST,,0.0,4.0,"The document's size is 94 MB, and he wants it compressed, and send to his mail",1.0,8 h office,KAVERIPAKAM Mahesh,[Other],,00:06,18/04/2023 14:11,INDIA_PROX_CREST,,Incident- 94 MB document file compress issue,,,
+Phone,I230403_000063,03/04/2023 12:16,13/04/2023 06:30,03/04/2023 12:24,03/04/2023 16:16,,         0:08,00:08,0.0,Completed,Closed,CORP_Support L2L3,HPE_SD,CORP_Support L2L3,ZAHID Meryem,CORP_Support L2L3,ZAHID Meryem,,,"Mandatory Information:  
+USER'S ISSUE (Detailed issue description):  windows account locked 
+Password Reset (Y/N):<span style=""margin: 0px; padding: 0px; user-select: text; -webkit-user-drag: none; -webkit-tap-highlight-color: transparent; font-size: 10pt; line-height: 17.2667px; font-family: 'Century Gothic', 'Century Gothic_Embedded",Incidents/[Password]/Windows,LOUCHET Julien,EUROPE/[FRANCE]/[LESTREM],[LESTREM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[LESTREM PLANT]/[PROJET INDUSTRIEL ET TRANSFORMATION]/[POLE TECHNIQUES ET EXPERTS]/[SERVICE SUPPORT POLE TECHNIQUE ET EXPERT]/[EXT - SERVICES TECHNIQUES],LOUCHET Julien,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[LESTREM PLANT]/[PROJET INDUSTRIEL ET TRANSFORMATION]/[POLE TECHNIQUES ET EXPERTS]/[SERVICE SUPPORT POLE TECHNIQUE ET EXPERT]/[EXT - SERVICES TECHNIQUES],EUROPE/[FRANCE]/[LESTREM],2 - Medium,2 - Medium,2.0,,,,,EUROPE/[FRANCE]/[LESTREM],,0.0,,incident résolu ----Closed automatically after 10 days,1.0,4 h  office,ZAHID Meryem,Windows,,00:08,03/04/2023 12:24,CORP_Support L2L3,,windows account,,,
+Monitoring,I230430_000035,30/04/2023 18:25,01/05/2023 18:47,,02/05/2023 00:25,,         0:00,00:00,0.0,Completed,Closed,,,,ANIL LAXMAN Miraje,,ANIL LAXMAN Miraje,,,"Trigger: High ICMP ping loss
+Responsible team: CORP_ISC_Storage_Backup
+Trigger description: Last value: 0 %.
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Status, RT:CORP_ISC_Storage_Backup
+Host: BAI2005
+Host group: Lestrem/Storage, STOC, Storage/Lestrem
+Host description: 
+Zabbix event ID: 1064935332Trigger: High ICMP ping loss
+Responsible team: CORP_ISC_Storage_Backup
+Trigger description: Last value: 0 %.
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Status, RT:CORP_ISC_Storage_Backup
+Host: BAI2355
+Host group: Lestrem/Storage, STOC, Storage/Lestrem
+Host description: 
+Zabbix event ID: 1064934115",Incidents/Infrastructure/ERP/Storage,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,3 - Low,4.0,BAI2005,,,,,,0.0,,,0.0,ISC SLA INC P4,REST API - ZABBIX,Storage,,00:59,30/04/2023 19:24,CORP_ISC_L1,,BAI2005: High ICMP ping loss,BAI2005,1.0,
+Phone,I230427_000217,27/04/2023 19:31,27/04/2023 19:33,27/04/2023 19:32,28/04/2023 03:31,,         0:02,00:02,0.0,Completed,Closed,RAI_SD,AMERICAS_SERVICEDESK,RAI_SD,MILLER Kevin,RAI_SD,MILLER Kevin,,,VC is down in KleptoseWorked with Darin and we got it back up,Incidents/[Hardware]/[Visioconferencing]/[Polycom],MILLER Kevin,AMERICAS/[USA]/[KEOKUK],[KEOKUK],"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[AREA MANAGEMENT]/[IS DEPARTMENT - AMERICAS]/[IS OPERATIONS - AMERICAS]",MILLER Kevin,,"[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[FINANCE, DIGITAL & STRATEGY]/[GLOBAL DIGITAL]/[AREA MANAGEMENT]/[IS DEPARTMENT - AMERICAS]/[IS OPERATIONS - AMERICAS]",AMERICAS/[USA]/[KEOKUK],2 - Medium,2 - Medium,3.0,,,,,AMERICAS/[USA]/[KEOKUK],,0.0,,Worked with Darin and we got it back up,1.0,8 h office,MILLER Kevin,[Polycom],,00:02,27/04/2023 19:32,RAI_SD,,VC in Kleptose is down,,,
+Self Service,I230423_000088,23/04/2023 19:05,04/05/2023 06:30,24/04/2023 13:44,24/04/2023 13:00,,         2:45,02:45,45.0,Completed,Closed,CORP_ISC_L1,,FR_SD_Service Desk and Sales offices,BENSEGHIR Fadoua,FR_SD_Service Desk and Sales offices,BENSEGHIR Fadoua,,,"plus d’acces au disque T sur tous les PC , besoin important pour plusieurs tachesCallback preference: Mobile phonePhone Number: 07 64 78 54 18Unavailability period: N/ANous n'avons plus accès au disque TCallback preference: TeamsPhone Number: N/AUnavailability period: N/A----Closed automatically after 10 days",Incidents/Assistance/[Other],DONZE Stephane,EUROPE/[FRANCE]/[LESTREM],[LESTREM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[LESTREM PLANT]/[DIRECTION EXPLOITATION SUCRES]/[POLE ATOMISATION]/[PERFORMANCE TEAM]/[ATOMISATION TA4 TA5],DONZE Stephane,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[MANUFACTURING]/[FRANCE MANUFACTURING]/[LESTREM PLANT]/[DIRECTION EXPLOITATION SUCRES]/[POLE ATOMISATION]/[PERFORMANCE TEAM]/[ATOMISATION TA4 TA5],EUROPE/[FRANCE]/[LESTREM],,1 - High,1.0,,,,,EUROPE/[FRANCE]/[LESTREM],,0.0,,"
+Logon script okThe share has been deleted. recreate the SHARE DPA$ in S101A234
+incident résolu----Closed automatically after 10 days",0.0,2 h office,DONZE Stephane,[Other],,00:00,23/04/2023 23:43,FR_SD_Service Desk and Sales offices,,,,,HNO
+Phone,I230417_000008,17/04/2023 07:50,17/04/2023 07:51,17/04/2023 07:50,17/04/2023 15:50,,         0:01,00:01,0.0,Completed,Closed,ASIA_SD,ASIA_SERVICEDESK,ASIA_SD,QIAN Wei,ASIA_SD,QIAN Wei,"5,00","5,00",help liu ying check the EZV ,Incidents/Assistance/EasyVista,QIAN Wei,ASIA/[CHINA]/[LIANYUNGANG ST],[LIANYUNGANG ST],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[CHINA COORDINATION]/[CHINA MANUFACTURING & EHS & IS]/[IS DEPARTMENT - CHINA]/[IS USER SERVICES & SUPPORT - ASIA],QIAN Wei,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[CHINA COORDINATION]/[CHINA MANUFACTURING & EHS & IS]/[IS DEPARTMENT - CHINA]/[IS USER SERVICES & SUPPORT - ASIA],ASIA/[CHINA]/[LIANYUNGANG ST],2 - Medium,2 - Medium,3.0,,,,,ASIA/[CHINA]/[LIANYUNGANG ST],,0.0,5.0,now it is working ,1.0,8 h office,QIAN Wei,EasyVista,,00:01,17/04/2023 07:50,ASIA_SD,,,,,
+Monitoring,I230429_000056,29/04/2023 23:01,29/04/2023 23:38,29/04/2023 23:38,30/04/2023 07:02,,         0:37,00:37,0.0,Completed,Closed,CORP_ISC_L1,,CORP_ISC_L1,REDDY Mallela Peda,CORP_ISC_L1,REDDY Mallela Peda,,,"Trigger: SAP Solman detect problem on s201a157 such as EVENT_ID_1587
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230429192029;s201a157;005056A5D24B1EDDB9D644709900F75C;EVENT_ID_1587;Critical;
+Opened at: 1682788
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682788, RT:CORP_ISC_SAP, TriggerValue:s201a157 such as EVENT_ID_1587
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1064181524",Incidents/Infrastructure/ERP/SAP/SSM,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,2 - Medium,2.0,SEAP50S,,,,,,0.0,,"
+The CORP_ISC_L1 Team has completed the resolution of this ticket.Incident/Request Description –SEAP50S: SAP Solman detect problem on s201a157 such as EVENT_ID_1587========================================================== Action :- It would be step by step actions you have taken to resolve the incident 1.Hello team please check 2 As we logged into check solman alert inbox current rating is green 3. please check attachment ==========================================================We have proceeded to close this incident.",0.0,ISC SLA INC P2,REST API - ZABBIX,SSM,,00:36,29/04/2023 23:37,CORP_ISC_L1,,SEAP50S: SAP Solman detect problem on s201a157 such as EVENT_ID_1587,SEAP50S,0.0,
+Self Service,I230411_000096,11/04/2023 13:44,15/05/2023 06:30,05/05/2023 15:22,20/04/2023 18:17,,       115:06,115:06:00,6426.0,Completed,Closed,CORP_FUNC_LEVEL2_SAP_Centre de Service,,CORP_FUNC_LEVEL2_SAP_Centre de Service,BASAVARAJ Holal,CORP_FUNC_LEVEL2_SAP_Centre de Service,BASAVARAJ Holal,,,Issue Description: Not possible to load truck in Push Pull process because the system try to find the shipping HU in the default Staging (Staging-301) instead of the real one. And after asking if loading is finished (on HHT 434) system don't close the loading (tick) and don't create Yard task to CK00System Affected:PTMWarehouse Number (Mandatory for EWM/Logistic incidents):EF01TU Gross/Net Weight (if applicable):SAP Document Number(Delivery/PO/Sales Order/FSD/FO/TU…):Steps Followed by User (with T Code/variant/path/…): HHT 3/4/3Error Screen Shot Attached (Yes/No): NOContact Preference (Teams/Email): EMAILUnavailability Period: Related Incident (if any):----Closed automatically after 10 days,Incidents/Software/Business Application/SAP/Supply Chain/Logistics_Packed,VALENTIN Cedric,EUROPE/[FRANCE]/[LESTREM],[LESTREM],[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[SUPPLY CHAIN]/[SUPPLY CHAIN EUROPE]/[SUPPLY CHAIN FRANCE]/[SUPPLY CHAIN LESTREM]/[LOGISTIQUE OPERATIONNELLE LESTREM],VALENTIN Cedric,,[PRESIDENCY]/[EXECUTIVE MANAGEMENT]/[OPERATIONS]/[SUPPLY CHAIN]/[SUPPLY CHAIN EUROPE]/[SUPPLY CHAIN FRANCE]/[SUPPLY CHAIN LESTREM]/[LOGISTIQUE OPERATIONNELLE LESTREM],EUROPE/[FRANCE]/[LESTREM],,2 - Medium,3.0,,Not applicable,,,EUROPE/[FRANCE]/[LESTREM],,0.0,,"
+Issue - Not possible to load truck in Push Pull process because the system try to find the shipping HU in the default Staging (Staging-301) instead of the real one. And after asking if loading is finished (on HHT 434) system don't close the loading (tick) and don't create Yard task to CK00. (HHT 3/4/3)RCA - Not applicableSolution - When checked, User confirmed it is working fine now & confirmed incident can be closed. No action taken from L2 side.City - LE----Closed automatically after 10 days",0.0,8 h office,VALENTIN Cedric,Logistics_Packed,,188:38:00,05/05/2023 15:22,CORP_FUNC_LEVEL2_SAP_Centre de Service,,error in pushpull flow Y218 Y213,,,
+Monitoring,I230416_000169,17/04/2023 00:30,17/04/2023 16:24,17/04/2023 02:26,17/04/2023 02:30,,         1:57,01:57,0.0,Completed,Closed,CORP_ISC_EM,,CORP_ISC_L1,BENDRE Shreya,CORP_ISC_L1,BENDRE Shreya,,,"Trigger: Location Vic Sur Aisne unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI118 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137857Trigger: Location Shanghai unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI252 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137481",Incidents/Infrastructure/Network/Monitoring,REST API - ZABBIX,,-,,REST API - ZABBIX,,,,,1 - High,1.0,SAEUA02C,,,,,,0.0,,"
+1. Observed that the data collection for Zabbix server 'utilization of availability manager internal processes' is stopped2. Noticed that the queue size is very high on all the proxies3. NIX team has logged the Zabbix main server and restarted the Zabbix server service to make the data collection happen4. After the service restart, the data collection started on the Zabbix main server.5. Identified all the alerts were resolved in few minutes.6. Monitored the new alerts for some time, also checked the graphs of utilization of availability manager internal processes to see if there is any spike in the data.7. We have observed that the queue size is having high count due to transaction/long running queries issues. This is already being checked over the database side.
+Comment or Description :
+ 
+1. Observed that the data collection for Zabbix server 'utilization of availability manager internal processes' is stopped
+ 
+2. Noticed that the queue size is very high on all the proxies
+ 
+3. NIX team has logged the Zabbix main server and restarted the Zabbix server service to make the data collection happen
+ 
+4. After the service restart, the data collection started on the Zabbix main server.
+ 
+5. Identified all the alerts were resolved in few minutes.
+ 
+6. Monitored the new alerts for some time, also checked the graphs of utilization of availability manager internal processes to see if there is any spike in the data.
+ 
+7. We have observed that the queue size is having high count due to transaction/long running queries issues. This is already being checked over the database side.
+As checked by EM Team, data collection was stopped for all devices due to high utilization of availability manager internal processes. With reference to parent incident number I230416_000149  closing the incident.",0.0,ISC SLA INC P1,REST API - ZABBIX,Monitoring,,01:26,17/04/2023 01:56,CORP_ISC_L1,,SAEUA02C: Location Vic Sur Aisne unavailable,SAEUA02C,0.0,

@@ -71,6 +71,10 @@ class IncidentUpdate(BaseModel):
     priority: int
     SLA: str
 
+class CILocation(BaseModel):
+    ci_name:str
+    location_full:str 
+
 
 # Define the DBIncidents class for the incidents_location table 
 class DBIncidents(Base):
@@ -86,6 +90,12 @@ class DBIncidents(Base):
     urgency: Mapped[str]
     priority: Mapped[int]
     SLA: Mapped[str]
+
+class DBCILocation(Base):
+    __tablename__ = "ci_location"
+
+    ci_name: Mapped[str] = mapped_column(primary_key=True, index=True)
+    location_full: Mapped[str]
 
 def get_db_azure():
     """Get an Azure database session"""
@@ -130,6 +140,25 @@ def read_db_incident(session: Session) -> List[DBIncidents]:
     if db_incident is None:
         raise NotFoundError(f"Database is empty")
     return db_incident
+
+
+
+def read_db_ci_location(session: Session) -> List[DBIncidents]:
+    """Reads incidents from the database.
+
+    Args:
+        session (Session): SQLAlchemy session to interact with the database.
+
+    Returns:
+        List[DBIncidents]: List of database incident objects.
+
+    Raises:
+        NotFoundError: If the database is empty.
+    """
+    db_ci_location= session.query(DBCILocation).all()
+    if db_ci_location is None:
+        raise NotFoundError(f"Database is empty")
+    return db_ci_location
 
 def generate_id(session: Session) -> str:
     """Generate a unique string ID."""

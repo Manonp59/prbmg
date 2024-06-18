@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload{% endblock %}
+
+{% block content %}
+    <h1>Upload</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    {% if message %}
+        <p class="success">{{ message }}</p>
+    {% endif %}
+    {% if dataframe %}
+    <h2>Uploaded Data</h2>
+        {{ dataframe|safe }}
+    {% endif %}
+    {% if result %}
+    <h2>Clustering Results</h2>
+    <ul>
+    {% for res in result %}
+        <li>
+            Incident: {{res.incident_number}}
+            Cluster Number: {{ res.cluster_number }}<br>
+            Problem Title: {{ res.problem_title }}
+            {% if res.error %}
+                <br>Error: {{ res.error }}
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>   
+    {% endif %}
+{% endblock content %}

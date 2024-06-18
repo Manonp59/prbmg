@@ -4,8 +4,8 @@ from fastapi.params import Depends
 from sqlalchemy.orm import Session
 from typing import List
 from api_database.api.functions_database import NotFoundError, get_db_azure
-from api_database.api.functions_database import Incident, IncidentCreate, IncidentUpdate, read_db_incident, read_db_one_incident, \
-    create_db_incident, update_db_incident, delete_db_incident
+from api_database.api.functions_database import Incident, IncidentCreate, IncidentUpdate, CILocation, read_db_incident, read_db_one_incident, \
+    create_db_incident, update_db_incident, delete_db_incident, read_db_ci_location
 import os 
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
@@ -92,6 +92,28 @@ def get_incident(request: Request,  db: Session = Depends(get_db_azure)) -> List
     except NotFoundError as e:
         raise HTTPException(status_code=404) from e
     return [Incident(**incident.__dict__) for incident in db_incident]
+
+
+@app.get("/ci_location", response_model=List[CILocation])
+def get_ci_location(request: Request,  db: Session = Depends(get_db_azure)) -> List[CILocation]:
+    """Retrieve all incidents.
+
+    Args:
+        request (Request): The incoming request.
+        db (Session, optional): SQLAlchemy session to interact with the database. Defaults to Depends(get_db_azure).
+
+    Returns:
+        List[Incident]: List of retrieved incidents.
+
+    Raises:
+        HTTPException: If no incidents are found.
+    """
+    try:
+        db_ci_location = read_db_ci_location(db)
+    except NotFoundError as e:
+        raise HTTPException(status_code=404) from e
+    return [CILocation(**ci.__dict__) for ci in db_ci_location]
+
 
 @app.post("/incident")
 def create_incident(request: Request, incident: IncidentCreate, db: Session = Depends(get_db_azure)) -> Incident:

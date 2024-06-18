@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{%block title%}Update account{%endblock%}
+
+{% block content %}
+
+<h1>Update my account</h1>
+
+<section>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{form.username.errors}}
+        <p><label for="{{form.username.id_for_label}}">Username:</label>
+        {{form.username}}</p>
+    </div>
+    <div class="fieldWrapper">
+        {{form.email.errors}}
+        <p><label for="{{form.email.id_for_label}}">Email:</label>
+        {{form.email}}</p>
+    </div>
+    <div class="fieldWrapper">
+        {{form.first_name.errors}}
+        <p><label for="{{form.first_name.id_for_label}}">First Name:</label>
+        {{form.first_name}}</p>
+    </div>
+    <div class="fieldWrapper">
+        {{form.last_name.errors}}
+        <p><label for="{{form.last_name.id_for_label}}">Last Name:</label>
+        {{form.last_name}}</p>
+    </div>
+    <div>
+        <input type="submit" value="OK">
+    </div>
+</form>
+</section>
+
+{%endblock%}
