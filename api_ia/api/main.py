@@ -10,6 +10,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 API_IA_SECRET_KEY = os.getenv('API_IA_SECRET_KEY')
 
@@ -54,12 +59,13 @@ def predict(
 
     model_name = "kmeans_30"
     model_path = get_model_path(model_name)
-    print(model_path)
+    
     prediction = predict_cluster(model_path,incident)
 
     # MLops: Save prediction to database
     prediction_dict = {
         "incident_number": incident.incident_number,
+        "creation_date": incident.creation_date,
         "description": incident.description, 
         "category_full": incident.category_full,
         "ci_name": incident.ci_name, 
@@ -68,6 +74,7 @@ def predict(
         "problem_title": prediction.problem_title,
         "model":model_name
     }
+    
     create_db_prediction(prediction_dict, db)
 
     return PredictionOuput(cluster_number=prediction.cluster_number, problem_title=prediction.problem_title)

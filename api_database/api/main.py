@@ -1,14 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi import HTTPException, Request
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
 from typing import List
 from api_database.api.functions_database import NotFoundError, get_db_azure
-from api_database.api.functions_database import Incident, IncidentCreate, IncidentUpdate, CILocation, read_db_incident, read_db_one_incident, \
+from api_database.api.functions_database import Incident, IncidentCreate, IncidentUpdate, CILocation, Prediction, read_db_predictions, read_db_incident, read_db_one_incident, \
     create_db_incident, update_db_incident, delete_db_incident, read_db_ci_location
 import os 
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import date
 
 load_dotenv()
 
@@ -114,6 +115,26 @@ def get_ci_location(request: Request,  db: Session = Depends(get_db_azure)) -> L
         raise HTTPException(status_code=404) from e
     return [CILocation(**ci.__dict__) for ci in db_ci_location]
 
+
+@app.get("/predictions", response_model=List[Prediction])
+def get_predictions(request: Request,  db: Session = Depends(get_db_azure)) -> List[Prediction]:
+    """Retrieve all predictions.
+
+    Args:
+        request (Request): The incoming request.
+        db (Session, optional): SQLAlchemy session to interact with the database. Defaults to Depends(get_db_azure).
+
+    Returns:
+        List[Prediction]: List of retrieved incidents.
+
+    Raises:
+        HTTPException: If no predictions are found.
+    """
+    try:
+        db_predictions = read_db_predictions(db)
+    except NotFoundError as e:
+        raise HTTPException(status_code=404) from e
+    return [Prediction(**prediction.__dict__) for prediction in db_predictions]
 
 @app.post("/incident")
 def create_incident(request: Request, incident: IncidentCreate, db: Session = Depends(get_db_azure)) -> Incident:

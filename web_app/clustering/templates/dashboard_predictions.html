@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{%block title%}Dashboard predictions{%endblock%}
+
+{% block content %}
+{% load static %}
+    <h1>Dashboard predictions</h1>
+    <form method="get" action="{% url 'dashboard_predictions' %}">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        
+        <button type="submit">Filter</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Prediction ID</th>
+                <th>Incident Number</th>
+                <th>Cluster Number</th>
+                <th>Problem Title</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prediction in predictions %}
+            <tr>
+                <td>{{ prediction.prediction_id }}</td>
+                <td>{{ prediction.incident_number }}</td>
+                <td>{{ prediction.cluster_number }}</td>
+                <td>{{ prediction.problem_title }}</td>
+                <td>{{ prediction.creation_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="chartContainer"></div>
+{% endblock content %}

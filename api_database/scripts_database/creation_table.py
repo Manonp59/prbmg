@@ -48,6 +48,7 @@ with conn.cursor() as cursor:
     CREATE TABLE predictions (
     prediction_id VARCHAR(250) PRIMARY KEY, 
     incident_number VARCHAR(250),
+    creation_date VARCHAR(30),
     description TEXT,
     category_full VARCHAR(100),
     ci_name VARCHAR(100),

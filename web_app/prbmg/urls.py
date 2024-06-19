@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from clustering.views import login_page, update_user, logout_user, home, signup_page, upload_file, download_file
+from clustering.views import login_page, update_user, logout_user, home, signup_page, upload_file, download_file,dashboard_predictions, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +29,7 @@ urlpatterns = [
     path('signup/', signup_page,name="signup"), 
     path('clustering/', upload_file,name="clustering"),
     path('download/<str:file_path>/', download_file, name='download_file'),
+    path('dashboard_predictions/', dashboard_predictions, name='dashboard_predictions'),
+    path('index/', index, name="index")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase, Mapped, mapped_column
 import os 
 from dotenv import load_dotenv
 from sqlalchemy import String
+from datetime import date,datetime
 
 
 load_dotenv()
@@ -76,6 +77,19 @@ class CILocation(BaseModel):
     location_full:str 
 
 
+class Prediction(BaseModel):
+    prediction_id:str
+    incident_number:str
+    creation_date:str
+    description:str
+    category_full:str
+    ci_name:str
+    location_full:str
+    cluster_number:int
+    problem_title:str
+    model:str
+
+
 # Define the DBIncidents class for the incidents_location table 
 class DBIncidents(Base):
 
@@ -96,6 +110,22 @@ class DBCILocation(Base):
 
     ci_name: Mapped[str] = mapped_column(primary_key=True, index=True)
     location_full: Mapped[str]
+
+
+# Model class for predictions
+class DBpredictions(Base):
+    __tablename__ = "predictions"
+
+    prediction_id: Mapped[str] = mapped_column(primary_key=True, index=True)
+    incident_number: Mapped[str] = mapped_column(unique=True,index=True)
+    creation_date: Mapped[str]
+    description: Mapped[str]
+    category_full: Mapped[str]
+    ci_name: Mapped[str]
+    location_full: Mapped[str]
+    cluster_number: Mapped[int]
+    problem_title: Mapped[str]
+    model: Mapped[str]
 
 def get_db_azure():
     """Get an Azure database session"""
@@ -159,6 +189,28 @@ def read_db_ci_location(session: Session) -> List[DBIncidents]:
     if db_ci_location is None:
         raise NotFoundError(f"Database is empty")
     return db_ci_location
+
+
+def read_db_predictions(session: Session) -> List[DBpredictions]:
+    """Reads predictions from the database within a date range.
+
+    Args:
+        session (Session): SQLAlchemy session to interact with the database.
+        start_date (date, optional): Start date for filtering predictions. Defaults to None.
+        end_date (date, optional): End date for filtering predictions. Defaults to None.
+
+    Returns:
+        List[DBpredictions]: List of database predictions objects.
+
+    Raises:
+        NotFoundError: If the database is empty.
+    """
+    
+    db_predictions = session.query(DBpredictions).all()
+    if not db_predictions:
+        raise NotFoundError("Database is empty")
+    return db_predictions
+
 
 def generate_id(session: Session) -> str:
     """Generate a unique string ID."""

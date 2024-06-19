@@ -11,6 +11,13 @@ import os
 import requests
 import re
 import json 
+from datetime import datetime
+import matplotlib.pyplot as plt 
+import base64
+from io import BytesIO
+import plotly.express as xp
+
+
 
 def home(request):
     """Vue pour la page d'accueil du site. Affiche des statistiques sur les rendez-vous
@@ -158,19 +165,22 @@ API_URL = "http://127.0.0.1:8001/predict"
 API_KEY = os.getenv('API_IA_SECRET_KEY')
 
 def process_clustering(df):
-    result_list = []
+    API_URL = "http://127.0.0.1:8001/predict"
+    API_KEY = os.getenv('API_IA_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
     df['cluster_number'] = None
     df['problem_title'] = None
     for index, row in df.iterrows():
         data = {
             "incident_number": row['incident_number'],
+            "creation_date": row['creation_date'],
             "description": row['description'],
             "category_full": row["category_full"],
             "ci_name": row["ci_name"],
             "location_full": row['location_full']
         }
-        
+
+
         response = requests.post(API_URL, json=data, headers=headers)
         if response.status_code == 200:
             result = response.json()
@@ -183,7 +193,7 @@ def process_clustering(df):
     return df
 
 def get_location(df):
-    API_URL = "http://127.0.0.1:8002/ci_location"
+    API_URL = "http://127.0.0.1:8000/ci_location"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
     response = requests.get(API_URL, headers=headers)
@@ -235,3 +245,73 @@ def download_file(request, file_path):
             response['Content-Disposition'] = f'attachment; filename={os.path.basename(file_path)}'
             return response
     raise Http404
+
+
+@login_required(login_url='login')
+def dashboard_predictions(request):
+    API_URL = "http://127.0.0.1:8000/predictions"
+    API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
+    headers = {"X-API-Key": API_KEY}
+    response = requests.get(API_URL, headers=headers)
+
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    response = requests.get(API_URL, headers=headers)
+
+    if response.status_code == 200:
+        predictions_data = response.json()
+    else:
+        raise Exception(f"Failed to fetch predictions data: {response.status_code} {response.text}")
+    # Convertir les dates de chaînes de caractères en objets datetime.date
+    if start_date:
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
+    else:
+        start_date = None
+
+    if end_date:
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
+    else:
+        end_date = None
+
+    # Filtrer les prédictions en fonction des dates si elles sont fournies
+    if start_date and end_date:
+        filtered_predictions = [
+            prediction for prediction in predictions_data
+            if datetime.strptime(prediction['creation_date'], '%d/%m/%Y %H:%M').date() >= start_date
+            and datetime.strptime(prediction['creation_date'], '%d/%m/%Y %H:%M').date() <= end_date
+        ]
+    elif start_date:
+        filtered_predictions = [
+            prediction for prediction in predictions_data
+            if datetime.strptime(prediction['creation_date'], '%d/%m/%Y %H:%M').date() >= start_date
+        ]
+    elif end_date:
+        filtered_predictions = [
+            prediction for prediction in predictions_data
+            if datetime.strptime(prediction['creation_date'], '%d/%m/%Y %H:%M').date() <= end_date
+        ]
+    else:
+        filtered_predictions = predictions_data
+
+    df = pd.DataFrame(filtered_predictions)
+    pie_data = df['problem_title'].value_counts().reset_index()
+    pie_data.columns = ['problem_title', 'count'] 
+    pie_data = pie_data.to_dict(orient="records")
+    print(pie_data)
+
+    
+    return render(request, 'dashboard_predictions.html', {'predictions': filtered_predictions, 'pie_data': pie_data})
+
+ 
+def index(request):
+    datapoints = [
+        { "label": "Online Store",  "y": 27  },
+        { "label": "Offline Store", "y": 25  },        
+        { "label": "Discounted Sale",  "y": 30  },
+        { "label": "B2B Channel", "y": 8  },
+        { "label": "Others",  "y": 10  }
+    ]
+    return render(request, 'index.html', { "datapoints" : datapoints })                        
+
+
+    

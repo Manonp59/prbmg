@@ -7,15 +7,18 @@ import pickle
 import mlflow
 from pydantic import BaseModel
 import string
+from datetime import datetime
 
 
 
 class PredictionInput(BaseModel):
     incident_number: str
+    creation_date: str
     description: str 
     category_full: str 
     ci_name: str 
     location_full: str 
+    creation_date: str
 
 class PredictionOuput(BaseModel):
     cluster_number: int 

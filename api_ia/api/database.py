@@ -1,9 +1,10 @@
-from sqlalchemy import create_engine, Column, Integer, String, inspect
+from sqlalchemy import create_engine, Column, Integer, String, inspect, DateTime
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 import string
 import random
 import os
-
+from sqlalchemy.exc import IntegrityError
+from datetime import datetime
 
 # Connection string for SQL Server
 def create_sql_server_engine():
@@ -30,7 +31,8 @@ class DBpredictions(Base):
     __tablename__ = "predictions"
 
     prediction_id = Column(String(255), primary_key=True, index=True)
-    incident_number = Column(String)
+    incident_number = Column(String,unique=True,index=True)
+    creation_date = Column(String)
     description = Column(String)
     category_full = Column(String)
     ci_name = Column(String)
@@ -61,9 +63,26 @@ def generate_id():
 # Function to create a prediction in the database
 def create_db_prediction(prediction: dict, db: SessionLocal) -> DBpredictions:
     
-    prediction_id = generate_id()
-    db_prediction = DBpredictions(prediction_id=prediction_id, **prediction)
-    db.add(db_prediction)
-    db.commit()
-    db.refresh(db_prediction)
-    return db_prediction
+    incident_number = prediction.get("incident_number")
+    existing_prediction = db.query(DBpredictions).filter(DBpredictions.incident_number == incident_number).first()
+
+    if 'creation_date' in prediction:
+        prediction['creation_date'] = datetime.strptime(prediction['creation_date'], "%d/%m/%Y %H:%M")
+    
+    if existing_prediction:
+        for key, value in prediction.items():
+            setattr(existing_prediction, key, value)
+        db.commit()
+        db.refresh(existing_prediction)
+        return existing_prediction
+    else:
+        prediction_id = generate_id()
+        db_prediction = DBpredictions(prediction_id=prediction_id, **prediction)
+        db.add(db_prediction)
+        try:
+            db.commit()
+        except IntegrityError:
+            db.rollback()
+            raise ValueError(f"Failed to insert prediction with incident_number: {incident_number}")
+        db.refresh(db_prediction)
+        return db_prediction
