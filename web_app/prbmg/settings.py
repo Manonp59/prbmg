@@ -127,13 +127,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # URL de base pour les fichiers statiques
 STATIC_URL = '/static/'
 
-# Répertoire où collectstatic copie les fichiers statiques
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Répertoires de fichiers statiques supplémentaires à inclure
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'clustering/static'),
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

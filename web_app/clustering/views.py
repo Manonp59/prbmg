@@ -303,15 +303,7 @@ def dashboard_predictions(request):
     return render(request, 'dashboard_predictions.html', {'predictions': filtered_predictions, 'pie_data': pie_data})
 
  
-def index(request):
-    datapoints = [
-        { "label": "Online Store",  "y": 27  },
-        { "label": "Offline Store", "y": 25  },        
-        { "label": "Discounted Sale",  "y": 30  },
-        { "label": "B2B Channel", "y": 8  },
-        { "label": "Others",  "y": 10  }
-    ]
-    return render(request, 'index.html', { "datapoints" : datapoints })                        
+                    
 
 
     
