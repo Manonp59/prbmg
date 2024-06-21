@@ -53,7 +53,8 @@ def test_predict_route(test_app):
         "description":"Trigger: Host has been restarted (uptime < 15m) Responsible team: CORP_ISC_Wintel Trigger description:  Trigger severity: Warning Trigger nseverity: 2 Trigger tags: Application:Status, RT:CORP_ISC_Wintel Host: S273A12 Host group: Mumbai/Windows, PSRI, Windows/Mumbai Host description:  Zabbix event ID: 1037670088",
         "category_full":"Incidents/Infrastructure/System/RDS",
         "ci_name":"S273A12",
-        "location_full":"INDIA/INDIA/MUMBAI"
+        "location_full":"INDIA/INDIA/MUMBAI",
+        "creation_date":"2023-04-23 08:34"
     }
     
     # Make a request to the predict route with the test incident and API key

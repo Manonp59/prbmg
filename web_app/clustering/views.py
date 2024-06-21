@@ -307,16 +307,7 @@ def dashboard_predictions(request):
     print(pie_data)
     return render(request, 'dashboard_predictions.html', {'predictions': filtered_predictions, 'download_link': settings.MEDIA_URL + f"clustered_data_{start_date}_to_{end_date}.csv","file_path":file_name, "data_points":pie_data})
 
- 
-def index(request):
-    data_points = [
-        { "label": "apple",  "y": 10  },
-        { "label": "orange", "y": 15  },
-        { "label": "banana", "y": 25  },
-        { "label": "mango",  "y": 30  },
-        { "label": "grape",  "y": 28  }
-    ]
-    return render(request, 'index.html', { "data_points" : data_points })       
+   
 
 
     

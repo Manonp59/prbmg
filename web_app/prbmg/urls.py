@@ -29,8 +29,7 @@ urlpatterns = [
     path('signup/', signup_page,name="signup"), 
     path('clustering/', upload_file,name="clustering"),
     path('download/<str:file_path>/', download_file, name='download_file'),
-    path('dashboard_predictions/', dashboard_predictions, name='dashboard_predictions'),
-    path('index/', index, name='index'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
