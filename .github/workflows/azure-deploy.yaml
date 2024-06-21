@@ -1,0 +1,26 @@
+apiVersion: '2021-03-01'
+location: france-central
+containers:
+  - name: api-ia
+    properties:
+      image: docker.io/manon29/api_ia:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGB: 1.5
+  - name: api-database
+    properties:
+      image: docker.io/manon29/api_database:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGB: 1.5
+  - name: web-app
+    properties:
+      image: docker.io/manon29/web_app:latest
+      resources:
+        requests:
+          cpu: 1
+          memoryInGB: 1.5
+osType: Linux
+restartPolicy: Always

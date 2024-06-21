@@ -29,36 +29,38 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-    - name: Create Azure Container Instance
-      uses: azure/CLI@v2
+    - name: Deploy API IA to Azure Container Instances
+      uses: azure/aci-deploy@v1
       with:
-        azcliversion: 2.61.0
-        inlineScript: |
-          az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
-          
-          # Check if the container exists
-          container_exists=$(az container show --resource-group ${{ secrets.RESOURCE_GROUP }} --name problem_management --query "name" -o tsv || echo "notfound")
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: prbmg-api-ia
+        image: docker.io/manon29/api_ia:latest
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        name: prbmg-api-ia
+        location: 'france-central'
     
-          if [ "$container_exists" != "notfound" ]; then
-            echo "Container instance exists. Deleting..."
-            az container delete --resource-group ${{ secrets.RESOURCE_GROUP }} --name problem_management --yes
-            echo "Container instance deleted."
-          else
-            echo "Container instance does not exist."
-          fi
+    - name: Deploy API Database to Azure Container Instances
+      uses: azure/aci-deploy@v1
+      with:
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: prbmg-api-database
+        image: docker.io/manon29/api_database:latest
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        name: prbmg-api-database
+        location: 'france-central'
     
-          az container create \
-            --resource-group ${{ secrets.RESOURCE_GROUP }} \
-            --name problem_management \
-            --image ${{ secrets.DOCKERHUB_USERNAME }}/app_web:latest \
-            --cpu 1 \
-            --memory 1 \
-            --ip-address public \
-            --dns-name-label problem_management \
-            --ports 8000 \
-            --environment-variables \
-            "TOKEN"=${{ secrets.TOKEN }} \
-            "APP_NAME"=${{ secrets.APP_NAME }} \
-
-    - name: Test Endpoint
-      run: curl -I problem_management.francecentral.azurecontainer.io:8000/
+    - name: Deploy Web app  to Azure Container Instances
+      uses: azure/aci-deploy@v1
+      with:
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: prbmg-web-app
+        image: docker.io/manon29/web_app:latest
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        name: prbmg-web-app
+        location: 'france-central'
