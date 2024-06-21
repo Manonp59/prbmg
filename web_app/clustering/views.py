@@ -12,10 +12,7 @@ import requests
 import re
 import json 
 from datetime import datetime
-import matplotlib.pyplot as plt 
-import base64
-from io import BytesIO
-import plotly.express as xp
+
 
 
 
@@ -249,7 +246,7 @@ def download_file(request, file_path):
 
 @login_required(login_url='login')
 def dashboard_predictions(request):
-    API_URL = "http://127.0.0.1:8000/predictions"
+    API_URL = "http://api_database:8000/predictions"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
     response = requests.get(API_URL, headers=headers)
