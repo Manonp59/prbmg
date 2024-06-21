@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, inspect, DateTime
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 import string
 import random
@@ -66,9 +66,6 @@ def create_db_prediction(prediction: dict, db: SessionLocal) -> DBpredictions:
     incident_number = prediction.get("incident_number")
     existing_prediction = db.query(DBpredictions).filter(DBpredictions.incident_number == incident_number).first()
 
-    if 'creation_date' in prediction:
-        prediction['creation_date'] = datetime.strptime(prediction['creation_date'], "%d/%m/%Y %H:%M")
-    
     if existing_prediction:
         for key, value in prediction.items():
             setattr(existing_prediction, key, value)

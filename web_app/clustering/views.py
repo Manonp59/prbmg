@@ -293,17 +293,30 @@ def dashboard_predictions(request):
     else:
         filtered_predictions = predictions_data
 
+    filtered_predictions = sorted(filtered_predictions, key=lambda x: x.get('cluster_number', 0), reverse=False)
     df = pd.DataFrame(filtered_predictions)
-    pie_data = df['problem_title'].value_counts().reset_index()
-    pie_data.columns = ['problem_title', 'count'] 
-    pie_data = pie_data.to_dict(orient="records")
-    print(pie_data)
+    df = df.sort_values(by="cluster_number", ascending=False)
+    file_name = f"clustered_data_{start_date}_to_{end_date}.csv"
+    file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+    df.to_csv(file_path, index=False)
 
+    pie_data = df['problem_title'].value_counts().reset_index()
+    pie_data.columns = ['label', 'y'] 
+    pie_data = pie_data.to_dict(orient="records")
     
-    return render(request, 'dashboard_predictions.html', {'predictions': filtered_predictions, 'pie_data': pie_data})
+    print(pie_data)
+    return render(request, 'dashboard_predictions.html', {'predictions': filtered_predictions, 'download_link': settings.MEDIA_URL + f"clustered_data_{start_date}_to_{end_date}.csv","file_path":file_name, "data_points":pie_data})
 
  
-                    
+def index(request):
+    data_points = [
+        { "label": "apple",  "y": 10  },
+        { "label": "orange", "y": 15  },
+        { "label": "banana", "y": 25  },
+        { "label": "mango",  "y": 30  },
+        { "label": "grape",  "y": 28  }
+    ]
+    return render(request, 'index.html', { "data_points" : data_points })       
 
 
     

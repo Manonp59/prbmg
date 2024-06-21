@@ -29,7 +29,7 @@ MEDIA_URL = '/media/'
 SECRET_KEY = 'django-insecure-)%j_-sortt(^-i=$t&lxoupwz+p-sm(i*8om1#hnu62*v+j*fe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -124,8 +124,13 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# URL de base pour les fichiers statiques
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'clustering', 'static'),
+]
 
 
 # Default primary key field type
