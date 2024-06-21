@@ -23,3 +23,42 @@ jobs:
         docker compose push
       env:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Create Azure Container Instance
+      uses: azure/CLI@v2
+      with:
+        azcliversion: 2.61.0
+        inlineScript: |
+          az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+          
+          # Check if the container exists
+          container_exists=$(az container show --resource-group ${{ secrets.RESOURCE_GROUP }} --name problem_management --query "name" -o tsv || echo "notfound")
+    
+          if [ "$container_exists" != "notfound" ]; then
+            echo "Container instance exists. Deleting..."
+            az container delete --resource-group ${{ secrets.RESOURCE_GROUP }} --name problem_management --yes
+            echo "Container instance deleted."
+          else
+            echo "Container instance does not exist."
+          fi
+    
+          az container create \
+            --resource-group ${{ secrets.RESOURCE_GROUP }} \
+            --name problem_management \
+            --image ${{ secrets.DOCKERHUB_USERNAME }}/app_web:latest \
+            --cpu 1 \
+            --memory 1 \
+            --ip-address public \
+            --dns-name-label problem_management \
+            --ports 8000 \
+            --environment-variables \
+            "TOKEN"=${{ secrets.TOKEN }} \
+            "APP_NAME"=${{ secrets.APP_NAME }} \
+
+    - name: Test Endpoint
+      run: curl -I problem_management.francecentral.azurecontainer.io:8000/
