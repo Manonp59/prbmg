@@ -117,6 +117,7 @@ mkdocstrings-crystal==0.3.7
 mkdocstrings-python==1.8.0
 mlflow==2.12.1
 mssql==1.0.1
+mssql-django==1.5
 multidict==6.0.5
 mypy-extensions==1.0.0
 nbclient==0.9.0

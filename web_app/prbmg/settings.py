@@ -96,7 +96,7 @@ DATABASES = {
         'HOST': os.getenv('AZURE_SERVER_NAME'),
         'PORT': '1433',
         'OPTIONS': {
-            'driver': os.getenv('DRIVER')
+            'driver': 'ODBC Driver 17 for SQL Server'
         },
     },
 }
