@@ -64,10 +64,6 @@ jobs:
         ports: '8000'
         secure-environment-variables: |
           AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}
-          AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}
-          AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}
-          AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}
-          DRIVER=${{ secrets.DRIVER }}
               
     - name: Deploy Web app  to Azure Container Instances
       uses: azure/aci-deploy@v1
