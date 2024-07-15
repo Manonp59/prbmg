@@ -73,9 +73,6 @@ jobs:
         echo "NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}" >> $GITHUB_ENV &&
         echo "API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}" >> $GITHUB_ENV
 
-    - name: Print Environment Variables
-      run: printenv
-
     - name: Deploy API IA to Azure Container Instances
       uses: azure/aci-deploy@v1
       with:
