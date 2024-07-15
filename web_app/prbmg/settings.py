@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-)%j_-sortt(^-i=$t&lxoupwz+p-sm(i*8om1#hnu62*v+j*fe
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0','prbmg-web-app.francecentral.azurecontainer.io:8002']
 
 
 # Application definition
