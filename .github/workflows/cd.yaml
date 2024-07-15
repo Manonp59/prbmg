@@ -40,6 +40,7 @@ jobs:
         registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
         name: prbmg-api-ia
         location: francecentral
+        ports: '8001'
     
     - name: Deploy API Database to Azure Container Instances
       uses: azure/aci-deploy@v1
@@ -52,6 +53,7 @@ jobs:
         registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
         name: prbmg-api-database
         location: francecentral
+        ports: '8000'
     
     - name: Deploy Web app  to Azure Container Instances
       uses: azure/aci-deploy@v1
@@ -64,3 +66,4 @@ jobs:
         registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
         name: prbmg-web-app
         location: francecentral
+        ports: '8002'
