@@ -28,6 +28,33 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+    - name: Set up environment variables
+      run: |
+        # Vérification manuelle des noms de variables
+        for var in \
+          "API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}" \
+          "AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}" \
+          "AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}" \
+          "AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}" \
+          "AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}" \
+          "DRIVER=${{ secrets.DRIVER }}" \
+          "EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}" \
+          "EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}" \
+          "EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}" \
+          "EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}" \
+          "NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}" \
+          "NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}" \
+          "NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}" \
+          "API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}"; do
+          name=$(echo $var | cut -d= -f1)
+          value=$(echo $var | cut -d= -f2)
+          if [[ ! "$name" =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]]; then
+            echo "Invalid environment variable name: $name"
+            exit 1
+          fi
+          echo "$name=$value" >> $GITHUB_ENV
+        done
     
     - name: Set up environment variables
       run: |
