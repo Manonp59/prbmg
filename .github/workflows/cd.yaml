@@ -28,13 +28,6 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: Set up environment variables
-      run: |
-        echo "API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}" >> $GITHUB_ENV &&
-
-        
-        echo "API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}" >> $GITHUB_ENV 
 
     - name: Deploy API IA to Azure Container Instances
       uses: azure/aci-deploy@v1
@@ -48,9 +41,9 @@ jobs:
         name: prbmg-api-ia
         location: francecentral
         ports: '8001'
-        environment-variables: |
+        secure-environment-variables: |
           EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}
-          MBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}
+          EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}
           EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}
           EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}
           NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}
@@ -69,7 +62,7 @@ jobs:
         name: prbmg-api-database
         location: francecentral
         ports: '8000'
-        environment-variables: |
+        secure-environment-variables: |
           AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}
           AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}
           AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}
@@ -88,6 +81,6 @@ jobs:
         name: prbmg-web-app
         location: francecentral
         ports: '8002'
-        environment-variables: |
+        secure-environment-variables: |
           API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}
           API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}

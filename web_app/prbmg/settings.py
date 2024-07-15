@@ -80,14 +80,26 @@ WSGI_APPLICATION = 'prbmg.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'mssql',
+        'NAME': os.getenv('AZURE_DATABASE_NAME'),
+        'USER': os.getenv('AZURE_DATABASE_USERNAME'),
+        'PASSWORD': os.getenv('AZURE_DATABASE_PASSWORD'),
+        'HOST': os.getenv('AZURE_SERVER_NAME'),
+        'PORT': '1433',
+        'OPTIONS': {
+            'driver': os.getenv('DRIVER')
+        },
+    },
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
