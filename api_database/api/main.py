@@ -10,13 +10,13 @@ import os
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import date
+import logging
 
 load_dotenv()
 
 API_DATABASE_SECRET_KEY = os.getenv('API_DATABASE_SECRET_KEY')
 
 app = FastAPI()
-
 
 # Apply CORS middleware to allow documentation access without API key
 app.add_middleware(
