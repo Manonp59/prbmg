@@ -33,7 +33,7 @@ jobs:
       uses: azure/aci-deploy@v1
       with:
         resource-group: ${{ secrets.RESOURCE_GROUP }}
-        dns-name-label: prbmg-api-ia
+        dns-name-label: prbmg-api-ia2
         image: docker.io/manon29/api_ia:latest
         registry-login-server: docker.io
         registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -79,7 +79,7 @@ jobs:
         registry-login-server: docker.io
         registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
         registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        name: prbmg-web-app
+        name: prbmg-web-app2
         location: francecentral
         ports: '8002'
         secure-environment-variables: |
