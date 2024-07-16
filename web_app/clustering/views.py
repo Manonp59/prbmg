@@ -190,8 +190,9 @@ def process_clustering(df):
     return df
 
 def get_location(df):
-    API_URL = "http://http://prbmg-api-database.francecentral.azurecontainer.io:8000/ci_location"
+    API_URL = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/ci_location"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
+    print(API_KEY)
     headers = {"X-API-Key": API_KEY}
     response = requests.get(API_URL, headers=headers)
 
