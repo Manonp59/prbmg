@@ -17,6 +17,11 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copie de l'ensemble du projet dans le conteneur
 COPY . /app
 
+RUN apt-get update \
+    && apt-get install -y \
+        unixodbc-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Exposition du port 8002 vers l'extérieur
 EXPOSE 8002
 
