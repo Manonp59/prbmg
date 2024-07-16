@@ -17,10 +17,17 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copie de l'ensemble du projet dans le conteneur
 COPY . /app
 
-RUN apt-get update \
-    && apt-get install -y \
-        unixodbc-dev \
+# Installer les dépendances système requises
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    unixodbc \
+    unixodbc-dev \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
+
+ENV ACCEPT_EULA=Y
+RUN apt-get update -y && apt-get update \
+  && apt-get install -y --no-install-recommends curl gcc g++ gnupg unixodbc-dev
 
 # Add SQL Server ODBC Driver 17 for Ubuntu 18.04
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \

@@ -50,6 +50,11 @@ jobs:
           NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}
           NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}
           API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}
+          AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}
+          AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}
+          AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}
+          AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}
+          DRIVER=${{ secrets.DRIVER }}
     
     - name: Deploy API Database to Azure Container Instances
       uses: azure/aci-deploy@v1
