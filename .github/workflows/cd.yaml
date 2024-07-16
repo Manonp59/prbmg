@@ -16,72 +16,84 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Build and Push Docker Images using Docker Compose
-      run: |
-        echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        docker compose build
-        docker compose push
-      env:
-        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    # - name: Build and Push Docker Images using Docker Compose
+    #   run: |
+    #     echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    #     docker compose build
+    #     docker compose push
+    #   env:
+    #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
 
     - name: Azure Login
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy API IA to Azure Container Instances
-      uses: azure/aci-deploy@v1
-      with:
-        resource-group: ${{ secrets.RESOURCE_GROUP }}
-        dns-name-label: prbmg-api-ia2
-        image: docker.io/manon29/api_ia:latest
-        registry-login-server: docker.io
-        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
-        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        name: prbmg-api-ia2
-        location: francecentral
-        ports: '8001'
-        secure-environment-variables: |
-          EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}
-          EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}
-          EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}
-          EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}
-          NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}
-          NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}
-          NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}
+    # - name: Deploy API IA to Azure Container Instances
+    #   uses: azure/aci-deploy@v1
+    #   with:
+    #     resource-group: ${{ secrets.RESOURCE_GROUP }}
+    #     dns-name-label: prbmg-api-ia2
+    #     image: docker.io/manon29/api_ia:latest
+    #     registry-login-server: docker.io
+    #     registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #     name: prbmg-api-ia2
+    #     location: francecentral
+    #     ports: '8001'
+    #     secure-environment-variables: |
+    #       EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}
+    #       EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}
+    #       EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}
+    #       EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}
+    #       NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}
+    #       NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}
+    #       NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}
     
-    - name: Deploy API Database to Azure Container Instances
-      uses: azure/aci-deploy@v1
-      with:
-        resource-group: ${{ secrets.RESOURCE_GROUP }}
-        dns-name-label: prbmg-api-database
-        image: docker.io/manon29/api_database:latest
-        registry-login-server: docker.io
-        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
-        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        name: prbmg-api-database
-        location: francecentral
-        ports: '8000'
-        secure-environment-variables: |
-          AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}
-          AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}
-          AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}
-          AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}
-          DRIVER=${{ secrets.DRIVER }}
+    # - name: Deploy API Database to Azure Container Instances
+    #   uses: azure/aci-deploy@v1
+    #   with:
+    #     resource-group: ${{ secrets.RESOURCE_GROUP }}
+    #     dns-name-label: prbmg-api-database
+    #     image: docker.io/manon29/api_database:latest
+    #     registry-login-server: docker.io
+    #     registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #     name: prbmg-api-database
+    #     location: francecentral
+    #     ports: '8000'
+    #     secure-environment-variables: |
+    #       AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}
+    #       AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}
+    #       AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}
+    #       AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}
+    #       DRIVER=${{ secrets.DRIVER }}
 
               
-    - name: Deploy Web app  to Azure Container Instances
-      uses: azure/aci-deploy@v1
-      with:
-        resource-group: ${{ secrets.RESOURCE_GROUP }}
-        dns-name-label: prbmg-web-app2
-        image: docker.io/manon29/web_app:latest
-        registry-login-server: docker.io
-        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
-        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        name: prbmg-web-app2
-        location: francecentral
-        ports: '8002'
-        secure-environment-variables: |
-          API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}
-          API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}
+    # - name: Deploy Web app  to Azure Container Instances
+    #   uses: azure/aci-deploy@v1
+    #   with:
+    #     resource-group: ${{ secrets.RESOURCE_GROUP }}
+    #     dns-name-label: prbmg-web-app2
+    #     image: docker.io/manon29/web_app:latest
+    #     registry-login-server: docker.io
+    #     registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #     name: prbmg-web-app2
+    #     location: francecentral
+    #     ports: '8002'
+    #     secure-environment-variables: |
+    #       API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}
+    #       API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}
+    
+    - name: Debug Environment Variables
+      run: |
+        echo "EMBEDDING_API_KEY: ${{ secrets.EMBEDDING_API_KEY }}"
+        echo "EMBEDDING_AZURE_DEPLOYMENT: ${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}"
+        echo "EMBEDDING_AZURE_ENDPOINT: ${{ secrets.EMBEDDING_AZURE_ENDPOINT }}"
+        echo "EMBEDDING_OPENAI_API_VERSION: ${{ secrets.EMBEDDING_OPENAI_API_VERSION }}"
+        echo "NAMING_OPENAI_API_BASE: ${{ secrets.NAMING_OPENAI_API_BASE }}"
+        echo "NAMING_OPENAI_API_KEY: ${{ secrets.NAMING_OPENAI_API_KEY }}"
+        echo "NAMING_OPENAI_API_TYPE: ${{ secrets.NAMING_OPENAI_API_TYPE }}"
+        echo "API_IA_SECRET_KEY: ${{ secrets.API_IA_SECRET_KEY }}"
+        echo "API_DATABASE_SECRET_KEY: ${{ secrets.API_DATABASE_SECRET_KEY }}"
