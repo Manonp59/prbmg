@@ -29,26 +29,27 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    # - name: Deploy API IA to Azure Container Instances
-    #   uses: azure/aci-deploy@v1
-    #   with:
-    #     resource-group: ${{ secrets.RESOURCE_GROUP }}
-    #     dns-name-label: prbmg-api-ia2
-    #     image: docker.io/manon29/api_ia:latest
-    #     registry-login-server: docker.io
-    #     registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    #     name: prbmg-api-ia2
-    #     location: francecentral
-    #     ports: '8001'
-    #     secure-environment-variables: |
-    #       EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}
-    #       EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}
-    #       EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}
-    #       EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}
-    #       NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}
-    #       NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}
-    #       NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}
+    - name: Deploy API IA to Azure Container Instances
+      uses: azure/aci-deploy@v1
+      with:
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: prbmg-api-ia2
+        image: docker.io/manon29/api_ia:latest
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        name: prbmg-api-ia2
+        location: francecentral
+        ports: '8001'
+        secure-environment-variables: |
+          EMBEDDING_API_KEY=${{ secrets.EMBEDDING_API_KEY }}
+          EMBEDDING_AZURE_DEPLOYMENT=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }}
+          EMBEDDING_AZURE_ENDPOINT=${{ secrets.EMBEDDING_AZURE_ENDPOINT }}
+          EMBEDDING_OPENAI_API_VERSION=${{ secrets.EMBEDDING_OPENAI_API_VERSION }}
+          NAMING_OPENAI_API_BASE=${{ secrets.NAMING_OPENAI_API_BASE }}
+          NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}
+          NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}
+          API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}
     
     # - name: Deploy API Database to Azure Container Instances
     #   uses: azure/aci-deploy@v1
@@ -70,61 +71,66 @@ jobs:
     #       DRIVER=${{ secrets.DRIVER }}
 
               
-    # - name: Deploy Web app  to Azure Container Instances
-    #   uses: azure/aci-deploy@v1
-    #   with:
-    #     resource-group: ${{ secrets.RESOURCE_GROUP }}
-    #     dns-name-label: prbmg-web-app2
-    #     image: docker.io/manon29/web_app:latest
-    #     registry-login-server: docker.io
-    #     registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    #     name: prbmg-web-app2
-    #     location: francecentral
-    #     ports: '8002'
-    #     secure-environment-variables: |
-    #       API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}
-    #       API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}
-
-    - name: Create Azure Container Instance
-      uses: azure/CLI@v2
+    - name: Deploy Web app  to Azure Container Instances
+      uses: azure/aci-deploy@v1
       with:
-        azcliversion: 2.61.0
-        inlineScript: |
-          az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
-          
-          # Check if the container exists
-          container_exists=$(az container show --resource-group ${{ secrets.RESOURCE_GROUP }} --name prbmg-api-ia --query "name" -o tsv || echo "notfound")
-    
-          if [ "$container_exists" != "notfound" ]; then
-            echo "Container instance exists. Deleting..."
-            az container delete --resource-group ${{ secrets.RESOURCE_GROUP }} --name prbmg-api-ia --yes
-            echo "Container instance deleted."
-          else
-            echo "Container instance does not exist."
-          fi
-    
-          az container create \
-            --resource-group ${{ secrets.RESSOURCE_GROUP }} \
-            --name prbmg-api-ia \
-            --image ${{ secrets.DOCKERHUB_USERNAME }}/api_ia:latest \
-            --cpu 1 \
-            --memory 1 \
-            --ip-address public \
-            --dns-name-label prbmg-api-ia \
-            --ports 80 8001 \
-            --environment-variables \
-            "SUBSCRIPTION_ID"=${{ secrets.SUBSCRIPTION_ID }} \
-            "RESOURCE_GROUP"=${{ secrets.RESOURCE_GROUP }} \
-            "EMBEDDING_API_KEY="${{ secrets.EMBEDDING_API_KEY }} \
-            "EMBEDDING_AZURE_DEPLOYMENT"=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }} \
-            "EMBEDDING_AZURE_ENDPOINT"=${{ secrets.EMBEDDING_AZURE_ENDPOINT }} \
-            "EMBEDDING_OPENAI_API_VERSION"=${{ secrets.EMBEDDING_OPENAI_API_VERSION }} \
-            "NAMING_OPENAI_API_BASE"=${{ secrets.NAMING_OPENAI_API_BASE }} \
-            "NAMING_OPENAI_API_KEY"=${{ secrets.NAMING_OPENAI_API_KEY }} \
-            "NAMING_OPENAI_API_TYPE"=${{ secrets.NAMING_OPENAI_API_TYPE }} \
-            "API_DATABASE_SECRET_KEY"=${{ secrets.API_DATABASE_SECRET_KEY }}
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: prbmg-web-app2
+        image: docker.io/manon29/web_app:latest
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        name: prbmg-web-app2
+        location: francecentral
+        ports: '8002'
+        secure-environment-variables: |
+          API_IA_SECRET_KEY=${{ secrets.API_IA_SECRET_KEY }}
+          API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}
+          AZURE_DATABASE_NAME=${{ secrets.AZURE_DATABASE_NAME }}
+          AZURE_DATABASE_PASSWORD=${{ secrets.AZURE_DATABASE_PASSWORD }}
+          AZURE_DATABASE_USERNAME=${{ secrets.AZURE_DATABASE_USERNAME }}
+          AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}
+          DRIVER=${{ secrets.DRIVER }}
 
-    - name: Test Endpoint
-      run: curl -I ${{ inputs.app_name }}.francecentral.azurecontainer.io:8000/docs
+    # - name: Create Azure Container Instance
+    #   uses: azure/CLI@v2
+    #   with:
+    #     azcliversion: 2.61.0
+    #     inlineScript: |
+    #       az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+          
+    #       # Check if the container exists
+    #       container_exists=$(az container show --resource-group ${{ secrets.RESOURCE_GROUP }} --name prbmg-api-ia --query "name" -o tsv || echo "notfound")
+    
+    #       if [ "$container_exists" != "notfound" ]; then
+    #         echo "Container instance exists. Deleting..."
+    #         az container delete --resource-group ${{ secrets.RESOURCE_GROUP }} --name prbmg-api-ia --yes
+    #         echo "Container instance deleted."
+    #       else
+    #         echo "Container instance does not exist."
+    #       fi
+    
+    #       az container create \
+    #         --resource-group ${{ secrets.RESSOURCE_GROUP }} \
+    #         --name prbmg-api-ia \
+    #         --image ${{ secrets.DOCKERHUB_USERNAME }}/api_ia:latest \
+    #         --cpu 1 \
+    #         --memory 1 \
+    #         --ip-address public \
+    #         --dns-name-label prbmg-api-ia \
+    #         --ports 80 8001 \
+    #         --environment-variables \
+    #         "SUBSCRIPTION_ID"=${{ secrets.SUBSCRIPTION_ID }} \
+    #         "RESOURCE_GROUP"=${{ secrets.RESOURCE_GROUP }} \
+    #         "EMBEDDING_API_KEY="${{ secrets.EMBEDDING_API_KEY }} \
+    #         "EMBEDDING_AZURE_DEPLOYMENT"=${{ secrets.EMBEDDING_AZURE_DEPLOYMENT }} \
+    #         "EMBEDDING_AZURE_ENDPOINT"=${{ secrets.EMBEDDING_AZURE_ENDPOINT }} \
+    #         "EMBEDDING_OPENAI_API_VERSION"=${{ secrets.EMBEDDING_OPENAI_API_VERSION }} \
+    #         "NAMING_OPENAI_API_BASE"=${{ secrets.NAMING_OPENAI_API_BASE }} \
+    #         "NAMING_OPENAI_API_KEY"=${{ secrets.NAMING_OPENAI_API_KEY }} \
+    #         "NAMING_OPENAI_API_TYPE"=${{ secrets.NAMING_OPENAI_API_TYPE }} \
+    #         "API_DATABASE_SECRET_KEY"=${{ secrets.API_DATABASE_SECRET_KEY }}
+
+    # - name: Test Endpoint
+    #   run: curl -I ${{ inputs.app_name }}.francecentral.azurecontainer.io:8000/docs
     
