@@ -158,11 +158,11 @@ def handle_uploaded_file(f):
     
     return df
 
-API_URL = "http://127.0.0.1:8001/predict"
+API_URL = "http://prbmg-api-ia.francecentral.azurecontainer.io:8001/predict"
 API_KEY = os.getenv('API_IA_SECRET_KEY')
 
 def process_clustering(df):
-    API_URL = "http://127.0.0.1:8001/predict"
+    API_URL = "http://prbmg-api-ia.francecentral.azurecontainer.io:8001/predict"
     API_KEY = os.getenv('API_IA_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
     df['cluster_number'] = None
@@ -190,7 +190,7 @@ def process_clustering(df):
     return df
 
 def get_location(df):
-    API_URL = "http://api_ia:8001/ci_location"
+    API_URL = "http://http://prbmg-api-database.francecentral.azurecontainer.io:8000/ci_location"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
     response = requests.get(API_URL, headers=headers)
@@ -246,7 +246,7 @@ def download_file(request, file_path):
 
 @login_required(login_url='login')
 def dashboard_predictions(request):
-    API_URL = "http://api_database:8000/predictions"
+    API_URL = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/predictions"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
     response = requests.get(API_URL, headers=headers)
