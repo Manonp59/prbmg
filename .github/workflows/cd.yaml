@@ -16,13 +16,13 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    # - name: Build and Push Docker Images using Docker Compose
-    #   run: |
-    #     echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-    #     docker compose build
-    #     docker compose push
-    #   env:
-    #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    - name: Build and Push Docker Images using Docker Compose
+      run: |
+        echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        docker compose build
+        docker compose push
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
 
     - name: Azure Login
       uses: azure/login@v1
@@ -33,12 +33,12 @@ jobs:
       uses: azure/aci-deploy@v1
       with:
         resource-group: ${{ secrets.RESOURCE_GROUP }}
-        dns-name-label: prbmg-api-ia2
+        dns-name-label: prbmg-api-ia
         image: docker.io/manon29/api_ia:latest
         registry-login-server: docker.io
         registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
         registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        name: prbmg-api-ia2
+        name: prbmg-api-ia
         location: francecentral
         ports: '8001'
         secure-environment-variables: |
@@ -75,12 +75,12 @@ jobs:
       uses: azure/aci-deploy@v1
       with:
         resource-group: ${{ secrets.RESOURCE_GROUP }}
-        dns-name-label: prbmg-web-app2
+        dns-name-label: prbmg-web-app
         image: docker.io/manon29/web_app:latest
         registry-login-server: docker.io
         registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
         registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        name: prbmg-web-app2
+        name: prbmg-web-app
         location: francecentral
         ports: '8002'
         secure-environment-variables: |
