@@ -67,6 +67,8 @@ def predict_cluster(model_path,incident:PredictionInput):
 
 
 def get_model_path(model_run):
+    mlflow_tracking_uri = os.getenv('MLFLOW_TRACKING_URI')
+    print(mlflow_tracking_uri)
     mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
     experiment = mlflow.get_experiment_by_name("incidents_clustering")
     runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
