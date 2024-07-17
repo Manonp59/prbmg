@@ -53,9 +53,7 @@ def connect_to_sql_server():
 
 def predict_cluster(model_path,incident:PredictionInput):
 
-    with open(model_path, 'rb') as file:
-        loaded_model = pickle.load(file)
-
+    loaded_model = mlflow.pyfunc.load_model(model_path)
     docs = incident.description + " " + incident.category_full + " " + incident.location_full + " " + incident.ci_name 
     punctuation_table = str.maketrans("", "", string.punctuation + "“”’")
     docs = docs.translate(punctuation_table)
@@ -69,20 +67,23 @@ def predict_cluster(model_path,incident:PredictionInput):
 
 
 def get_model_path(model_run):
+    mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
     experiment = mlflow.get_experiment_by_name("incidents_clustering")
     runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
     filtered_runs = runs[runs['tags.mlflow.runName'] == model_run]
     run_id = filtered_runs.iloc[0]['run_id']
     run = mlflow.get_run(run_id)
     artifact_uri = run.info.artifact_uri
-
-    # Déterminer le chemin relatif à partir de l'URI de l'artefact
-    relative_artifact_path = artifact_uri.split("azureml://")[1]  # Supprimez "azureml://" de l'URI de l'artefact
+    print(artifact_uri)
     
-    # Combiner le chemin relatif avec le nom du modèle (adjustez selon votre structure)
-    model_path = os.path.join(relative_artifact_path, "model.pkl")
+    # Assurez-vous que l'URI de l'artefact commence par 'azureml://'
+    if not artifact_uri.startswith('azureml://'):
+        raise ValueError(f"Artifact URI '{artifact_uri}' does not start with 'azureml://'")
 
-    return model_path
+    # Vous pouvez utiliser directement l'URI de l'artefact Azure sans le télécharger localement
+    model_uri = artifact_uri + f"/{model_run}"
+
+    return model_uri
 
 
 
