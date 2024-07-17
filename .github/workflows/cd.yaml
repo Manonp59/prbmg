@@ -57,6 +57,9 @@ jobs:
           AZURE_SERVER_NAME=${{ secrets.AZURE_SERVER_NAME }}
           DRIVER=${{ secrets.DRIVER }}
           MLFLOW_TRACKING_URI=${{ secrets.MLFLOW_TRACKING_URI}}
+          AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID}}
+          AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET}}
+          AZURE_TENANT_ID=${{ secrets.AZURE_TENANT_ID}}
     
     - name: Deploy API Database to Azure Container Instances
       uses: azure/aci-deploy@v1
