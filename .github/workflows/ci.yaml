@@ -39,11 +39,10 @@ jobs:
           echo "NAMING_OPENAI_API_KEY=${{ secrets.NAMING_OPENAI_API_KEY }}" >> $GITHUB_ENV &&
           echo "NAMING_OPENAI_API_TYPE=${{ secrets.NAMING_OPENAI_API_TYPE }}" >> $GITHUB_ENV &&
           echo "API_DATABASE_SECRET_KEY=${{ secrets.API_DATABASE_SECRET_KEY }}" >> $GITHUB_ENV &&
-          echo "MLFLOW_TRACKING_URI=${{ secrets.MLFLOW_TRACKING_URI}}" $GITHUB_ENV
+          echo "MLFLOW_TRACKING_URI=${{ secrets.MLFLOW_TRACKING_URI}}" >> $GITHUB_ENV
 
       
 
       - name: Run Test 
         run: pytest -v
 
-        
