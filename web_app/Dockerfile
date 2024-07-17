@@ -38,7 +38,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
 # Exporter la variable d'environnement pour la configuration Django
-ENV DJANGO_SETTINGS_MODULE=myproject.settings
+ENV DJANGO_SETTINGS_MODULE=prbmg.settings
 ENV PYTHONUNBUFFERED=1
 
 # Exécuter la commande collectstatic pour rassembler les fichiers statiques
