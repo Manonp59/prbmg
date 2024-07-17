@@ -45,6 +45,22 @@ nav {
     margin-left: 10px; /* Espacement entre les boutons */
 }
 
+.button-white-yellow {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #ffc107;
+    border: 1px solid #ffc107;
+    margin-right: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.button-white-yellow:hover {
+    background-color: #f0f0f0;
+}
+
 .button-blue {
     background-color: #0066cc; /* Blue */
     color: #fff;
@@ -85,7 +101,7 @@ nav {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 40px auto; /* Centre le contenu et ajoute de la marge autour */
-    max-width: 800px; 
+    
 }
 
 /* Style du formulaire */
@@ -276,7 +292,6 @@ h1{
 }
 
 .content-container a {
-    color: #0066cc; /* Couleur du lien */
     text-decoration: none; /* Supprime le soulignement */
     font-weight: bold;
     transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
@@ -304,7 +319,6 @@ h1{
     border-radius: 5px;
     text-decoration: none;
     font-size: 1em;
-    transition: background-color 0.3s ease;
 }
 
 .button:hover {

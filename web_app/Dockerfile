@@ -37,6 +37,13 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
+# Exporter la variable d'environnement pour la configuration Django
+ENV DJANGO_SETTINGS_MODULE=myproject.settings
+ENV PYTHONUNBUFFERED=1
+
+# Exécuter la commande collectstatic pour rassembler les fichiers statiques
+RUN python manage.py collectstatic --noinput
+
 # Exposition du port 8002 vers l'extérieur
 EXPOSE 8002
 

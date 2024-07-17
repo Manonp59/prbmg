@@ -45,6 +45,22 @@ nav {
     margin-left: 10px; /* Espacement entre les boutons */
 }
 
+.button-white-yellow {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #ffc107;
+    border: 1px solid #ffc107;
+    margin-right: 10px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.button-white-yellow:hover {
+    background-color: #f0f0f0;
+}
+
 .button-blue {
     background-color: #0066cc; /* Blue */
     color: #fff;

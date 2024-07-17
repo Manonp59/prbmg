@@ -1,39 +1,49 @@
 {% extends 'base.html' %}
 
-{%block title%}Update account{%endblock%}
+{% block title %}Update account{% endblock %}
 
 {% block content %}
 
 <h1>Update my account</h1>
 
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 <section>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    <div class="fieldWrapper">
-        {{form.username.errors}}
-        <p><label for="{{form.username.id_for_label}}">Username:</label>
-        {{form.username}}</p>
-    </div>
-    <div class="fieldWrapper">
-        {{form.email.errors}}
-        <p><label for="{{form.email.id_for_label}}">Email:</label>
-        {{form.email}}</p>
-    </div>
-    <div class="fieldWrapper">
-        {{form.first_name.errors}}
-        <p><label for="{{form.first_name.id_for_label}}">First Name:</label>
-        {{form.first_name}}</p>
-    </div>
-    <div class="fieldWrapper">
-        {{form.last_name.errors}}
-        <p><label for="{{form.last_name.id_for_label}}">Last Name:</label>
-        {{form.last_name}}</p>
-    </div>
-    <div>
-        <input type="submit" value="OK">
-    </div>
-</form>
+<div class="form-container">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {{ form.username.errors }}
+            <p><label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.email.errors }}
+            <p><label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.first_name.errors }}
+            <p><label for="{{ form.first_name.id_for_label }}">First Name:</label>
+            {{ form.first_name }}</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.last_name.errors }}
+            <p><label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+            {{ form.last_name }}</p>
+        </div>
+        <div>
+            <input class="button-blue" type="submit" value="OK">
+        </div>
+    </form>
+</div>
 </section>
 
-{%endblock%}
+{% endblock %}

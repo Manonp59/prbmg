@@ -22,7 +22,7 @@ class SignUpForm(UserCreationForm):
 class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User 
-        fields = ('username','email', 'first_name', 'last_name','password')
+        fields = ('username','email', 'first_name', 'last_name')
 
 
 class UploadFileForm(forms.Form):

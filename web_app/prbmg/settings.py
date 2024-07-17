@@ -29,7 +29,7 @@ MEDIA_URL = '/media/'
 SECRET_KEY = 'django-insecure-)%j_-sortt(^-i=$t&lxoupwz+p-sm(i*8om1#hnu62*v+j*fe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0','prbmg-web-app.francecentral.azurecontainer.io']
 

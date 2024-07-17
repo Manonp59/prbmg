@@ -109,33 +109,24 @@ def signup_page(request):
 
 @login_required(login_url='login')
 def update_user(request):
-    """
-    Fonction de vue qui permet à un utilisateur connecté de modifier les informations de son compte.
-
-    Si la méthode HTTP de la requête est 'POST', les données du formulaire sont validées et enregistrées,
-    et l'utilisateur est redirigé vers l'URL 'mon-compte'. Si la méthode n'est pas 'POST', le formulaire est
-    initialisé avec les données de l'utilisateur actuel et affiché sur le modèle 'modifier-mon-compte'.
-
-    Args:
-        request: L'objet de requête HTTP envoyé par le client.
-
-    Returns:
-        Un objet de réponse HTTP qui contient le modèle 'modifier-mon-compte' rendu avec l'objet de formulaire
-        comme données de contexte.
-    """
     user = request.user
     if request.method == 'POST':
-        form = UpdateUserForm(request.POST, instance = user)
+        form = UpdateUserForm(request.POST, instance=user)
         
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request, user)  # Ré-authentifie l'utilisateur après la mise à jour
             messages.success(request, 'Vos modifications ont bien été prises en compte ✅')
-            return redirect('mon-compte')
-
-    else : 
-        form = UpdateUserForm(instance = user)
-    return render(request, 'update_user.html', {'form':form})
+            return redirect('update_user')
+        else:
+            # Afficher les erreurs du formulaire dans les messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"Erreur dans le champ {field}: {error}")
+    else:
+        form = UpdateUserForm(instance=user)
+    
+    return render(request, 'update_user.html', {'form': form})
 
 def handle_uploaded_file(f):
     df = pd.read_csv(io.StringIO(f.read().decode('utf-8')), index_col=False)
