@@ -1,22 +1,33 @@
+<!-- template.html -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%}{% endblock %} </title>
-    <script src="{% static 'canvasjs.min.js' %}"></script>
+    <title>{% block title %}Problem Management{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <script src="{% static 'canvasjs.min.js' %}"></script>
     {% block script %}{% endblock %}
 </head>
 <body>
-<nav>
-    {% if user.is_authenticated %}
-    <section><p>You are connected as {{request.user}}</p> <a class="bouton_bleu" href="{% url 'logout' %}">Logout</a></section>
-    {% else %}
-    <section><a href="{% url 'signup' %}">Sign up</a><a href="{% url 'login' %}">Login</a></section>
-    {% endif %}
-</nav>
-    {% block content%}{% endblock %}
+    <nav>
+        <section class="nav-section">
+            <div class="app-name">Problem Management</div>
+        </section>
+        <section class="nav-section">
+            {% if user.is_authenticated %}
+                <p>You are connected as {{ request.user }}</p>
+                <a class="button-blue" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="button-blue" href="{% url 'signup' %}">Sign up</a>
+                <a class="button-yellow" href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </section>
+    </nav>
+    <div class="content-container">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

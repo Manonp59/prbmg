@@ -1,0 +1,53 @@
+prediction_id,incident_number,creation_date,description,category_full,ci_name,location_full,cluster_number,problem_title,model
+yRgRDsUzcb18YW,I230405_000279,06/04/2023 04:23,"Trigger: SAP Solman detect problem on PXI~JAVA such as Java System not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230406004130;PXI~JAVA;005056A5D24B1EDDB5806040F192DEF2;Java System not available;Critical;The availability checks to J2EE system PXI failed. Please check the alert details to see which components did not respond.
+Opened at: 1680734
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1680734, RT:CORP_ISC_SAP, TriggerValue:PXI~JAVA such as Java System not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1042554631",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,10,Persistent Java Instance Availability Issues Across Multiple SAP Systems,kmeans_30
+yWORFbxGJt78Lz,I230406_000218,06/04/2023 21:21,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3, Opened at:1680795, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1043185829",Incidents/Infrastructure/System/Server,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,9,Recurring Job Abortion Incidents in Scheduling Workflows for NetBackup Policy Deployment on Hypervisors and SQL Databases in Lestrem Data Center,kmeans_30
+Umf4qpvHJ9OAyo,I230403_000299,03/04/2023 21:34,"Trigger: E: Disk space is low (used > 90%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 1.14 TB of 1.27 TB (90.05 %)
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S101A892
+Host group: LACH, Lestrem/Windows, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1040464794",Incidents/Infrastructure/System/Laboratories Apps,S101A892,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
+XffjcHNpNYTIql,I230407_000062,07/04/2023 12:48,"Trigger: Event ID - 701 Event -  There is insufficient system memory in resource pool 'internal' to run this query.
+Responsible team: CORP_ISC_Wintel
+Trigger description: There is insufficient system memory in resource pool 'internal' to run this query.
+Opened at: 1680851
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: App_Source:MSSQL$LFR10101, Application:Event log Application, EVENT_ID:701, Host:S101A650, Opened at:1680851, RT:CORP_ISC_Wintel
+Host: S101A650
+Host group: Lestrem/Windows, SQLS, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1043753725",Incidents/Infrastructure/System/SQLS,S101A650,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
+EVsmRlkYVTcc8P,I230404_000021,04/04/2023 08:54,"Trigger: Thresholded job JOBS.PCD_MD01_FEX_0395_01; in workflow PCD_MD01_FEX_0395; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000004;PCD_MD01_FEX_0395;JOBP;0420181110;JOBS.PCD_MD01_FEX_0395_01;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000004;PCD_MD01_FEX_0395;JOBP;0420181110;JOBS.PCD_MD01_FEX_0395_01;P3, Opened at:1680578, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1040880938",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,2,Recurring ERP Scheduling Failures and Aborted Processes Across Various Automation Workflows,kmeans_30

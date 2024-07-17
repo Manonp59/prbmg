@@ -76,17 +76,11 @@ def get_model_path(model_run):
     run = mlflow.get_run(run_id)
     artifact_uri = run.info.artifact_uri
 
-    # Remplacer "file://" dans l'URI de l'artefact pour obtenir le chemin local
-    local_artifact_path = artifact_uri.replace("file://", "")
-
-    # Déterminer le répertoire racine où se trouve mlruns (à ajuster selon votre structure)
-    base_dir = "/home/utilisateur/DevIA/prbmg"
+    # Déterminer le chemin relatif à partir de l'URI de l'artefact
+    relative_artifact_path = artifact_uri.split("azureml://")[1]  # Supprimez "azureml://" de l'URI de l'artefact
     
-    # Calculer le chemin relatif à partir du répertoire racine
-    relative_model_path = os.path.relpath(local_artifact_path, start=base_dir)
-
-    # Combiner le chemin relatif avec le nom du modèle
-    model_path = os.path.join(relative_model_path, model_run, "model.pkl")
+    # Combiner le chemin relatif avec le nom du modèle (adjustez selon votre structure)
+    model_path = os.path.join(relative_artifact_path, "model.pkl")
 
     return model_path
 

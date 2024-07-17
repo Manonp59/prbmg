@@ -3,22 +3,29 @@
 {% block title %}Upload{% endblock %}
 
 {% block content %}
-    <h1>Upload</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-    {% if message %}
-        <p class="success">{{ message }}</p>
-    {% endif %}
+    <div class="form-container">
+        <h1>Upload</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="button-blue">Upload</button>
+        </form>
+        {% if message %}
+            <p class="success">{{ message }}</p>
+        {% endif %}
 
-    {% if dataframe %}
-        {{ dataframe|safe }}
-    {% endif %}
+        {% if dataframe %}
+            <div class="content-container">
+                {{ dataframe|safe }}
+            </div>
+        {% endif %}
 
-    {% if download_link %}
-        <h2>Download Transformed Data</h2>
-        <a href="{% url 'download_file' file_path='clustered_data.csv' %}" class="btn btn-primary">Download CSV</a>
-    {% endif %}
-{% endblock content %}
+        {% if download_link %}
+            <div class="download-link">
+                <h2>Download Transformed Data</h2>
+                <a href="{% url 'download_file' file_path='clustered_data.csv' %}" class="button-blue">Download CSV</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

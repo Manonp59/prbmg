@@ -13,9 +13,13 @@ sys.path.append("/home/utilisateur/DevIA/prbmg")
 from config import cfg
 import json
 from api_ia.clustering_model.utils import create_sql_server_conn, create_sql_server_engine
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def modelisation(df,run_name):
+    mlflow.set_tracking_uri(os.environ.get("ML_FLOW_TRACKING_URI"))
     df["resulted_embeddings"] = df["resulted_embeddings"].apply(lambda x: ast.literal_eval(x))
     embeddings_np = np.array(df["resulted_embeddings"].tolist())
     print(embeddings_np)
@@ -34,7 +38,7 @@ def modelisation(df,run_name):
     engine = create_sql_server_engine()
 
     with mlflow.start_run(experiment_id=experiment_id, run_name=run_name) as run : 
-        mlflow.set_tracking_uri("http://127.0.0.1:5000")
+        mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
         model = KMeans(n_clusters=n_clusters,init='k-means++')
         model.fit(embeddings_np)
         mlflow.sklearn.log_model(model, run_name)

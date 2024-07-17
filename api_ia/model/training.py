@@ -13,7 +13,7 @@ load_dotenv()
 database_api_key = os.getenv('API_DATABASE_SECRET_KEY')
 
 def get_incidents():
-    url = "http://127.0.0.1:8000/incidents/"
+    url = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/incidents/"
     headers = {"X-API-Key":"ipNOJ2OiSAvkUAsjE554SVnwYyBKcXFT"}
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # Assurez-vous que la requête est réussie
