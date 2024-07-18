@@ -6,7 +6,7 @@ from fastapi import Depends
 from sqlalchemy.orm import Session
 import os 
 from dotenv import load_dotenv
-import sys
+import json
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -72,7 +72,7 @@ def predict(
         "category_full": incident.category_full,
         "ci_name": incident.ci_name, 
         "location_full": incident.location_full,
-        "resulted_embeddings": prediction.resulted_embeddings,
+        "resulted_embeddings": json.dumps(prediction.resulted_embeddings),
         "cluster_number": int(prediction.cluster_number),
         "problem_title": prediction.problem_title,
         "model":model_name

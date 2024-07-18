@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 import string
 import random
@@ -37,7 +37,7 @@ class DBpredictions(Base):
     category_full = Column(String)
     ci_name = Column(String)
     location_full = Column(String)
-    resulted_embeddings = Column(String)
+    resulted_embeddings = Column(Text)
     cluster_number = Column(Integer)
     problem_title = Column(String)
     model = Column(String)
