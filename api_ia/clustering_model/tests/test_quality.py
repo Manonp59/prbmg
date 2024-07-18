@@ -156,6 +156,6 @@ def test_modelisation(mocker, sample_dataframe):
     mock_mlflow.create_experiment.assert_not_called()
     mock_mlflow.start_run.assert_called_once_with(experiment_id=1, run_name='test_run')
     mock_mlflow.sklearn.log_model.assert_called_once()
-    mock_mlflow.log_params.assert_called_once_with({"n_clusters": 2})
+    mock_mlflow.log_params.assert_called_once_with({'n_clusters': 2, 'init': 'k-means++', 'n_init': 80, 'algorithm': 'lloyd'})
     mock_mlflow.set_tag.assert_called_once_with("model", "kmeans")
     mock_mlflow.log_metric.assert_called_once()

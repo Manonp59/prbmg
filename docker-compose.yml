@@ -15,7 +15,10 @@ services:
     image: manon29/api_ia:latest
     ports:
      - 8001:8001
-  
+    env_file:
+      - .env
+
+
   app_web:
     build: ./web_app
     image: manon29/web_app:latest

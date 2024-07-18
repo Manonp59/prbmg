@@ -6,8 +6,9 @@ from fastapi import Depends
 from sqlalchemy.orm import Session
 import os 
 from dotenv import load_dotenv
+import sys
 from fastapi.middleware.cors import CORSMiddleware
-from config import cfg
+
 
 load_dotenv()
 
@@ -57,7 +58,7 @@ def predict(
     incident: PredictionInput, 
     db: Session = Depends(get_db)
     ) -> PredictionOuput:
-    n_cluster = cfg.model.n_clusters
+    n_cluster = 30
     model_name = f"kmeans_{n_cluster}"
     model_path = get_model_path(model_name)
     

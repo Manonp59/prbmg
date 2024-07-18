@@ -1,10 +1,10 @@
 from api_ia.model.training import training
-from config import cfg
+import sys 
 from datetime import datetime
 
 
 
-n_cluster = cfg.model.n_clusters
+n_cluster = 30
 
 # Access the arguments
 run_name = f"kmeans_{n_cluster}"
