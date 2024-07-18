@@ -81,7 +81,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-query = "SELECT * FROM kmeans30_trainingdataset_titles"
+query = "SELECT * FROM kmeans_30_trainingdataset_titles"
 
 data = query_db(query)
 

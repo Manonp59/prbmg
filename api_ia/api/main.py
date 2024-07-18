@@ -57,7 +57,7 @@ def predict(
     incident: PredictionInput, 
     db: Session = Depends(get_db)
     ) -> PredictionOuput:
-    n_cluster = cfg.model.n_cluster
+    n_cluster = cfg.model.n_clusters
     model_name = f"kmeans_{n_cluster}"
     model_path = get_model_path(model_name)
     

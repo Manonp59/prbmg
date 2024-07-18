@@ -53,6 +53,7 @@ with conn.cursor() as cursor:
     category_full VARCHAR(100),
     ci_name VARCHAR(100),
     location_full VARCHAR(300),
+    resulted_embeddings VARCHAR(MZX),
     cluster_number INT,
     problem_title VARCHAR(300),
     model VARCHAR(50)
