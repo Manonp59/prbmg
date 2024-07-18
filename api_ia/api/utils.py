@@ -94,7 +94,7 @@ def get_embeddings(input:pd.Series)-> pd.DataFrame:
     return embeddings
 
 
-def get_problem_title(cluster_number:int,table="kmeans30_clusters_title") -> str:
+def get_problem_title(cluster_number:int,table="kmeans_30_clusters_title") -> str:
     modelisation_query = f"""
     SELECT *
     FROM {table}
