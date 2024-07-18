@@ -8,6 +8,7 @@ import mlflow
 from pydantic import BaseModel
 import string
 from datetime import datetime
+from typing import List 
 
 
 
@@ -23,7 +24,7 @@ class PredictionInput(BaseModel):
 class PredictionOuput(BaseModel):
     cluster_number: int 
     problem_title: str
-    resulted_embeddings: str
+    resulted_embeddings: List[List[float]]
 
 load_dotenv()
 
