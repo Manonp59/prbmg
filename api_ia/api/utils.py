@@ -72,7 +72,7 @@ def get_model_path(model_run):
     experiment = mlflow.get_experiment_by_name("incidents_clustering")
     runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
     filtered_runs = runs[runs['tags.mlflow.runName'] == model_run]
-    filtered_runs = filtered_runs.sort_values(by='metrics.silhouette_score', ascending=False)
+    filtered_runs = filtered_runs.sort_values(by='metrics.silhouette score', ascending=False)
     run_id = filtered_runs.iloc[0]['run_id']
     run = mlflow.get_run(run_id)
     artifact_uri = run.info.artifact_uri

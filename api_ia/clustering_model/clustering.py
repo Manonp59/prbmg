@@ -9,7 +9,8 @@ import numpy as np
 import os 
 import pyodbc
 from sqlalchemy import create_engine
-
+sys.path.append("/home/utilisateur/DevIA/prbmg")
+from config import cfg
 import json
 from api_ia.clustering_model.utils import create_sql_server_conn, create_sql_server_engine
 from dotenv import load_dotenv
@@ -22,7 +23,7 @@ def modelisation(df,run_name):
     df["resulted_embeddings"] = df["resulted_embeddings"].apply(lambda x: ast.literal_eval(x))
     embeddings_np = np.array(df["resulted_embeddings"].tolist())
 
-    n_clusters = 30
+    n_clusters = cfg.model.n_clusters
 
     experiment_name = "incidents_clustering"
     experiment = mlflow.get_experiment_by_name(experiment_name)
