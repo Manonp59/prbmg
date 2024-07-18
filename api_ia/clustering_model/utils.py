@@ -1,5 +1,6 @@
 import os 
 import pyodbc 
+import pandas as pd 
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
@@ -26,3 +27,8 @@ def create_sql_server_engine():
     azure_connection_string = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server"
     engine = create_engine(azure_connection_string)
     return engine
+
+def query_db(query):
+    engine = create_sql_server_engine()
+    with engine.connect() as connection:
+        return pd.read_sql(query, connection)

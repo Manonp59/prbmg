@@ -23,6 +23,7 @@ class PredictionInput(BaseModel):
 class PredictionOuput(BaseModel):
     cluster_number: int 
     problem_title: str
+    resulted_embeddings: str
 
 load_dotenv()
 
@@ -61,22 +62,20 @@ def predict_cluster(model_path,incident:PredictionInput):
     embeddings = get_embeddings(input_series)
     prediction = loaded_model.predict(embeddings)
     problem_title = get_problem_title(prediction[0])
-    output = PredictionOuput(cluster_number=prediction[0],problem_title=problem_title)
+    output = PredictionOuput(cluster_number=prediction[0],problem_title=problem_title, resulted_embeddings=embeddings)
 
     return output 
 
 
 def get_model_path(model_run):
-    mlflow_tracking_uri = os.getenv('MLFLOW_TRACKING_URI')
-    print(mlflow_tracking_uri)
     mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
     experiment = mlflow.get_experiment_by_name("incidents_clustering")
     runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
     filtered_runs = runs[runs['tags.mlflow.runName'] == model_run]
+    filtered_runs = filtered_runs.sort_values(by='metrics.silhouette_score', ascending=False)
     run_id = filtered_runs.iloc[0]['run_id']
     run = mlflow.get_run(run_id)
     artifact_uri = run.info.artifact_uri
-    print(artifact_uri)
     
     # Assurez-vous que l'URI de l'artefact commence par 'azureml://'
     if not artifact_uri.startswith('azureml://'):

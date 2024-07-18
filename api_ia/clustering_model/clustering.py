@@ -22,7 +22,6 @@ def modelisation(df,run_name):
     mlflow.set_tracking_uri(os.environ.get("ML_FLOW_TRACKING_URI"))
     df["resulted_embeddings"] = df["resulted_embeddings"].apply(lambda x: ast.literal_eval(x))
     embeddings_np = np.array(df["resulted_embeddings"].tolist())
-    print(embeddings_np)
 
     n_clusters = cfg.model.n_clusters
 
@@ -33,16 +32,17 @@ def modelisation(df,run_name):
     else:
         experiment_id = experiment.experiment_id
 
-    run_name = f"kmeans_{n_clusters}"
-
     engine = create_sql_server_engine()
 
     with mlflow.start_run(experiment_id=experiment_id, run_name=run_name) as run : 
         mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
-        model = KMeans(n_clusters=n_clusters,init='k-means++')
+        init='k-means++'
+        n_init=80
+        algorithm='lloyd'
+        model = KMeans(n_clusters=n_clusters,init=init,n_init=n_init,algorithm=algorithm)
         model.fit(embeddings_np)
         mlflow.sklearn.log_model(model, run_name)
-        mlflow.log_params(({"n_clusters":n_clusters}))
+        mlflow.log_params(({"n_clusters":n_clusters,"init":init,"n_init":n_init,"algorithm":algorithm}))
         mlflow.set_tag("model","kmeans")
         labels = model.labels_
         print(labels)

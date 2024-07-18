@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 import os 
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+from config import cfg
 
 load_dotenv()
 
@@ -56,8 +57,8 @@ def predict(
     incident: PredictionInput, 
     db: Session = Depends(get_db)
     ) -> PredictionOuput:
-
-    model_name = "kmeans_30"
+    n_cluster = cfg.model.n_cluster
+    model_name = f"kmeans_{n_cluster}"
     model_path = get_model_path(model_name)
     
     prediction = predict_cluster(model_path,incident)
@@ -70,6 +71,7 @@ def predict(
         "category_full": incident.category_full,
         "ci_name": incident.ci_name, 
         "location_full": incident.location_full,
+        "resulted_embeddings": prediction.resulted_embeddings,
         "cluster_number": int(prediction.cluster_number),
         "problem_title": prediction.problem_title,
         "model":model_name
@@ -77,4 +79,4 @@ def predict(
     
     create_db_prediction(prediction_dict, db)
 
-    return PredictionOuput(cluster_number=prediction.cluster_number, problem_title=prediction.problem_title)
+    return PredictionOuput(cluster_number=prediction.cluster_number, problem_title=prediction.problem_title,resulted_embeddings=prediction.resulted_embeddings)

@@ -1,31 +1,31 @@
 ,cluster,problem_title
-0,3,Widespread Server Restarts and System Instabilities across Multiple IT Infrastructure Services
-1,20,Chronic Network Interface High Bandwidth Utilization Issues
-2,29,"""Multiple IT Infrastructure Issues Impacting Storage, Backups, and Node Connectivity Across Various Locations"""
-3,4,Recurring Aborted Backup Jobs Across Multiple Workflows and Hosts in Scheduling/One Automation System
-4,25,Chronic High Memory and CPU Utilization Across Multiple Systems and Geographical Locations
-5,17,Recurring Aborted ERP Scheduling Jobs and Low Disk Space Warning for SARE.FEX Netbackup Policies and Active Directory Workflows on S101A779 Host
-6,2,SAP Java Instance Availability and Service Response Issues
-7,8,Persistent and Critical SAP Infrastructure Issues Affecting Multiple Systems and Components
-8,28,"""Widespread Network Connectivity Issues and Application Downtime across Multiple Global Locations"""
-9,24,Widespread SAP ASE Log Space Issues and Application Connectivity Errors Across Multiple Systems
-10,22,Frequent Task Failure and Manual Cancellation in Automated ERP Scheduling Processes
-11,6,Widespread Disk Space and Database Log Capacity Issues Across Multiple Hosts and Locations
-12,7,Persistent High Update Response Times in SAP ABAP Systems
-13,0,Widespread Zabbix Agent Availability Issues Across Various Hosts and Locations
-14,23,Recurring Synchronization Failures in PivotalCheck Across Multiple Servers
-15,5,"""Recurring Availability Issues with ASE Databases and Related Services in SAP Landscape"""
-16,14,"""Active Directory and DNS Service Failures Across Multiple Hosts and Locations"""
-17,18,Persistent Backup Job Failures and Master Server Unreachability in Corp ISC Storage Backup Environment
-18,27,Insufficient Disk Space Causing Database Update Rejections Across Multiple Services and Hosts
-19,26,Multiple Critical Services Failure Across Global IT Infrastructure
-20,10,Frequent Link Down Incidents and Power Supply Issues Across Multiple Interfaces and Locations
-21,19,Recurrent Cluster Shared Volume Pause State Across Multiple Hosts in Hyper-V Environment
-22,13,Frequent Aborted Status of PM_MPO_000 Manufacturing Execution Jobs in CA Automic Scheduling across AMER and ASIA Regions
-23,9,Persistent Log Write Access Denied Errors for Exchange Servers in Lestrem Data Centers
-24,15,Insufficient Resource Allocation for SAP ABAP Instances Across Multiple Systems
-25,12,High Network Interface Utilization Across Multiple Firewalls Exceeding 90% Threshold
-26,21,Widespread VLAN Configuration Changes to 888 on Multiple LAN Interfaces
-27,1,Recurring Synchronization and Abortion Issues in Scheduling Workflows for NetBackup Processes and ITESOFT Applications
-28,16,Intermittent Failure of Critical Manufacturing Applications and System Processes Across Various Global Locations
-29,11,"""Multiple Zabbix Agent Outages and Power Supply Failures Across Various Hosts and Locations"""
+0,13,Frequent Unexpected Host Restarts Across Multiple Locations and Systems
+1,10,Persistent High Bandwidth Utilization Across Multiple Network Interfaces and Locations
+2,27,Problem Title: Recurrent Pacemaker Failures and Node Offline Issues on Host SECP98A at Lestrem Data Center
+3,29,Frequent Abortions of JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX Across Multiple Workflows in Scheduling Automation System
+4,6,Persistent High Memory and CPU Utilization Across Multiple Systems in Corporate Infrastructure
+5,1,Recurrent NetBackup Policy Abortion Issues in Scheduling Workflow Systems
+6,15,Chronic Java System Availability Issues Across Multiple SAP Instances
+7,23,"""SAP Solution Manager Detected Multiple Critical and Warning Events Related to System Performance, Agent Running Status, and File System Space Issues on Various Hosts Across the Infrastructure"""
+8,14,Multiple SAP Solman and ITESOFT Instance Issues Detected Across Various ERP Components
+9,12,Widespread Network Device Failures and Service Unavailability Across Multiple Locations
+10,2,Recurrent Availability Issues with ASE Databases and SAP HANA Services across Multiple Systems
+11,7,Recurring ERP Scheduling Aborts and Cancellations across Various IT Workflows
+12,16,Repeated Critical SAP Solution Manager Incidents and Performance Issues on Java Systems at Lestrem Location
+13,8,High Disk Space Utilization and SQL Log Saturation Across Multiple Systems and Datastores
+14,19,Persistent High Update Response Time Across Multiple SAP ABAP Instances
+15,25,Recurring Zabbix Agent Connectivity and Availability Issues
+16,4,"""Pervasive Synchronization Issues with Pivotal Servers Across Multiple Locations"""
+17,20,"""Widespread System Instabilities and Service Failures Across Multiple IT Infrastructure Components"""
+18,26,IT Service Support Problem: Widespread Service Outage and Hardware Degradation Across Multiple Global Sites
+19,28,"""Persistent Issues with Master Server Accessibility and Job Execution Hangs Across Multiple Server Nodes Coupled with Recurring Low Disk Space Alerts on Designated Hosts"""
+20,11,Persistent Service Outage Across Multiple IT Systems and Geographical Locations
+21,21,Recurring Network Interface Link Down Events Across Multiple Devices and Locations
+22,17,Recurrent Paused State of Cluster Shared Volumes Across Multiple Hosts and Locations
+23,18,Widespread ICMP Ping Unavailability and SNMP Collection Failures Across Various Network Devices and Locations
+24,5,"""SAP ABAP Systems Exhibiting High Memory Usage, Slow Response Times, and Elevated Short Dump Frequencies Across Multiple Instances"""
+25,3,"""Multiple Active Directory and DNS Service Failures Across Global Infrastructure"""
+26,9,"""Repeated Resource Constraints on Multiple SAP ABAP Instances across Various Systems"""
+27,24,Widespread VLAN Assignment Change to 888 Across Multiple Network Interfaces and Locations
+28,0,Persistent Zabbix Agent and Host Availability Issues across Multiple Systems and Locations with Associated Power Supply Warnings
+29,22,Recurring Process Failure and Misconfiguration Issues across Manufacturing and Server Infrastructure Systems
