@@ -13,19 +13,36 @@
         {% if message %}
             <p class="success">{{ message }}</p>
         {% endif %}
-
-        {% if dataframe %}
-            <div class="content-container">
-                {{ dataframe|safe }}
-            </div>
-        {% endif %}
-
+        
         {% if download_link %}
             <div class="download-link">
                 <h2>Download Transformed Data</h2>
                 <a href="{% url 'download_file' file_path='clustered_data.csv' %}" class="button-blue">Download CSV</a>
             </div>
-        {% endif %}
+        {% endif %}  
     </div>
+    {% if has_data %}
+        <div class="content-container">
+            <table class="dashboard-table">
+                <h1>Clustering Results</h1>
+                <thead>
+                    <tr>
+                        {% for header in df.columns %}
+                            <th>{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in df.values %}
+                        <tr>
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 {% endblock %}
 

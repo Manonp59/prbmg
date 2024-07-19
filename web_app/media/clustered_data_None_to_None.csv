@@ -1,38 +1,36 @@
 prediction_id,incident_number,creation_date,description,category_full,ci_name,location_full,cluster_number,problem_title,model
-vYmsXkyqbygtXq,I230417_000273,18/04/2023 02:29,"Trigger: SAP Solman detect problem on HRP~ABAP such as IDoc Errors
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230417224854;HRP~ABAP;005056A5D24B1EDDB7AC28A57B21B1F0;IDoc Errors;Medium;Errors have been detected during IDoc processing in the system.
-Opened at: 1681764
+dS7JEyQ6bYz86X,I230407_000062,07/04/2023 12:48,"Trigger: Event ID - 701 Event -  There is insufficient system memory in resource pool 'internal' to run this query.
+Responsible team: CORP_ISC_Wintel
+Trigger description: There is insufficient system memory in resource pool 'internal' to run this query.
+Opened at: 1680851
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: App_Source:MSSQL$LFR10101, Application:Event log Application, EVENT_ID:701, Host:S101A650, Opened at:1680851, RT:CORP_ISC_Wintel
+Host: S101A650
+Host group: Lestrem/Windows, SQLS, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1043753725",Incidents/Infrastructure/System/SQLS,S101A650,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,28,High Frequency of ABAP Short Dumps and System Log Messages Across Various SAP ABAP Systems,kmeans_30
+ysSndVpwL29V1A,I230419_000239,19/04/2023 20:14,"Trigger: E: Disk space is low (used > 90%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 591.12 GB of 600 GB (98.52 %)
 Trigger severity: Warning
 Trigger nseverity: 2
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1681764, RT:CORP_ISC_SAP, TriggerValue:HRP~ABAP such as IDoc Errors
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S130A10
+Host group: La Madeleine/Windows, SCCMDHCP, Windows/La Madeleine
 Host description: 
-Zabbix event ID: 1053360538",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,29,"Recurring Critical Events and System Instability Across SAP Host Agents, Oracle Backups, and ITESOFT Instances",kmeans_30
-VlVMDmDQbfyvSz,I230429_000056,29/04/2023 23:01,"Trigger: SAP Solman detect problem on s201a157 such as EVENT_ID_1587
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230429192029;s201a157;005056A5D24B1EDDB9D644709900F75C;EVENT_ID_1587;Critical;
-Opened at: 1682788
-Trigger severity: High
-Trigger nseverity: 4
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682788, RT:CORP_ISC_SAP, TriggerValue:s201a157 such as EVENT_ID_1587
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Zabbix event ID: 1055007189",Incidents/Infrastructure/System/SCCM,S130A10,EUROPE/FRANCE/LA MADELEINE/DOUMER/R+4,27,Repeated Aborts in Manufacturing Execution Workflow Jobs for Both AMER and ASIA Regions,kmeans_30
+qRDOZ5XtFsch4O,I230403_000299,03/04/2023 21:34,"Trigger: E: Disk space is low (used > 90%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 1.14 TB of 1.27 TB (90.05 %)
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S101A892
+Host group: LACH, Lestrem/Windows, Windows/Lestrem
 Host description: 
-Zabbix event ID: 1064181524",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,29,"Recurring Critical Events and System Instability Across SAP Host Agents, Oracle Backups, and ITESOFT Instances",kmeans_30
-iHVtuocybqPSnW,I230422_000093,23/04/2023 02:27,"Trigger: SAP Solman detect problem on s260a70 such as EVENT_ID_1945
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230422224658;s260a70;005056A5D24B1EDDB8A9DA8A7A28DB91;EVENT_ID_1945;Critical;
-Opened at: 1682196
-Trigger severity: High
-Trigger nseverity: 4
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682196, RT:CORP_ISC_SAP, TriggerValue:s260a70 such as EVENT_ID_1945
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
-Host description: 
-Zabbix event ID: 1057889968",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,29,"Recurring Critical Events and System Instability Across SAP Host Agents, Oracle Backups, and ITESOFT Instances",kmeans_30
-pw7d1SVlnaxZWY,I230427_000036,27/04/2023 12:15,"Trigger: Process h21archive != 14
+Zabbix event ID: 1040464794",Incidents/Infrastructure/System/Laboratories Apps,S101A892,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,27,Repeated Aborts in Manufacturing Execution Workflow Jobs for Both AMER and ASIA Regions,kmeans_30
+a8abVikiYgRPxY,I230427_000036,27/04/2023 12:15,"Trigger: Process h21archive != 14
 Responsible team: CORP_ISC_Wintel
 Trigger description: 
 Trigger severity: Warning
@@ -41,37 +39,40 @@ Trigger tags: Application:h21archive, Host:S260A181, RT:CORP_ISC_Wintel
 Host: S260A181
 Host group: ST/Windows, TMES, Windows/ST
 Host description: 
-Zabbix event ID: 1061949823",Incidents/Infrastructure/System/Manufacturing Apps,S260A181,ASIA/CHINA/ST-PLANT/CLU-GEO-260,27,Persistent Service Disruptions and Backup Failures Across Various IT Infrastructure Components,kmeans_30
-BeGVFPhDZ5J84s,I230428_000234,28/04/2023 22:15,"Trigger: ""NetBackup Remote Manager and Monitor Service"" (NetBackup Remote Manager and Monitor Service) is not running (startup type automatic)
-Responsible team: CORP_ISC_Wintel
-Trigger description: The service has a state other than ""Running"" for the last three times.
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:Services, RT:CORP_ISC_Wintel
-Host: S202S11
-Host group: Benifayo Espana/Windows, SARE, Windows/Benifayo Espana
-Host description: 
-Zabbix event ID: 1063161389Trigger: E: Disk space is low (used > 85%)
-Responsible team: CORP_ISC_Wintel
-Trigger description: Space used >85
-Trigger severity: Warning
-Trigger nseverity: 2
-Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
-Host: S202S11
-Host group: Benifayo Espana/Windows, SARE, Windows/Benifayo Espana
-Host description: 
-Zabbix event ID: 1058219868",Incidents/Infrastructure/ERP/Backup,S202S11,EUROPE/SPAIN/BENIFAYO ESPANA/CLU-GEO-202,27,Persistent Service Disruptions and Backup Failures Across Various IT Infrastructure Components,kmeans_30
-kxOrnZTFkZZRIS,I230424_000311,25/04/2023 03:51,"Trigger: Interface Gi0/3(C951C00G): VLAN has been changed to 888
-Responsible team: {EVENT.TAGS.RT}
-Trigger description: 
+Zabbix event ID: 1061949823",Incidents/Infrastructure/System/Manufacturing Apps,S260A181,ASIA/CHINA/ST-PLANT/CLU-GEO-260,25,Widespread Zabbix Agent Failures and Host Availability Issues Across Multiple Locations and Systems,kmeans_30
+U0gnpmwJIldmrQ,I230405_000279,06/04/2023 04:23,"Trigger: SAP Solman detect problem on PXI~JAVA such as Java System not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230406004130;PXI~JAVA;005056A5D24B1EDDB5806040F192DEF2;Java System not available;Critical;The availability checks to J2EE system PXI failed. Please check the alert details to see which components did not respond.
+Opened at: 1680734
 Trigger severity: High
 Trigger nseverity: 4
-Trigger tags: Application:Interface Gi0/3(C951C00G)
-Host: SWEU23A
-Host group: GIGA, Keokuk/Network, Network/Keokuk
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1680734, RT:CORP_ISC_SAP, TriggerValue:PXI~JAVA such as Java System not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
 Host description: 
-Zabbix event ID: 1059793792",Incidents/Infrastructure/Network/LAN,SWEU23A,AMERICA/USA/KEOKUK/FT MADISON IA 52627,18,Unplanned VLAN 888 Configuration Changes Across Multiple Network Interfaces,kmeans_30
-gGGf2R9eOOjqQ7,I230419_000109,19/04/2023 13:52,"Trigger: Interface VLAN_108(): Link down
+Zabbix event ID: 1042554631",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,23,Repeated Pacemaker Service Failures and Node Outages on SECP98A Host in Lestrem Data Center,kmeans_30
+Iqt62sriBPZLkM,I230422_000045,22/04/2023 14:03,"Trigger: SAP Solman detect problem on R10~JAVA~s101d496_R10_11 such as Java instance not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230422102258;R10~JAVA~s101d496_R10_11;005056A5D24B1EDDB89CDC7B50AFE2B6;Java instance not available;High;The J2EE instance s101d496_R10_11 or parts of it are not running. Please check the alert details to see which components do not respond. Restart the instance if necessary.Analysis Tools:View instance status in http://seap50a.roquette.corp.priv:51113/sapmc/sapmc.html?SID=R10&NR=11&HOST=s101d496 SAP Management Console.Manually check the http://sapmiir10.roquette.corp.priv:51100/ Http availability of the instance.
+Opened at: 1682151
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682151, RT:CORP_ISC_SAP, TriggerValue:R10~JAVA~s101d496_R10_11 such as Java instance not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1057437777Trigger: SAP Solman detect problem on R10~JAVA such as Java System not available
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230422102258;R10~JAVA;005056A5D24B1EDDB89CDC7B50AFC2B6;Java System not available;Critical;The availability checks to J2EE system R10 failed. Please check the alert details to see which components did not respond.
+Opened at: 1682151
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682151, RT:CORP_ISC_SAP, TriggerValue:R10~JAVA such as Java System not available
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1057437770----Closed automatically after 10 days",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,23,Repeated Pacemaker Service Failures and Node Outages on SECP98A Host in Lestrem Data Center,kmeans_30
+cuKdljEd8e47T6,I230419_000109,19/04/2023 13:52,"Trigger: Interface VLAN_108(): Link down
 Responsible team: {EVENT.TAGS.RT}
 Trigger description: This trigger expression works as follows:
 1. Can be triggered if operations status is down.
@@ -93,147 +94,27 @@ Trigger tags: Application:Location, RT:CORP_ISC_Network
 Host: SAEUA02C
 Host group: Azure/Linux, Linux/Azure, ZABX
 Host description: 
-Zabbix event ID: 1054329912----Closed automatically after 10 days",Incidents/Infrastructure/Network/Firewall,FWE999,INDIA/INDIA/CREST,17,Widespread Network Interface Link Failures Across Multiple Devices and Locations,kmeans_30
-IJOI9Hp8oeUKFN,I230420_000059,20/04/2023 12:55,"Trigger: Unavailable by ICMP ping
-Responsible team: CORP_ISC_Network
-Trigger description: 
+Zabbix event ID: 1054329912----Closed automatically after 10 days",Incidents/Infrastructure/Network/Firewall,FWE999,INDIA/INDIA/CREST,20,Multiple Cluster Shared Volume Pause States and Exchange AD Driver Log Access Denied Issues in IT Infrastructure,kmeans_30
+tWdoPR3YTxGOKL,I230428_000234,28/04/2023 22:15,"Trigger: ""NetBackup Remote Manager and Monitor Service"" (NetBackup Remote Manager and Monitor Service) is not running (startup type automatic)
+Responsible team: CORP_ISC_Wintel
+Trigger description: The service has a state other than ""Running"" for the last three times.
 Trigger severity: Average
 Trigger nseverity: 3
-Trigger tags: Application:Status, RT:CORP_ISC_Network
-Host: WAPD05C
-Host group: Network/Wuhan, WIFI, Wuhan/Network
+Trigger tags: Application:Services, RT:CORP_ISC_Wintel
+Host: S202S11
+Host group: Benifayo Espana/Windows, SARE, Windows/Benifayo Espana
 Host description: 
-Zabbix event ID: 1055629071Trigger: Unavailable by ICMP ping
-Responsible team: CORP_ISC_Network
-Trigger description: 
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:Status, RT:CORP_ISC_Network
-Host: WAPD05B
-Host group: Network/Wuhan, WIFI, Wuhan/Network
-Host description: 
-Zabbix event ID: 1055629015----Closed automatically after 10 days",Incidents/Infrastructure/Network/WIFI,WAPD05C,ASIA/CHINA/WUHAN,16,Widespread Network Connectivity Issues and High ICMP Ping Loss Across Multiple Locations,kmeans_30
-DdLTNVRBhtmAY5,I230430_000035,30/04/2023 18:25,"Trigger: High ICMP ping loss
-Responsible team: CORP_ISC_Storage_Backup
-Trigger description: Last value: 0 %.
+Zabbix event ID: 1063161389Trigger: E: Disk space is low (used > 85%)
+Responsible team: CORP_ISC_Wintel
+Trigger description: Space used >85
 Trigger severity: Warning
 Trigger nseverity: 2
-Trigger tags: Application:Status, RT:CORP_ISC_Storage_Backup
-Host: BAI2005
-Host group: Lestrem/Storage, STOC, Storage/Lestrem
+Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
+Host: S202S11
+Host group: Benifayo Espana/Windows, SARE, Windows/Benifayo Espana
 Host description: 
-Zabbix event ID: 1064935332Trigger: High ICMP ping loss
-Responsible team: CORP_ISC_Storage_Backup
-Trigger description: Last value: 0 %.
-Trigger severity: Warning
-Trigger nseverity: 2
-Trigger tags: Application:Status, RT:CORP_ISC_Storage_Backup
-Host: BAI2355
-Host group: Lestrem/Storage, STOC, Storage/Lestrem
-Host description: 
-Zabbix event ID: 1064934115",Incidents/Infrastructure/ERP/Storage,BAI2005,EUROPE/FRANCE/LESTREM/DT2/N 1/SALLE INFORMATIQUE 1/H16,16,Widespread Network Connectivity Issues and High ICMP Ping Loss Across Multiple Locations,kmeans_30
-xVoqiiaSsJ1OB1,I230414_000270,14/04/2023 21:41,"Trigger: SAP Solman detect problem on M10~JAVA~s101a229_M10_11 such as P101P0Z2
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230414180009;M10~JAVA~s101a229_M10_11;005056A5D24B1EDDB6DBADED0A5DDDB7;P101P0Z2;Critical;
-Opened at: 1681488
-Trigger severity: High
-Trigger nseverity: 4
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1681488, RT:CORP_ISC_SAP, TriggerValue:M10~JAVA~s101a229_M10_11 such as P101P0Z2
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
-Host description: 
-Zabbix event ID: 1050280721",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,15,Recurring Critical Incidents in SAP Solman for Host SEAP50S related to JAVA Stack on Multiple Servers,kmeans_30
-bMj9AKDCZTXeSF,I230420_000145,20/04/2023 16:24,"Trigger: Thresholded job JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01; in workflow PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER; completed with status ENDED_NOT_OK - aborted;
-Responsible team: CORP_ISC_Scheduling
-Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000102;PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER;JOBP;0426322696;JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01;P3
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000102;PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER;JOBP;0426322696;JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01;P3, Opened at:1681987, RT:CORP_ISC_Scheduling
-Host: S101A779
-Host group: Lestrem/Windows, ORDT, Windows/Lestrem
-Host description: 
-Zabbix event ID: 1055753209",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,13,Recurring Aborted Jobs in PM_MPO_000_MANUFACTURING_EXECUTION Workflows for AMER and ASIA Regions on Host S101A779,kmeans_30
-Y5EPISLWcBlJBK,I230416_000201,17/04/2023 00:32,"Trigger: Location Vecquemont unavailable
-Responsible team: CORP_ISC_Network
-Trigger description: Network device FWI103 is not responding to ICMP request.
-Trigger severity: Disaster
-Trigger nseverity: 5
-Trigger tags: Application:Location, RT:CORP_ISC_Network
-Host: SAEUA02C
-Host group: Azure/Linux, Linux/Azure, ZABX
-Host description: 
-Zabbix event ID: 1052137854Trigger: Location Shanghai unavailable
-Responsible team: CORP_ISC_Network
-Trigger description: Network device FWI252 is not responding to ICMP request.
-Trigger severity: Disaster
-Trigger nseverity: 5
-Trigger tags: Application:Location, RT:CORP_ISC_Network
-Host: SAEUA02C
-Host group: Azure/Linux, Linux/Azure, ZABX
-Host description: 
-Zabbix event ID: 1052137481",Incidents/Infrastructure/Network/Monitoring,SAEUA02C,EUROPE/AZURE,12,Widespread Network Device Failures and Website Downtime Across Multiple Global Locations,kmeans_30
-AGlqSjEYjmQTip,I230416_000169,17/04/2023 00:30,"Trigger: Location Vic Sur Aisne unavailable
-Responsible team: CORP_ISC_Network
-Trigger description: Network device FWI118 is not responding to ICMP request.
-Trigger severity: Disaster
-Trigger nseverity: 5
-Trigger tags: Application:Location, RT:CORP_ISC_Network
-Host: SAEUA02C
-Host group: Azure/Linux, Linux/Azure, ZABX
-Host description: 
-Zabbix event ID: 1052137857Trigger: Location Shanghai unavailable
-Responsible team: CORP_ISC_Network
-Trigger description: Network device FWI252 is not responding to ICMP request.
-Trigger severity: Disaster
-Trigger nseverity: 5
-Trigger tags: Application:Location, RT:CORP_ISC_Network
-Host: SAEUA02C
-Host group: Azure/Linux, Linux/Azure, ZABX
-Host description: 
-Zabbix event ID: 1052137481",Incidents/Infrastructure/Network/Monitoring,SAEUA02C,EUROPE/AZURE,12,Widespread Network Device Failures and Website Downtime Across Multiple Global Locations,kmeans_30
-yRgRDsUzcb18YW,I230405_000279,06/04/2023 04:23,"Trigger: SAP Solman detect problem on PXI~JAVA such as Java System not available
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230406004130;PXI~JAVA;005056A5D24B1EDDB5806040F192DEF2;Java System not available;Critical;The availability checks to J2EE system PXI failed. Please check the alert details to see which components did not respond.
-Opened at: 1680734
-Trigger severity: High
-Trigger nseverity: 4
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1680734, RT:CORP_ISC_SAP, TriggerValue:PXI~JAVA such as Java System not available
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
-Host description: 
-Zabbix event ID: 1042554631",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,10,Persistent Java Instance Availability Issues Across Multiple SAP Systems,kmeans_30
-pYRncKCzkfr9UG,I230422_000045,22/04/2023 14:03,"Trigger: SAP Solman detect problem on R10~JAVA~s101d496_R10_11 such as Java instance not available
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230422102258;R10~JAVA~s101d496_R10_11;005056A5D24B1EDDB89CDC7B50AFE2B6;Java instance not available;High;The J2EE instance s101d496_R10_11 or parts of it are not running. Please check the alert details to see which components do not respond. Restart the instance if necessary.Analysis Tools:View instance status in http://seap50a.roquette.corp.priv:51113/sapmc/sapmc.html?SID=R10&NR=11&HOST=s101d496 SAP Management Console.Manually check the http://sapmiir10.roquette.corp.priv:51100/ Http availability of the instance.
-Opened at: 1682151
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682151, RT:CORP_ISC_SAP, TriggerValue:R10~JAVA~s101d496_R10_11 such as Java instance not available
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
-Host description: 
-Zabbix event ID: 1057437777Trigger: SAP Solman detect problem on R10~JAVA such as Java System not available
-Responsible team: CORP_ISC_SAP
-Trigger description: 20230422102258;R10~JAVA;005056A5D24B1EDDB89CDC7B50AFC2B6;Java System not available;Critical;The availability checks to J2EE system R10 failed. Please check the alert details to see which components did not respond.
-Opened at: 1682151
-Trigger severity: High
-Trigger nseverity: 4
-Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682151, RT:CORP_ISC_SAP, TriggerValue:R10~JAVA such as Java System not available
-Host: SEAP50S
-Host group: Lestrem/Linux, Linux/Lestrem, SSMT
-Host description: 
-Zabbix event ID: 1057437770----Closed automatically after 10 days",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,10,Persistent Java Instance Availability Issues Across Multiple SAP Systems,kmeans_30
-yWORFbxGJt78Lz,I230406_000218,06/04/2023 21:21,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD; completed with status ENDED_NOT_OK - aborted;
-Responsible team: CORP_ISC_Scheduling
-Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3, Opened at:1680795, RT:CORP_ISC_Scheduling
-Host: S101A779
-Host group: Lestrem/Windows, ORDT, Windows/Lestrem
-Host description: 
-Zabbix event ID: 1043185829",Incidents/Infrastructure/System/Server,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,9,Recurring Job Abortion Incidents in Scheduling Workflows for NetBackup Policy Deployment on Hypervisors and SQL Databases in Lestrem Data Center,kmeans_30
-icMQcDFPKZrNvb,I230429_000053,29/04/2023 22:15,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD; completed with status ENDED_NOT_OK - aborted;
+Zabbix event ID: 1058219868",Incidents/Infrastructure/ERP/Backup,S202S11,EUROPE/SPAIN/BENIFAYO ESPANA/CLU-GEO-202,17,Widespread Unauthorized VLAN Configuration Changes Across Multiple Network Interfaces,kmeans_30
+m46CBaRE5DPrJZ,I230429_000053,29/04/2023 22:15,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD; completed with status ENDED_NOT_OK - aborted;
 Responsible team: CORP_ISC_Scheduling
 Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000029;SARE.FEX_0053_101_D_ORA_WIN_LOG_PROD;JOBP;0429779993;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
 Trigger severity: Average
@@ -251,69 +132,38 @@ Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1
 Host: S101A779
 Host group: Lestrem/Windows, ORDT, Windows/Lestrem
 Host description: 
-Zabbix event ID: 1064462619",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,9,Recurring Job Abortion Incidents in Scheduling Workflows for NetBackup Policy Deployment on Hypervisors and SQL Databases in Lestrem Data Center,kmeans_30
-tSHD5OKGwQJl6H,I230401_000078,02/04/2023 01:29,"Trigger: Interface Ethernet1/18(SWU200H-B Eth1/15): High bandwidth usage (>90% )
+Zabbix event ID: 1064462619",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,16,"Persistent Active Directory, DNS, and Group Policy Related Errors Across Multiple Servers and Locations",kmeans_30
+klvRsAGyz5BtM1,I230406_000218,06/04/2023 21:21,"Trigger: Thresholded job JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX; in workflow SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000156;SARE.FEX_0053_101_D_HYPERV_2016_CLU-GEO-101_PROD;JOBP;0420859979;JOBS.SARE.FEX_0053_NETBACKUP_POLICY_LINUX;P3, Opened at:1680795, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1043185829",Incidents/Infrastructure/System/Server,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,16,"Persistent Active Directory, DNS, and Group Policy Related Errors Across Multiple Servers and Locations",kmeans_30
+ZVWFHo9LgIaIz6,I230424_000311,25/04/2023 03:51,"Trigger: Interface Gi0/3(C951C00G): VLAN has been changed to 888
 Responsible team: {EVENT.TAGS.RT}
-Trigger description: The network interface utilization is close to its estimated maximum bandwidth.
+Trigger description: 
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:Interface Gi0/3(C951C00G)
+Host: SWEU23A
+Host group: GIGA, Keokuk/Network, Network/Keokuk
+Host description: 
+Zabbix event ID: 1059793792",Incidents/Infrastructure/Network/LAN,SWEU23A,AMERICA/USA/KEOKUK/FT MADISON IA 52627,12,Recurring Network Interface Link Down Events Across Multiple Devices and Locations,kmeans_30
+sCOuOaOlHsXTgQ,I230423_000059,23/04/2023 14:38,"Trigger: Host has been restarted (uptime < 15m)
+Responsible team: CORP_ISC_Wintel
+Trigger description: 
 Trigger severity: Warning
 Trigger nseverity: 2
-Trigger tags: Application:Interface Ethernet1/18(SWU200H-B Eth1/15)
-Host: SWI200B
-Host group: GIGA, Lestrem/Network, Network/Lestrem
+Trigger tags: Application:Status, RT:CORP_ISC_Wintel
+Host: S202T40A
+Host group: Benifayo Espana/Windows, SCCM, Windows/Benifayo Espana
 Host description: 
-Zabbix event ID: 1038725405",Incidents/Infrastructure/Network/LAN,SWI200B,EUROPE/FRANCE/LESTREM/DT2/N 1/SALLE INFORMATIQUE 1/P3,8,High Network Interface Bandwidth Utilization Across Multiple Hosts and Locations,kmeans_30
-XffjcHNpNYTIql,I230407_000062,07/04/2023 12:48,"Trigger: Event ID - 701 Event -  There is insufficient system memory in resource pool 'internal' to run this query.
-Responsible team: CORP_ISC_Wintel
-Trigger description: There is insufficient system memory in resource pool 'internal' to run this query.
-Opened at: 1680851
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: App_Source:MSSQL$LFR10101, Application:Event log Application, EVENT_ID:701, Host:S101A650, Opened at:1680851, RT:CORP_ISC_Wintel
-Host: S101A650
-Host group: Lestrem/Windows, SQLS, Windows/Lestrem
-Host description: 
-Zabbix event ID: 1043753725",Incidents/Infrastructure/System/SQLS,S101A650,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
-Umf4qpvHJ9OAyo,I230403_000299,03/04/2023 21:34,"Trigger: E: Disk space is low (used > 90%)
-Responsible team: CORP_ISC_Wintel
-Trigger description: 1.14 TB of 1.27 TB (90.05 %)
-Trigger severity: Warning
-Trigger nseverity: 2
-Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
-Host: S101A892
-Host group: LACH, Lestrem/Windows, Windows/Lestrem
-Host description: 
-Zabbix event ID: 1040464794",Incidents/Infrastructure/System/Laboratories Apps,S101A892,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
-rmMzilt5ajiL2w,I230331_000239,01/04/2023 01:45,"Trigger: High memory utilization (>90% for 5m)
-Responsible team: CORP_ISC_NIX
-Trigger description: The system is running out of free memory.
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:Memory, RT:CORP_ISC_NIX
-Host: SMTP99A
-Host group: La Madeleine/Linux, Linux/La Madeleine, ZABX
-Host description: 
-Zabbix event ID: 1037687362",Incidents/Infrastructure/Network/Monitoring,SMTP99A,EUROPE/FRANCE/LA MADELEINE/REPUBLIQUE/R+5,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
-QS3p48eKJbk8Y0,I230402_000042,02/04/2023 18:15,"Trigger: High memory utilization (>90% for 5m)
-Responsible team: CORP_ISC_NIX
-Trigger description: The system is running out of free memory.
-Trigger severity: Average
-Trigger nseverity: 3
-Trigger tags: Application:Memory, RT:CORP_ISC_NIX
-Host: SPTP98A
-Host group: Linux/Portage, Portage/Linux, ZABX
-Host description: 
-Zabbix event ID: 1039387163",Incidents/Infrastructure/Network/Monitoring,SPTP98A,AMERICA/CANADA/PORTAGE LA PRAIRIE/[[CLU-GEO-294]],7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
-oSLTJLCVg4WCq4,I230419_000239,19/04/2023 20:14,"Trigger: E: Disk space is low (used > 90%)
-Responsible team: CORP_ISC_Wintel
-Trigger description: 591.12 GB of 600 GB (98.52 %)
-Trigger severity: Warning
-Trigger nseverity: 2
-Trigger tags: Application:Filesystem E:, FSNAME:E:, RT:CORP_ISC_Wintel, Severity:Warning
-Host: S130A10
-Host group: La Madeleine/Windows, SCCMDHCP, Windows/La Madeleine
-Host description: 
-Zabbix event ID: 1055007189",Incidents/Infrastructure/System/SCCM,S130A10,EUROPE/FRANCE/LA MADELEINE/DOUMER/R+4,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
-5RWNozkZxgQa32,I230428_000204,28/04/2023 20:18,"Trigger: High memory utilization (used > 95%)
+Zabbix event ID: 1058369390",Incidents/Infrastructure/System/SCCM,S202T40A,EUROPE/SPAIN/BENIFAYO ESPANA/CLU-GEO-202,7,Consistent Failure of Automatic Startup Services Across Multiple Hosts and Locations,kmeans_30
+QlvfDCfz9NJaiG,I230428_000204,28/04/2023 20:18,"Trigger: High memory utilization (used > 95%)
 Responsible team: CORP_ISC_Wintel
 Trigger description: The system is running out of free memory.
 Trigger severity: Average
@@ -339,8 +189,106 @@ Jatinder Singh
 IT Engineer L2 (Wintel/Virtualization)
 Fujitsu Consulting India  Private Limited
 Mobile: +91 98725 07720 
-E-mail: Jatinderjeet.singh@fujitsu.com",Incidents/Infrastructure/System/Laboratories Apps,S101A242,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU,7,Widespread Resource Utilization and Disk Space Issues Across IT Infrastructure,kmeans_30
-EVsmRlkYVTcc8P,I230404_000021,04/04/2023 08:54,"Trigger: Thresholded job JOBS.PCD_MD01_FEX_0395_01; in workflow PCD_MD01_FEX_0395; completed with status ENDED_NOT_OK - aborted;
+E-mail: Jatinderjeet.singh@fujitsu.com",Incidents/Infrastructure/System/Laboratories Apps,S101A242,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU,6,Recurring ERP Job Abortion and Failure Issues in Scheduling and One Automation Systems at S101A779 Location,kmeans_30
+2Nv8hJgb4o2NVW,I230402_000042,02/04/2023 18:15,"Trigger: High memory utilization (>90% for 5m)
+Responsible team: CORP_ISC_NIX
+Trigger description: The system is running out of free memory.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Memory, RT:CORP_ISC_NIX
+Host: SPTP98A
+Host group: Linux/Portage, Portage/Linux, ZABX
+Host description: 
+Zabbix event ID: 1039387163",Incidents/Infrastructure/Network/Monitoring,SPTP98A,AMERICA/CANADA/PORTAGE LA PRAIRIE/[[CLU-GEO-294]],6,Recurring ERP Job Abortion and Failure Issues in Scheduling and One Automation Systems at S101A779 Location,kmeans_30
+1tiY9ujs3bOqUB,I230331_000239,01/04/2023 01:45,"Trigger: High memory utilization (>90% for 5m)
+Responsible team: CORP_ISC_NIX
+Trigger description: The system is running out of free memory.
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Memory, RT:CORP_ISC_NIX
+Host: SMTP99A
+Host group: La Madeleine/Linux, Linux/La Madeleine, ZABX
+Host description: 
+Zabbix event ID: 1037687362",Incidents/Infrastructure/Network/Monitoring,SMTP99A,EUROPE/FRANCE/LA MADELEINE/REPUBLIQUE/R+5,6,Recurring ERP Job Abortion and Failure Issues in Scheduling and One Automation Systems at S101A779 Location,kmeans_30
+zAPXOVfstn5e0V,I230414_000270,14/04/2023 21:41,"Trigger: SAP Solman detect problem on M10~JAVA~s101a229_M10_11 such as P101P0Z2
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230414180009;M10~JAVA~s101a229_M10_11;005056A5D24B1EDDB6DBADED0A5DDDB7;P101P0Z2;Critical;
+Opened at: 1681488
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1681488, RT:CORP_ISC_SAP, TriggerValue:M10~JAVA~s101a229_M10_11 such as P101P0Z2
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1050280721",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,5,Widespread Network Connectivity Issues Impacting Multiple Locations and Services,kmeans_30
+r8gGSee0ghVvc9,I230416_000201,17/04/2023 00:32,"Trigger: Location Vecquemont unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI103 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137854Trigger: Location Shanghai unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI252 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137481",Incidents/Infrastructure/Network/Monitoring,SAEUA02C,EUROPE/AZURE,4,Insufficient Disk Space and Log Storage Capacity Across Multiple Systems and Databases,kmeans_30
+nkPX5hnWbEwdhc,I230420_000059,20/04/2023 12:55,"Trigger: Unavailable by ICMP ping
+Responsible team: CORP_ISC_Network
+Trigger description: 
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Status, RT:CORP_ISC_Network
+Host: WAPD05C
+Host group: Network/Wuhan, WIFI, Wuhan/Network
+Host description: 
+Zabbix event ID: 1055629071Trigger: Unavailable by ICMP ping
+Responsible team: CORP_ISC_Network
+Trigger description: 
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:Status, RT:CORP_ISC_Network
+Host: WAPD05B
+Host group: Network/Wuhan, WIFI, Wuhan/Network
+Host description: 
+Zabbix event ID: 1055629015----Closed automatically after 10 days",Incidents/Infrastructure/Network/WIFI,WAPD05C,ASIA/CHINA/WUHAN,4,Insufficient Disk Space and Log Storage Capacity Across Multiple Systems and Databases,kmeans_30
+2hL8I13dR6npHq,I230416_000169,17/04/2023 00:30,"Trigger: Location Vic Sur Aisne unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI118 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137857Trigger: Location Shanghai unavailable
+Responsible team: CORP_ISC_Network
+Trigger description: Network device FWI252 is not responding to ICMP request.
+Trigger severity: Disaster
+Trigger nseverity: 5
+Trigger tags: Application:Location, RT:CORP_ISC_Network
+Host: SAEUA02C
+Host group: Azure/Linux, Linux/Azure, ZABX
+Host description: 
+Zabbix event ID: 1052137481",Incidents/Infrastructure/Network/Monitoring,SAEUA02C,EUROPE/AZURE,4,Insufficient Disk Space and Log Storage Capacity Across Multiple Systems and Databases,kmeans_30
+BOgFgVnAW0k0Oj,I230401_000078,02/04/2023 01:29,"Trigger: Interface Ethernet1/18(SWU200H-B Eth1/15): High bandwidth usage (>90% )
+Responsible team: {EVENT.TAGS.RT}
+Trigger description: The network interface utilization is close to its estimated maximum bandwidth.
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Interface Ethernet1/18(SWU200H-B Eth1/15)
+Host: SWI200B
+Host group: GIGA, Lestrem/Network, Network/Lestrem
+Host description: 
+Zabbix event ID: 1038725405",Incidents/Infrastructure/Network/LAN,SWI200B,EUROPE/FRANCE/LESTREM/DT2/N 1/SALLE INFORMATIQUE 1/P3,3,Repeated Aborted Backup Jobs Across Various Workflows and Systems,kmeans_30
+E84DLRS2Ydon9F,I230404_000021,04/04/2023 08:54,"Trigger: Thresholded job JOBS.PCD_MD01_FEX_0395_01; in workflow PCD_MD01_FEX_0395; completed with status ENDED_NOT_OK - aborted;
 Responsible team: CORP_ISC_Scheduling
 Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000004;PCD_MD01_FEX_0395;JOBP;0420181110;JOBS.PCD_MD01_FEX_0395_01;P3
 Trigger severity: Average
@@ -349,14 +297,66 @@ Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1
 Host: S101A779
 Host group: Lestrem/Windows, ORDT, Windows/Lestrem
 Host description: 
-Zabbix event ID: 1040880938",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,2,Recurring ERP Scheduling Failures and Aborted Processes Across Various Automation Workflows,kmeans_30
-At0qHKm48kkuh5,I230423_000059,23/04/2023 14:38,"Trigger: Host has been restarted (uptime < 15m)
-Responsible team: CORP_ISC_Wintel
-Trigger description: 
+Zabbix event ID: 1040880938",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,2,"""Recurring system performance and availability issues across various ERP and Infrastructure components""",kmeans_30
+4EVdE0kf1Fd7na,I230420_000145,20/04/2023 16:24,"Trigger: Thresholded job JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01; in workflow PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER; completed with status ENDED_NOT_OK - aborted;
+Responsible team: CORP_ISC_Scheduling
+Trigger description: ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000102;PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER;JOBP;0426322696;JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01;P3
+Trigger severity: Average
+Trigger nseverity: 3
+Trigger tags: Application:CA Automic, EventText:ROQPROD;ENDED_NOT_OK - aborted;1800;0000000000000102;PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER;JOBP;0426322696;JOBS.PM_MPO_000_MANUFACTURING_EXECUTION_5_AMER_01;P3, Opened at:1681987, RT:CORP_ISC_Scheduling
+Host: S101A779
+Host group: Lestrem/Windows, ORDT, Windows/Lestrem
+Host description: 
+Zabbix event ID: 1055753209",Incidents/Infrastructure/ERP/Scheduling/One Automation,S101A779,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-GEO-101,2,"""Recurring system performance and availability issues across various ERP and Infrastructure components""",kmeans_30
+BxsC7PMKBMzCdu,I230417_000273,18/04/2023 02:29,"Trigger: SAP Solman detect problem on HRP~ABAP such as IDoc Errors
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230417224854;HRP~ABAP;005056A5D24B1EDDB7AC28A57B21B1F0;IDoc Errors;Medium;Errors have been detected during IDoc processing in the system.
+Opened at: 1681764
 Trigger severity: Warning
 Trigger nseverity: 2
-Trigger tags: Application:Status, RT:CORP_ISC_Wintel
-Host: S202T40A
-Host group: Benifayo Espana/Windows, SCCM, Windows/Benifayo Espana
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1681764, RT:CORP_ISC_SAP, TriggerValue:HRP~ABAP such as IDoc Errors
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
 Host description: 
-Zabbix event ID: 1058369390",Incidents/Infrastructure/System/SCCM,S202T40A,EUROPE/SPAIN/BENIFAYO ESPANA/CLU-GEO-202,1,Widespread Incidents of Unexpected System Restarts and Service Disruptions Across Various Hosts and Locations,kmeans_30
+Zabbix event ID: 1053360538",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,1,Frequent Unscheduled Restarts Across Multiple Hosts and Locations with Various Applications and Systems Affected,kmeans_30
+vnbsqQdhBUtqyr,I230422_000093,23/04/2023 02:27,"Trigger: SAP Solman detect problem on s260a70 such as EVENT_ID_1945
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230422224658;s260a70;005056A5D24B1EDDB8A9DA8A7A28DB91;EVENT_ID_1945;Critical;
+Opened at: 1682196
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682196, RT:CORP_ISC_SAP, TriggerValue:s260a70 such as EVENT_ID_1945
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1057889968",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,1,Frequent Unscheduled Restarts Across Multiple Hosts and Locations with Various Applications and Systems Affected,kmeans_30
+RGwcR0haJWVZrs,I230429_000056,29/04/2023 23:01,"Trigger: SAP Solman detect problem on s201a157 such as EVENT_ID_1587
+Responsible team: CORP_ISC_SAP
+Trigger description: 20230429192029;s201a157;005056A5D24B1EDDB9D644709900F75C;EVENT_ID_1587;Critical;
+Opened at: 1682788
+Trigger severity: High
+Trigger nseverity: 4
+Trigger tags: Application:SAP Solman, Host:seap50s, Opened at:1682788, RT:CORP_ISC_SAP, TriggerValue:s201a157 such as EVENT_ID_1587
+Host: SEAP50S
+Host group: Lestrem/Linux, Linux/Lestrem, SSMT
+Host description: 
+Zabbix event ID: 1064181524",Incidents/Infrastructure/ERP/SAP/SSM,SEAP50S,EUROPE/FRANCE/LESTREM/SALLE INFORMATIQUE/CLU-VMW-101,1,Frequent Unscheduled Restarts Across Multiple Hosts and Locations with Various Applications and Systems Affected,kmeans_30
+y1XG6848aCxKsb,I230430_000035,30/04/2023 18:25,"Trigger: High ICMP ping loss
+Responsible team: CORP_ISC_Storage_Backup
+Trigger description: Last value: 0 %.
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Status, RT:CORP_ISC_Storage_Backup
+Host: BAI2005
+Host group: Lestrem/Storage, STOC, Storage/Lestrem
+Host description: 
+Zabbix event ID: 1064935332Trigger: High ICMP ping loss
+Responsible team: CORP_ISC_Storage_Backup
+Trigger description: Last value: 0 %.
+Trigger severity: Warning
+Trigger nseverity: 2
+Trigger tags: Application:Status, RT:CORP_ISC_Storage_Backup
+Host: BAI2355
+Host group: Lestrem/Storage, STOC, Storage/Lestrem
+Host description: 
+Zabbix event ID: 1064934115",Incidents/Infrastructure/ERP/Storage,BAI2005,EUROPE/FRANCE/LESTREM/DT2/N 1/SALLE INFORMATIQUE 1/H16,0,Recurring Workflow Interruptions and Task Cancellations in Scheduling/One Automation Processes,kmeans_30

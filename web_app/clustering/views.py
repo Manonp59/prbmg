@@ -12,6 +12,7 @@ import requests
 import re
 import json 
 from datetime import datetime
+from prbmg.opentelemetry_setup import logger
 
 
 
@@ -58,9 +59,11 @@ def login_page(request):
             )
             if user is not None:
                 login(request, user)
+                logger.info(f'User {user.username} successfully logged in.')
                 return redirect('home')
             else:
                 message = 'Invalid password or username'
+                logger.warning(f'Failed login attempt for username: {form.cleaned_data["username"]}')
     return render(
         request, 'login.html', context={'form': form, 'message': message})
 
@@ -77,7 +80,9 @@ def logout_user(request):
     Returns:
     - réponse HTTP avec une redirection vers la page d'accueil
     """
+    user = request.user
     logout(request)
+    logger.info(f'User {user.username} logged out.')
     return redirect('home')
 
 
@@ -103,6 +108,7 @@ def signup_page(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            logger.info(f'New user signed up and logged in: {user.username}')
             return redirect('home')
     return render(request, 'signup.html', {'form':form})
 
@@ -115,13 +121,15 @@ def update_user(request):
         
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Ré-authentifie l'utilisateur après la mise à jour
+            login(request, user)  
+            logger.info(f'User profile updated for {user.username}')
             messages.success(request, 'Vos modifications ont bien été prises en compte ✅')
             return redirect('update_user')
         else:
             # Afficher les erreurs du formulaire dans les messages
             for field, errors in form.errors.items():
                 for error in errors:
+                    logger.error(f"Error in field {field} for user {user.username}: {error}")
                     messages.error(request, f"Erreur dans le champ {field}: {error}")
     else:
         form = UpdateUserForm(instance=user)
@@ -130,6 +138,7 @@ def update_user(request):
 
 def handle_uploaded_file(f):
     df = pd.read_csv(io.StringIO(f.read().decode('utf-8')), index_col=False)
+    logger.info(f'File uploaded with {len(df)} rows.')
     print(df.columns)
     mask_origin_request = df["Origin of Request"] == "Monitoring"
     mask_requesting_person = df["Requesting Person"] == "REST API - ZABBIX"
@@ -146,6 +155,7 @@ def handle_uploaded_file(f):
     df = df.rename(columns=clean_names)
     df = df.drop_duplicates(subset='incident_number')
     df = df.dropna(subset='incident_number')
+
     
     return df
 
@@ -175,6 +185,7 @@ def process_clustering(df):
             df.at[index, 'cluster_number'] = result.get('cluster_number')
             df.at[index, 'problem_title'] = result.get('problem_title')
         else:
+            logger.error(f'API request error for incident {row["incident_number"]}')
             df.at[index, 'cluster_number'] = 'Error'
             df.at[index, 'problem_title'] = f"Error for incident {row['incident_number']}"
 
@@ -189,8 +200,11 @@ def get_location(df):
 
     if response.status_code == 200:
         ci_location_data = response.json()
+        logger.info(f'CI Location data fetched and merged into dataframe.')
     else:
+        logger.error(f'API request error while fetching CI Location data')
         raise Exception(f"Failed to fetch CI Location data: {response.status_code} {response.text}")
+        
 
     # Création d'un dictionnaire pour un accès rapide
     ci_location_dict = {item['ci_name']: item['location_full'] for item in ci_location_data}
@@ -203,25 +217,63 @@ def get_location(df):
 @login_required(login_url='login')
 def upload_file(request):
     message = ''
+    df = None
+    download_link = None
+    file_name = None
+    has_data = False
+
     if not os.path.exists(settings.MEDIA_ROOT):
         os.makedirs(settings.MEDIA_ROOT)
+
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            df = handle_uploaded_file(request.FILES['file'])
-            df = get_location(df)
-            df.to_csv("test.csv")
-            df['location_full']= df['location_full'].fillna(value="")
-            df = process_clustering(df)
-            file_name = "clustered_data.csv"
-            file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-            df.to_csv(file_path, index=False)
-            return render(request, 'upload.html', {'form': form, 'message': 'File uploaded successfully!', 'download_link': settings.MEDIA_URL + "clustered_data.csv","file_path":file_name})
+            try:
+                df = handle_uploaded_file(request.FILES['file'])
+                df = get_location(df)
+                df['location_full'] = df['location_full'].fillna(value="")
+                df = process_clustering(df)
+                
+                has_data = not df.empty
+                
+                file_name = "clustered_data.csv"
+                file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+                df.to_csv(file_path, index=False)
+                df = df[['incident_number','cluster_number','problem_title']]
+                download_link = settings.MEDIA_URL + "clustered_data.csv"
+                message = 'File uploaded successfully!'
+                logger.info(f'File uploaded and processed successfully: {file_name}')
+            except Exception as e:
+                logger.error(f'Error during file upload or processing: {e}')
+                message = f'An error occurred: {e}'
         else:
             message = 'Form is not valid'
+            logger.warning('File upload form is not valid.')
     else:
         form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form, 'message': message})
+
+    
+    if df is not None:
+        df_list = df.values.tolist()
+        df_columns = df.columns.tolist()
+    else:
+        df_list = []
+        df_columns = []
+    # Préparez le contexte pour le template
+    context = {
+        'form': form,
+        'message': message,
+        'download_link': download_link,
+        'file_path': file_name,
+        'df': {
+            'columns': df_columns,
+            'values': df_list
+        },
+        'has_data':has_data
+    }
+
+    return render(request, 'upload.html', context)
+
 
 
 @login_required(login_url='login')
@@ -232,6 +284,7 @@ def download_file(request, file_path):
         with open(file_path, 'rb') as fh:
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = f'attachment; filename={os.path.basename(file_path)}'
+            logger.info(f'File downloaded: {file_path}')
             return response
     raise Http404
 
@@ -249,7 +302,9 @@ def dashboard_predictions(request):
 
     if response.status_code == 200:
         predictions_data = response.json()
+        logger.info('Predictions data fetched successfully.')
     else:
+        logger.error(f'API request error while fetching predictions data')
         raise Exception(f"Failed to fetch predictions data: {response.status_code} {response.text}")
     # Convertir les dates de chaînes de caractères en objets datetime.date
     if start_date:

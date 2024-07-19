@@ -29,7 +29,7 @@ MEDIA_URL = '/media/'
 SECRET_KEY = 'django-insecure-)%j_-sortt(^-i=$t&lxoupwz+p-sm(i*8om1#hnu62*v+j*fe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost','0.0.0.0','prbmg-web-app.francecentral.azurecontainer.io']
 
@@ -154,3 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "clustering.User"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# if MONITORING == 'True':
+#     import web_app.opentelemety_setup 

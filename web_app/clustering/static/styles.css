@@ -32,8 +32,10 @@ nav {
 .app-name {
     color: #ffcc00; /* Jaune */
     font-weight: bold;
-    font-size: 1.2em; /* Taille de police */
+    font-size: 2em !important; /* Taille de police augmentée */
     text-align: center; /* Centre le texte */
+    margin: 0 auto; /* Centre horizontalement */
+    padding: 10px; /* Ajouter un peu de padding autour du texte */
 }
 
 .nav-buttons {
@@ -258,7 +260,7 @@ h1{
 .dashboard-table th, .dashboard-table td {
     border: 1px solid #ccc;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .dashboard-table th {
@@ -324,3 +326,4 @@ h1{
 .button:hover {
     background-color: #005bb5;
 }
+
