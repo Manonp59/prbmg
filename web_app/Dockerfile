@@ -41,6 +41,10 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
 ENV DJANGO_SETTINGS_MODULE=prbmg.settings
 ENV PYTHONUNBUFFERED=1
 
+# Accept the build argument and set it as an environment variable
+ARG APPLICATIONINSIGHTS_CONNECTION_STRING
+ENV APPLICATIONINSIGHTS_CONNECTION_STRING=${APPLICATIONINSIGHTS_CONNECTION_STRING}
+
 # Exécuter la commande collectstatic pour rassembler les fichiers statiques
 RUN python manage.py collectstatic --noinput
 

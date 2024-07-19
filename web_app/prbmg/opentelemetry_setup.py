@@ -13,6 +13,8 @@ import os
 load_dotenv()
 
 APPLICATIONINSIGHTS_CONNECTION_STRING=os.getenv('APPLICATIONINSIGHTS_CONNECTION_STRING')
+if not APPLICATIONINSIGHTS_CONNECTION_STRING:
+    raise ValueError("The APPLICATIONINSIGHTS_CONNECTION_STRING environment variable is not set or is empty.")
 
 # SET UP LOGGING EXPORTER
 logger_provider = LoggerProvider()

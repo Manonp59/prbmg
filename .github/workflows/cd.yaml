@@ -23,6 +23,7 @@ jobs:
         docker compose push
       env:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        APPLICATIONINSIGHTS_CONNECTION_STRING: ${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}
 
     - name: Azure Login
       uses: azure/login@v1
