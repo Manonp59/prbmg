@@ -22,7 +22,7 @@ services:
     build: 
       context: ./web_app
       args:
-        - APPLICATIONINSIGHTS_CONNECTION_STRING
+        APPLICATIONINSIGHTS_CONNECTION_STRING: ${APPLICATIONINSIGHTS_CONNECTION_STRING}
     image: manon29/web_app:latest
     ports: 
       - 8002:8002
