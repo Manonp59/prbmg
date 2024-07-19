@@ -12,11 +12,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
 
 API_IA_SECRET_KEY = os.getenv('API_IA_SECRET_KEY')
 

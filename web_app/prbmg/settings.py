@@ -155,5 +155,7 @@ AUTH_USER_MODEL = "clustering.User"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# if MONITORING == 'True':
-#     import web_app.opentelemety_setup 
+MONITORING = os.getenv('MONITORING', default='True')
+
+if MONITORING == 'True':
+    import prbmg.opentelemetry_setup
