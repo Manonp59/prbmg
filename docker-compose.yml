@@ -8,15 +8,11 @@ services:
     ports:
       - 8000:8000
 
-    
-
   api_ia:
     build: ./api_ia
     image: manon29/api_ia:latest
     ports:
      - 8001:8001
-
-
 
   app_web:
     build: 

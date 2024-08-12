@@ -10,12 +10,15 @@ load_dotenv()
 driver = os.getenv("DRIVER")
 server = os.getenv("AZURE_SERVER_NAME")
 database = os.getenv("AZURE_DATABASE_NAME")
+database_raw = os.getenv("AZURE_DATABASE_NAME_RAW")
 username = os.getenv("AZURE_DATABASE_USERNAME")
 password = os.getenv("AZURE_DATABASE_PASSWORD")
 
 azure_connection_string = f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server"
 engine = create_engine(azure_connection_string)
 
+azure_connection_string_raw = f"mssql+pyodbc://{username}:{password}@{server}/{database_raw}?driver=ODBC+Driver+17+for+SQL+Server"
+engine_raw = create_engine(azure_connection_string_raw)
 
 def filter_dataframe(df) -> pd.DataFrame:
     """
@@ -63,7 +66,8 @@ def clean_column_names(df:pd.DataFrame)  -> pd.DataFrame:
     return df
 
 
-df = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/incident_analysis_apr23.csv',delimiter=";")
+table_name = 'incidents_raw'
+df = pd.read_sql_table(table_name, con=engine_raw)
 
 
 df = filter_dataframe(df)

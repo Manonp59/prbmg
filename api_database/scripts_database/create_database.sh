@@ -1,12 +1,17 @@
 #!/bin/bash
 
+set -a
+source .env
+set +a
 # Variables
+
 resourceGroupName="RG_PLATTEAU"
 location="francecentral"
-serverName="prbmg"
+serverName="prbmg-server"
 adminLogin="manon"
-adminPassword=$(grep -oP '(?<=AZURE_DATABASE_PASSWORD=").*?(?=")' .env)
+adminPassword=$AZURE_DATABASE_PASSWORD
 databaseName="prbmg-bdd"
+databaseNameRaw="prbmg-raw"
 
 # Connexion à Azure
 az login
@@ -22,5 +27,6 @@ az sql server firewall-rule create --resource-group $resourceGroupName --server 
 
 # Création d'une base de données
 az sql db create --resource-group $resourceGroupName --server $serverName --name $databaseName --service-objective S0
+az sql db create --resource-group $resourceGroupName --server $serverName --name $databaseNameRaw --service-objective S0
 
 echo "Le serveur SQL et la base de données ont été créés avec succès."

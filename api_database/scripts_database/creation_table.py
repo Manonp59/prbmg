@@ -12,6 +12,7 @@ database = os.getenv("AZURE_DATABASE_NAME")
 username = os.getenv("AZURE_DATABASE_USERNAME")
 password = os.getenv("AZURE_DATABASE_PASSWORD")
 
+print(server)
 
 conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
@@ -53,7 +54,7 @@ with conn.cursor() as cursor:
     category_full VARCHAR(100),
     ci_name VARCHAR(100),
     location_full VARCHAR(300),
-    resulted_embeddings VARCHAR(MZX),
+    resulted_embeddings VARCHAR(MAX),
     cluster_number INT,
     problem_title VARCHAR(300),
     model VARCHAR(50)
