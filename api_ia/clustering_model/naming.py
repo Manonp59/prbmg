@@ -16,6 +16,7 @@ def make_naming(df):
     for c in (df.clusters.unique()):
         cluster = df.query(f"clusters == {c}")
         docs_str = "\n".join(cluster[cluster['clusters'] == c]['docs'])
+        docs_str = docs_str[:130000]
         completion = client.chat.completions.create(
             model="gpt-4-1106-preview",
             messages=[

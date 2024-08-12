@@ -233,3 +233,4 @@ opentelemetry-instrumentation==0.46b0
 opentelemetry-proto==1.25.0
 opentelemetry-instrumentation-django==0.46b0
 opentelemetry-instrumentation-requests==0.46b0
+sentence-transformers==3.0.0

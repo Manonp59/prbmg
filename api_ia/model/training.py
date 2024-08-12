@@ -13,12 +13,29 @@ load_dotenv()
 database_api_key = os.getenv('API_DATABASE_SECRET_KEY')
 
 def get_incidents():
-    url = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/incidents/"
-    headers = {"X-API-Key":"ipNOJ2OiSAvkUAsjE554SVnwYyBKcXFT"}
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()  # Assurez-vous que la requête est réussie
-    incidents = response.json()
-    incidents = pd.DataFrame(incidents)
+    # url = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/incidents/"
+    # headers = {"X-API-Key":"ipNOJ2OiSAvkUAsjE554SVnwYyBKcXFT"}
+    # response = requests.get(url, headers=headers)
+    # response.raise_for_status()  # Assurez-vous que la requête est réussie
+    # incidents = response.json()
+    # incidents = pd.DataFrame(incidents)
+
+    server = 'prbmg-server.database.windows.net'
+    database = 'prbmg-bdd'
+    username = 'manon'
+    password = 'Youpie-59'
+    driver = '{ODBC Driver 17 for SQL Server}'  # Assurez-vous que le driver est installé
+
+    # Créer la chaîne de connexion
+    conn_str = f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password}'
+
+    # Établir la connexion
+    with pyodbc.connect(conn_str) as conn:
+        # Créer un DataFrame à partir de la requête SQL
+        query = "SELECT * FROM incidents"
+        incidents = pd.read_sql(query, conn)
+
+
     return incidents
 
 

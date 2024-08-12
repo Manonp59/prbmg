@@ -9,7 +9,10 @@ from pydantic import BaseModel
 import string
 from datetime import datetime
 from typing import List 
-
+from sentence_transformers import SentenceTransformer
+import numpy as np 
+import json
+import ast 
 
 
 class PredictionInput(BaseModel):
@@ -70,6 +73,7 @@ def predict_cluster(model_path,incident:PredictionInput):
 
 def get_model_path(model_run):
     mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
+    print(os.getenv('MLFLOW_TRACKING_URI'))
     experiment = mlflow.get_experiment_by_name("incidents_clustering")
     runs = mlflow.search_runs(experiment_ids=experiment.experiment_id)
     filtered_runs = runs[runs['tags.mlflow.runName'] == model_run]
@@ -88,11 +92,13 @@ def get_model_path(model_run):
     return model_uri
 
 
-
-
 def get_embeddings(input:pd.Series)-> pd.DataFrame:
-    embeddings = embeddings_model.embed_documents(input)
-    return embeddings
+    model_paraphrase = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+    embeddings = model_paraphrase.encode(input)
+    embeddings_np = np.array(embeddings)
+    embeddings_list = embeddings_np.tolist()
+    
+    return embeddings_list
 
 
 def get_problem_title(cluster_number:int,table="kmeans_30_clusters_title") -> str:

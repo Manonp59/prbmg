@@ -9,6 +9,7 @@ from sqlalchemy import create_engine
 import json
 from api_ia.clustering_model.utils import create_sql_server_conn, create_sql_server_engine
 import time
+from sentence_transformers import SentenceTransformer
 
 
 ##### Nettoyage des données #####
@@ -46,6 +47,70 @@ def features_selection(df:pd.DataFrame) -> pd.DataFrame:
 
 ##### Formation des embeddings (entrées du modèle) #####
 
+# def make_embeddings(df):
+#     docs = pd.Series(
+#             df["description"]
+#             + "\n\n"
+#             + "Category (Full):\n"
+#             + df["category_full"]
+#             + "\n\n"
+#             + "CI Name:\n"
+#             + df["ci_name"]
+#             + "\n\n"
+#             + "Location:\n"
+#             + df['location_full'])
+
+
+#     azure_deployment = os.getenv('EMBEDDING_AZURE_DEPLOYMENT')
+#     openai_api_version = os.getenv('EMBEDDING_OPENAI_API_VERSION')
+#     api_key = os.getenv('EMBEDDING_API_KEY')
+#     azure_endpoint = os.getenv('EMBEDDING_AZURE_ENDPOINT')
+
+#     embeddings_model = AzureOpenAIEmbeddings(
+#         azure_deployment=azure_deployment,
+#         openai_api_version=openai_api_version,
+#         api_key = api_key,
+#         azure_endpoint = azure_endpoint
+#     )
+
+#     batch_size = 250
+#     embeddings = []
+
+#     for i in range(0, len(docs), batch_size):
+#         print(i)
+#         start_batch = i
+#         end_batch = i + batch_size
+#         batch = docs[start_batch:end_batch]
+#         batch_embeddings = embeddings_model.embed_documents(batch)
+#         embeddings.extend(batch_embeddings)
+#         if i + batch_size < len(docs):
+#             time.sleep(5)
+    
+
+#     # Convertir les embeddings en tableaux numpy
+#     embeddings_np = np.array(embeddings)
+
+#     # Convertir les tableaux numpy en listes de float
+#     embeddings_list = embeddings_np.tolist()
+
+#     embeddings_json = [json.dumps(embedding) for embedding in embeddings_list]
+
+#     result_docs = pd.DataFrame()
+#     result_docs["docs"] = docs
+#     result_docs["resulted_embeddings"] = embeddings_json
+#     result_docs.to_csv("api_ia/embeddings/result_docs.csv", index=False)
+
+#     df = pd.DataFrame({'incident_number':df['incident_number'],
+#                                 "description": df["description"],
+#                                 "category_full": df["category_full"],
+#                                 "ci_name": df["ci_name"],
+#                                 "location_full":df['location_full'],
+#                                 "docs": result_docs["docs"],
+#                                 "resulted_embeddings": result_docs["resulted_embeddings"]})
+
+
+#     return df 
+
 def make_embeddings(df):
     docs = pd.Series(
             df["description"]
@@ -58,46 +123,28 @@ def make_embeddings(df):
             + "\n\n"
             + "Location:\n"
             + df['location_full'])
-
-
-    azure_deployment = os.getenv('EMBEDDING_AZURE_DEPLOYMENT')
-    openai_api_version = os.getenv('EMBEDDING_OPENAI_API_VERSION')
-    api_key = os.getenv('EMBEDDING_API_KEY')
-    azure_endpoint = os.getenv('EMBEDDING_AZURE_ENDPOINT')
-
-    embeddings_model = AzureOpenAIEmbeddings(
-        azure_deployment=azure_deployment,
-        openai_api_version=openai_api_version,
-        api_key = api_key,
-        azure_endpoint = azure_endpoint
-    )
+    
+    model_paraphrase = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
 
     batch_size = 250
     embeddings = []
-
-    for i in range(0, len(docs), batch_size):
-        print(i)
-        start_batch = i
+    
+    for i in range (0,len(docs), batch_size):
+        start_batch = i 
         end_batch = i + batch_size
         batch = docs[start_batch:end_batch]
-        batch_embeddings = embeddings_model.embed_documents(batch)
+
+        batch_df = pd.Series([str (doc) for doc in batch], index=range(len(batch)))
+        batch_embeddings = model_paraphrase.encode(batch_df)
         embeddings.extend(batch_embeddings)
-        if i + batch_size < len(docs):
-            time.sleep(5)
-    
-
-    # Convertir les embeddings en tableaux numpy
+        
     embeddings_np = np.array(embeddings)
-
-    # Convertir les tableaux numpy en listes de float
     embeddings_list = embeddings_np.tolist()
-
     embeddings_json = [json.dumps(embedding) for embedding in embeddings_list]
-
     result_docs = pd.DataFrame()
     result_docs["docs"] = docs
     result_docs["resulted_embeddings"] = embeddings_json
-    result_docs.to_csv("api_ia/embeddings/result_docs.csv", index=False)
+    
 
     df = pd.DataFrame({'incident_number':df['incident_number'],
                                 "description": df["description"],
