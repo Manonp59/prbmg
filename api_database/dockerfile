@@ -23,7 +23,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
   && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
 # Installation des dépendances Python
-RUN pip install --upgrade pip && pip install -r /app/api_database/requirements.txt
+RUN pip install --upgrade pip && pip install -r /app/api_database/requirements-api_database.txt
 
 # Commande pour démarrer l'API avec uvicorn
 CMD ["uvicorn", "api_database.api.main:app", "--host", "0.0.0.0", "--port", "8000"]

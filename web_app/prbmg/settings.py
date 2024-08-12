@@ -97,7 +97,7 @@ DATABASES = {
         'NAME': os.getenv('AZURE_DATABASE_NAME'),
         'USER': os.getenv('AZURE_DATABASE_USERNAME'),
         'PASSWORD': os.getenv('AZURE_DATABASE_PASSWORD'),
-        'HOST': os.getenv('AZURE_SERVER_NAME'),
+        'HOST': 'prbmg-server.database.windows.net',
         'PORT': '1433',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server'

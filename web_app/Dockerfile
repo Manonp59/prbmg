@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Copie du fichier requirements.txt dans le conteneur
-COPY ./requirements.txt /app/requirements.txt
+COPY ./requirements-web_app.txt /app/requirements.txt
 
 # Installation des dépendances
 RUN pip install --no-cache-dir --upgrade -r requirements.txt

@@ -7,20 +7,12 @@ services:
     image: manon29/api_database:latest
     ports:
       - 8000:8000
-    env_file:
-      - .env
-
-    
 
   api_ia:
     build: ./api_ia
     image: manon29/api_ia:latest
     ports:
      - 8001:8001
-    env_file:
-      - .env
-
-
 
   app_web:
     build: 
