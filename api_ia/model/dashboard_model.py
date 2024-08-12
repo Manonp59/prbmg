@@ -7,8 +7,10 @@ import os
 import numpy as np 
 from dotenv import load_dotenv
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-import sys 
+from sklearn.preprocessing import StandardScaler 
+import sys
+sys.path.append('/home/utilisateur/DevIA/prbmg')
+
 
 load_dotenv()
 
