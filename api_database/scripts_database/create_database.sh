@@ -13,7 +13,6 @@ serverName="prbmg-server"
 adminLogin="manon"
 adminPassword=$AZURE_DATABASE_PASSWORD
 databaseName="prbmg-bdd"
-databaseNameRaw="prbmg-raw"
 
 # Connection to Azure
 az login

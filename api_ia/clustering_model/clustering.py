@@ -17,6 +17,30 @@ load_dotenv()
 
 
 def modelisation(df,run_name):
+    """
+    Trains a KMeans clustering model on embeddings, logs the model and metrics to MLflow, and stores the results in a SQL database.
+
+    This function performs the following steps:
+    1. Configures MLflow tracking.
+    2. Parses and converts the `resulted_embeddings` column from string to list of embeddings.
+    3. Trains a KMeans clustering model on the embeddings.
+    4. Logs the model, hyperparameters, and metrics to MLflow.
+    5. Stores the clustering results in a SQL database.
+
+    Args:
+        df (pd.DataFrame): The DataFrame containing the data to cluster, including a column 'resulted_embeddings' with embeddings.
+        run_name (str): The name to assign to the MLflow run.
+
+    Returns:
+        tuple: A tuple containing:
+            - run_id (str): The ID of the MLflow run.
+            - df (pd.DataFrame): The updated DataFrame with clustering results added.
+
+    Raises:
+        ValueError: If the MLflow tracking URI is not set or invalid.
+        sqlalchemy.exc.SQLAlchemyError: If there is an issue with saving the DataFrame to the SQL database.
+        sklearn.exceptions.NotFittedError: If the KMeans model is not fitted properly.
+    """
     mlflow.set_tracking_uri(os.environ.get("ML_FLOW_TRACKING_URI"))
     df["resulted_embeddings"] = df["resulted_embeddings"].apply(lambda x: ast.literal_eval(x))
     embeddings_np = np.array(df["resulted_embeddings"].tolist())

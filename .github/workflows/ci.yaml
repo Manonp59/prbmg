@@ -43,7 +43,7 @@ jobs:
           echo "AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID}}" >> $GITHUB_ENV &&
           echo "AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET}}" >> $GITHUB_ENV && 
           echo "AZURE_TENANT_ID=${{ secrets.AZURE_TENANT_ID}}" >> $GITHUB_ENV &&
-          echo "APPLICATIONINSIGHTS_CONNECTION_STRING" >> $GITHUB_ENV
+          echo "APPLICATIONINSIGHTS_CONNECTION_STRING=${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING}}" >> $GITHUB_ENV
 
       - name: Run Test 
         run: pytest -v

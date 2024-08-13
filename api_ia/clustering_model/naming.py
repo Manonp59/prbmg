@@ -2,7 +2,7 @@ import pandas as pd
 import os 
 from openai import AzureOpenAI
 
-
+# Azure Open AI model 
 naming_api_type = os.getenv('NAMING_OPENAI_API_TYPE') 
 naming_openai_api_version = os.getenv('NAMING_OPENAI_API_VERSION')
 naming_openai_api_base = os.getenv('NAMING_OPENAI_API_BASE')
@@ -11,6 +11,27 @@ naming_openai_api_key = os.getenv('NAMING_OPENAI_API_KEY')
 client = AzureOpenAI(api_key=naming_openai_api_key,azure_endpoint=naming_openai_api_base,api_version=naming_openai_api_version)
 
 def make_naming(df):
+    """
+    Generates problem titles for each cluster of IT incidents using GPT-4 based on incident descriptions.
+
+    This function performs the following steps:
+    1. Groups incidents by their cluster labels.
+    2. For each cluster, concatenates the incident descriptions and sends them to GPT-4 to generate a summarizing problem title.
+    3. Updates the DataFrame with the generated problem titles.
+    4. Returns the updated DataFrame and a new DataFrame containing cluster numbers and their corresponding problem titles.
+
+    Args:
+        df (pd.DataFrame): The DataFrame containing incident data with 'clusters' and 'docs' columns. 
+                           The 'docs' column should include incident descriptions and 'clusters' column should contain cluster labels.
+
+    Returns:
+        tuple: A tuple containing:
+            - df (pd.DataFrame): The updated DataFrame with a new column 'problem_title' that holds the generated titles for each cluster.
+            - df_title (pd.DataFrame): A DataFrame with columns 'cluster' and 'problem_title', summarizing the problem titles for each cluster.
+
+    Raises:
+        ValueError: If the GPT-4 completion request fails or if there are issues with updating the DataFrame.
+    """
     data =[]
 
     for c in (df.clusters.unique()):

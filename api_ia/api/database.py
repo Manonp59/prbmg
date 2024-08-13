@@ -8,6 +8,19 @@ from datetime import datetime
 
 # Connection string for SQL Server
 def create_sql_server_engine():
+    """
+    Create and return a SQLAlchemy engine for connecting to a SQL Server database using credentials from environment variables.
+
+    The function constructs a connection string using the following environment variables:
+    - DRIVER
+    - AZURE_SERVER_NAME
+    - AZURE_DATABASE_NAME
+    - AZURE_DATABASE_USERNAME
+    - AZURE_DATABASE_PASSWORD
+
+    Returns:
+        sqlalchemy.engine.base.Engine: SQLAlchemy engine connected to the SQL Server database.
+    """
     driver = os.getenv("DRIVER")
     server = os.getenv("AZURE_SERVER_NAME")
     database = os.getenv("AZURE_DATABASE_NAME")
@@ -61,9 +74,24 @@ def generate_id():
     return ''.join(random.choice(characters) for i in range(length))
 
 
-# Function to create a prediction in the database
 def create_db_prediction(prediction: dict, db: SessionLocal) -> DBpredictions:
-    
+    """
+    Create or update a prediction in the database based on the provided dictionary.
+
+    This function checks if a prediction with the given `incident_number` already exists:
+    - If it exists, updates the existing record with the new values.
+    - If it does not exist, creates a new record with a generated ID.
+
+    Args:
+        prediction (dict): A dictionary containing prediction data, including 'incident_number'.
+        db (SessionLocal): SQLAlchemy session object used for database operations.
+
+    Returns:
+        DBpredictions: The updated or newly created prediction record.
+
+    Raises:
+        ValueError: If there is an issue inserting a new prediction due to a database integrity error.
+    """
     incident_number = prediction.get("incident_number")
     existing_prediction = db.query(DBpredictions).filter(DBpredictions.incident_number == incident_number).first()
 

@@ -3,7 +3,7 @@ set -a
 source .env
 set +a
 
-#az login
+az login
 
 az account set --subscription $SUBSCRIPTION_ID
 

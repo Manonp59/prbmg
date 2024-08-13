@@ -1,6 +1,4 @@
 import pandas as pd 
-import pyodbc 
-import os
 import re
 from langchain_openai import AzureOpenAIEmbeddings
 import numpy as np
@@ -8,14 +6,29 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 import json
 from api_ia.clustering_model.utils import create_sql_server_conn, create_sql_server_engine
-import time
 from sentence_transformers import SentenceTransformer
 
 
-##### Nettoyage des données #####
 
 def clean_dataset(df)  -> pd.DataFrame:
-    # Créer un dictionnaire des anciens noms de colonnes et des nouveaux noms nettoyés
+    """
+    Cleans a DataFrame by standardizing column names and removing duplicates and missing values.
+
+    This function performs the following operations on the DataFrame:
+    1. Standardizes column names by replacing spaces with underscores, converting to lowercase, 
+       and removing special characters.
+    2. Removes duplicate rows based on the 'incident_number' column.
+    3. Drops rows with any missing values.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to be cleaned.
+
+    Returns:
+        pd.DataFrame: The cleaned DataFrame with standardized column names, no duplicates, and no missing values.
+
+    Raises:
+        KeyError: If the 'incident_number' column is not present in the DataFrame.
+    """
     clean_names = {}
     for col in df.columns:
         # Remplacer les espaces par des _
@@ -32,9 +45,23 @@ def clean_dataset(df)  -> pd.DataFrame:
     return df
 
 
-##### Sélection des features #####
-
 def features_selection(df:pd.DataFrame) -> pd.DataFrame:
+    """
+    Selects specific columns from the DataFrame for feature analysis.
+
+    This function retains only the columns specified in the `features` list along with the identifier column (`id`).
+    It returns a DataFrame with only these selected columns.
+
+    Args:
+        df (pd.DataFrame): The DataFrame from which columns will be selected.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing only the specified columns: 'incident_number', 'description', 
+                      'category_full', 'ci_name', and 'location_full'.
+
+    Notes:
+        - Ensure that the DataFrame contains the columns specified in the `features` list and the identifier column.
+    """
     features = ['description','category_full','ci_name','location_full']
     id = 'incident_number'
     columns = []
@@ -111,7 +138,24 @@ def features_selection(df:pd.DataFrame) -> pd.DataFrame:
 
 #     return df 
 
-def make_embeddings(df):
+def make_embeddings(df) -> pd.DataFrame:
+    """
+    Generates embeddings for textual data in the DataFrame.
+
+    This function creates embeddings for each row in the DataFrame based on the concatenated textual columns:
+    'description', 'category_full', 'ci_name', and 'location_full'. The embeddings are computed using a pre-trained
+    SentenceTransformer model. Results are returned in a DataFrame including the original columns and the computed
+    embeddings.
+
+    Args:
+        df (pd.DataFrame): The input DataFrame with columns 'incident_number', 'description', 'category_full',
+                           'ci_name', and 'location_full'.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the original columns along with new columns:
+                      - 'docs': Concatenated text used for embedding generation.
+                      - 'resulted_embeddings': JSON-encoded embeddings for each row.
+    """
     docs = pd.Series(
             df["description"]
             + "\n\n"

@@ -53,6 +53,22 @@ def predict(
     incident: PredictionInput, 
     db: Session = Depends(get_db)
     ) -> PredictionOuput:
+    """
+    Predicts the cluster for a given incident and saves the prediction to the database.
+
+    This endpoint:
+    1. Loads a KMeans model based on a fixed cluster number.
+    2. Uses the model to predict the cluster of the given incident.
+    3. Creates or updates the prediction record in the database.
+    4. Returns the prediction results.
+
+    Args:
+        incident (PredictionInput): Input data for the prediction, including incident details.
+        db (Session): SQLAlchemy session object for database interactions, provided by dependency injection.
+
+    Returns:
+        PredictionOuput: The prediction result including the cluster number, problem title, and resulting embeddings.
+    """
     n_cluster = 40
     model_name = f"kmeans_{n_cluster}"
     model_path = get_model_path(model_name)
