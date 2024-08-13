@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 
-n_cluster = 30
+n_cluster = 40
 
 # Access the arguments
 run_name = f"kmeans_{n_cluster}"

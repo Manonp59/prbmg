@@ -23,7 +23,7 @@ def modelisation(df,run_name):
     df["resulted_embeddings"] = df["resulted_embeddings"].apply(lambda x: ast.literal_eval(x))
     embeddings_np = np.array(df["resulted_embeddings"].tolist())
 
-    n_clusters = cfg.model.n_clusters
+    n_clusters = 40
 
     experiment_name = "incidents_clustering"
     experiment = mlflow.get_experiment_by_name(experiment_name)
@@ -36,10 +36,10 @@ def modelisation(df,run_name):
 
     with mlflow.start_run(experiment_id=experiment_id, run_name=run_name) as run : 
         mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
-        init='k-means++'
-        n_init=80
+        init='random'
+        n_init=30
         algorithm='elkan'
-        model = KMeans(n_clusters=n_clusters,init=init,n_init=n_init,algorithm=algorithm)
+        model = KMeans(n_clusters=40,init=init,n_init=n_init,algorithm=algorithm)
         model.fit(embeddings_np)
         mlflow.sklearn.log_model(model, run_name)
         mlflow.log_params(({"n_clusters":n_clusters,"init":init,"n_init":n_init,"algorithm":algorithm}))

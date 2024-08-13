@@ -6,12 +6,6 @@ on:
     - main 
 
 jobs:
-  check-disk-space:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check disk space
-        run: |
-          docker df -h
 
   build-and-deploy:
     runs-on: ubuntu-latest
