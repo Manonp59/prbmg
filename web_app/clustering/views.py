@@ -170,7 +170,7 @@ def process_clustering(df):
     df['problem_title'] = None
     for index, row in df.iterrows():
         data = {
-            "incident_number": row['incident_number'],
+            "incident_number": row['incident_numbers'],
             "creation_date": row['creation_date'],
             "description": row['description'],
             "category_full": row["category_full"],
