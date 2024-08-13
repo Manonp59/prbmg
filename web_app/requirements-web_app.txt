@@ -13,3 +13,4 @@ gunicorn==21.2.0
 pandas==2.2.0
 azureml-mlflow==1.56.0
 azure-ai-ml==1.18.0
+pytest-django==4.8.0

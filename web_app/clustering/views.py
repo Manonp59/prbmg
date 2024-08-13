@@ -238,7 +238,6 @@ def upload_file(request):
                 
                 file_name = "clustered_data.csv"
                 file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-                df.to_csv(file_path, index=False)
                 df = df[['incident_number','cluster_number','problem_title']]
                 download_link = settings.MEDIA_URL + "clustered_data.csv"
                 message = 'File uploaded successfully!'
@@ -345,7 +344,6 @@ def dashboard_predictions(request):
     df = df.sort_values(by="cluster_number", ascending=False)
     file_name = f"clustered_data_{start_date}_to_{end_date}.csv"
     file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-    df.to_csv(file_path, index=False)
 
     pie_data = df['problem_title'].value_counts().reset_index()
     pie_data.columns = ['label', 'y'] 
