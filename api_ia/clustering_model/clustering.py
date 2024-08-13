@@ -1,13 +1,11 @@
 import pandas as pd 
 from sklearn.cluster import KMeans
-import pickle
 import mlflow
 from sklearn.metrics import silhouette_score
 import sys
 import ast
 import numpy as np 
 import os 
-import pyodbc
 from sqlalchemy import create_engine
 sys.path.append("/home/utilisateur/DevIA/prbmg")
 from config import cfg
@@ -50,11 +48,7 @@ def modelisation(df,run_name):
         mlflow.log_metric("silhouette score",silouhette_avg)
         df['clusters'] = labels
         df['resulted_embeddings'] = [json.dumps(embedding) for embedding in df['resulted_embeddings']]
-        df.to_csv(f'api_ia/clustering_model/df_kmeans_{n_clusters}.csv')
-        df.to_excel(f'api_ia/clustering_model/df_kmeans_{n_clusters}.xlsx')
         df.to_sql('incidents_clusters',con=engine,if_exists='append',index=False)
-        with open(f'api_ia/clustering_model/model_kmeans_{n_clusters}.pickle', 'wb') as f:
-            pickle.dump(model, f)
         run_id = run.info.run_id
     
     return run_id,df

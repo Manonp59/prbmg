@@ -81,7 +81,7 @@ df = clean_column_names(df)
 df = df.drop_duplicates(subset='incident_number')
 df = df.dropna()
 df.to_sql('incidents',con=engine, if_exists='append',index=False)
-df.to_csv('/home/utilisateur/DevIA/prbmg/api_database/data/cleaned/incidents.CSV')
+
 
 ci_name = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/CMDB.CSV',delimiter='\t')
 print(ci_name.columns)
@@ -95,7 +95,7 @@ ci_name = ci_name.drop_duplicates(subset='CI: Name')
 ci_name = clean_column_names(ci_name)
 
 ci_name.to_sql('ci_location',con=engine, if_exists='append',index=False)
-ci_name.to_csv('/home/utilisateur/DevIA/prbmg/api_database/data/cleaned/ci_location.CSV')
+
 
 
 conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)

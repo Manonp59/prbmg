@@ -30,9 +30,9 @@ def make_naming(df):
         
         data.append({'cluster': c, 'problem_title': problem_title})
 
-    df.to_csv('api_ia/clustering_model/df_title.csv')
+    
     df_title = pd.DataFrame(data)
-    df_title.to_csv('api_ia/clustering_model/clusters_title.csv')
+    
 
     return df, df_title
 

@@ -44,9 +44,11 @@ jobs:
           echo "AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET}}" >> $GITHUB_ENV && 
           echo "AZURE_TENANT_ID=${{ secrets.AZURE_TENANT_ID}}" >> $GITHUB_ENV
 
-      
-
       - name: Run Test 
         run: pytest -v
+
+      - name: Run Django Tests
+        working-directory: web_app
+        run: python manage.py test
       
 
