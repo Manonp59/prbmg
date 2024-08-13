@@ -243,9 +243,12 @@ def upload_file(request):
                 download_link = settings.MEDIA_URL + "clustered_data.csv"
                 message = 'File uploaded successfully!'
                 logger.info(f'File uploaded and processed successfully: {file_name}')
+            except KeyError as ke:
+                logger.error(f'KeyError during file upload or processing: {ke}')
+                message = f'KeyError: {ke}'
             except Exception as e:
-                logger.error(f'Error during file upload or processing: {e}')
-                message = f'An error occurred: {e}'
+                logger.error(f'Unexpected error during file upload or processing: {e}')
+                message = f'An unexpected error occurred: {e}'
         else:
             message = 'Form is not valid'
             logger.warning('File upload form is not valid.')
