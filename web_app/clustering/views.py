@@ -115,6 +115,23 @@ def signup_page(request):
 
 @login_required(login_url='login')
 def update_user(request):
+    """
+    Handle user profile updates.
+
+    Requires user to be logged in.
+
+    Parameters:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: Rendered template with the update user form.
+
+    Process:
+        - If the request method is POST, validate and save the form.
+        - Log success and display a success message if form is valid.
+        - Log errors and display error messages if form is invalid.
+        - If the request method is GET, display the form with current user data.
+    """
     user = request.user
     if request.method == 'POST':
         form = UpdateUserForm(request.POST, instance=user)
@@ -136,7 +153,24 @@ def update_user(request):
     
     return render(request, 'update_user.html', {'form': form})
 
-def handle_uploaded_file(f):
+def handle_uploaded_file(f) -> pd.DataFrame:
+    """
+    Process an uploaded CSV file, filter and clean the data.
+
+    Parameters:
+        f (UploadedFile): The uploaded file object.
+
+    Returns:
+        pd.DataFrame: A cleaned and filtered DataFrame.
+
+    Process:
+        - Reads the CSV file into a DataFrame.
+        - Logs the number of rows in the DataFrame.
+        - Filters rows where 'Origin of Request' is "Monitoring" and 'Requesting Person' is "REST API - ZABBIX".
+        - Cleans column names by replacing spaces with underscores and removing special characters.
+        - Drops duplicate rows based on 'incident_number'.
+        - Drops rows with missing 'incident_number'.
+    """
     df = pd.read_csv(io.StringIO(f.read().decode('utf-8')), index_col=False)
     logger.info(f'File uploaded with {len(df)} rows.')
     print(df.columns)
@@ -159,10 +193,27 @@ def handle_uploaded_file(f):
     
     return df
 
+# API IA configuration
 API_URL = "http://prbmg-api-ia.francecentral.azurecontainer.io:8001/predict"
 API_KEY = os.getenv('API_IA_SECRET_KEY')
 
-def process_clustering(df):
+def process_clustering(df) -> pd.DataFrame:
+    """
+    Process incidents by sending data to a clustering API and updating the DataFrame with results.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing incident details with columns:
+                           'incident_number', 'creation_date', 'description',
+                           'category_full', 'ci_name', and 'location_full'.
+
+    Returns:
+        pd.DataFrame: The input DataFrame updated with 'cluster_number' and 'problem_title' columns.
+
+    Process:
+        - Sends each row of the DataFrame to the specified API endpoint.
+        - Updates 'cluster_number' and 'problem_title' based on the API response.
+        - Logs errors if the API request fails.
+    """
     API_URL = "http://prbmg-api-ia.francecentral.azurecontainer.io:8001/predict"
     API_KEY = os.getenv('API_IA_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
@@ -191,7 +242,21 @@ def process_clustering(df):
 
     return df
 
-def get_location(df):
+def get_location(df) -> pd.DataFrame:
+    """
+    Fetch CI location data from an external API and merge it into the DataFrame.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing a 'ci_name' column that needs location data.
+
+    Returns:
+        pd.DataFrame: The input DataFrame updated with a new 'location_full' column.
+
+    Process:
+        - Sends a GET request to the API to retrieve CI location data.
+        - Merges location data into the DataFrame based on 'ci_name'.
+        - Logs success or error messages based on API response.
+    """
     API_URL = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/ci_location"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
     print(API_KEY)
@@ -216,6 +281,21 @@ def get_location(df):
 
 @login_required(login_url='login')
 def upload_file(request):
+    """
+    Handles file uploads, processes the data, and provides a download link.
+
+    Parameters:
+        request (HttpRequest): The request object containing POST data and files.
+
+    Returns:
+        HttpResponse: Renders the upload.html template with context including:
+            - form: The file upload form.
+            - message: Status message about file upload and processing.
+            - download_link: URL for downloading the processed file, if available.
+            - file_path: Name of the processed file, if available.
+            - df: Dictionary with DataFrame columns and values, if data is present.
+            - has_data: Boolean indicating if the DataFrame contains data.
+    """
     message = ''
     df = None
     download_link = None
@@ -280,6 +360,16 @@ def upload_file(request):
 
 @login_required(login_url='login')
 def download_file(request, file_path):
+    """
+    Handles file downloads.
+
+    Parameters:
+        request (HttpRequest): The request object containing information about the request.
+        file_path (str): The path of the file to be downloaded.
+
+    Returns:
+        HttpResponse: The file content as an attachment if the file exists, otherwise raises Http404.
+    """
     file_path = os.path.join(settings.MEDIA_ROOT, file_path)
     print(file_path)
     if os.path.exists(file_path):
@@ -293,6 +383,15 @@ def download_file(request, file_path):
 
 @login_required(login_url='login')
 def dashboard_predictions(request):
+    """
+    Fetches and displays prediction data from the API, with optional date filtering.
+    
+    Parameters:
+        request (HttpRequest): The request object containing query parameters and user information.
+
+    Returns:
+        HttpResponse: Rendered HTML response with filtered predictions and a download link for the data.
+    """
     API_URL = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/predictions"
     API_KEY = os.getenv('API_DATABASE_SECRET_KEY')
     headers = {"X-API-Key": API_KEY}
