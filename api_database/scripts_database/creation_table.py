@@ -6,17 +6,19 @@ import pyodbc
 
 load_dotenv() 
 
+
+# Database configuration
 driver = os.getenv("DRIVER")
 server = os.getenv("AZURE_SERVER_NAME")
 database = os.getenv("AZURE_DATABASE_NAME")
 username = os.getenv("AZURE_DATABASE_USERNAME")
 password = os.getenv("AZURE_DATABASE_PASSWORD")
 
-print(server)
-
+# Database connection
 conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
 
+# Table ci_location
 with conn.cursor() as cursor: 
     create_table_query = """
     CREATE TABLE ci_location (
@@ -27,6 +29,7 @@ with conn.cursor() as cursor:
     cursor.execute(create_table_query)
 
 
+# Table incidents
 with conn.cursor() as cursor: 
     create_table_query = """
     CREATE TABLE incidents (
@@ -44,6 +47,7 @@ with conn.cursor() as cursor:
     cursor.execute(create_table_query)
 
 
+# Table predictions
 with conn.cursor() as cursor: 
     create_table_query = """
     CREATE TABLE predictions (

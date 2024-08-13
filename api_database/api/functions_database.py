@@ -31,6 +31,8 @@ class NotFoundError(Exception):
 class Base(DeclarativeBase):
     pass
 
+
+# Engine connection to azure database
 engine_azure = create_engine(DATABASE_URL_AZURE)
 
 
@@ -61,7 +63,7 @@ class IncidentCreate(BaseModel):
     SLA: str
 
 
-# Model for updating an incident"
+# Model for updating an incident
 class IncidentUpdate(BaseModel):
     description: str
     category_full: str
@@ -72,11 +74,13 @@ class IncidentUpdate(BaseModel):
     priority: int
     SLA: str
 
+# Model for ci location
 class CILocation(BaseModel):
     ci_name:str
     location_full:str 
 
 
+# Model for prediction
 class Prediction(BaseModel):
     prediction_id:str
     incident_number:str
@@ -90,7 +94,7 @@ class Prediction(BaseModel):
     model:str
 
 
-# Define the DBIncidents class for the incidents_location table 
+# Define the DBIncidents class for the incidents and ci_location tables 
 class DBIncidents(Base):
 
     __tablename__ = "incidents"
@@ -112,7 +116,7 @@ class DBCILocation(Base):
     location_full: Mapped[str]
 
 
-# Model class for predictions
+# Model class for database predictions
 class DBpredictions(Base):
     __tablename__ = "predictions"
 
