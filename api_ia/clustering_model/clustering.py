@@ -37,8 +37,8 @@ def modelisation(df,run_name):
     with mlflow.start_run(experiment_id=experiment_id, run_name=run_name) as run : 
         mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI'))
         init='k-means++'
-        n_init=30
-        algorithm='lloyd'
+        n_init=80
+        algorithm='elkan'
         model = KMeans(n_clusters=n_clusters,init=init,n_init=n_init,algorithm=algorithm)
         model.fit(embeddings_np)
         mlflow.sklearn.log_model(model, run_name)
