@@ -12,7 +12,7 @@ import requests
 import re
 import json 
 from datetime import datetime
-from prbmg.opentelemetry_setup import logger
+from prbmg.opentelemetry_setup import prediction_counter_per_minute, logger, tracer
 
 
 
@@ -229,12 +229,13 @@ def process_clustering(df) -> pd.DataFrame:
             "location_full": row['location_full']
         }
 
-
         response = requests.post(API_URL, json=data, headers=headers)
         if response.status_code == 200:
             result = response.json()
             df.at[index, 'cluster_number'] = result.get('cluster_number')
             df.at[index, 'problem_title'] = result.get('problem_title')
+            prediction_counter_per_minute.add(1)
+            logger.info(f"Prediction : for incident {row["incident_number"]} cluster number = {result.get('cluster_number')}")
         else:
             logger.error(f'API request error for incident {row["incident_number"]}')
             df.at[index, 'cluster_number'] = 'Error'
