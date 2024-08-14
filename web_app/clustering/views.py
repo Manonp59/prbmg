@@ -235,7 +235,7 @@ def process_clustering(df) -> pd.DataFrame:
             df.at[index, 'cluster_number'] = result.get('cluster_number')
             df.at[index, 'problem_title'] = result.get('problem_title')
             prediction_counter_per_minute.add(1)
-            logger.info(f"Prediction : for incident {row["incident_number"]} cluster number = {result.get('cluster_number')}")
+            logger.info(f"Prediction : for incident {row['incident_number']} cluster number = {result.get('cluster_number')}")
         else:
             logger.error(f'API request error for incident {row["incident_number"]}')
             df.at[index, 'cluster_number'] = 'Error'
