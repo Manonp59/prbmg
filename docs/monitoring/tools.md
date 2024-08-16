@@ -1,28 +1,12 @@
-import logging
-from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
-from azure.monitor.opentelemetry.exporter import AzureMonitorLogExporter
-from opentelemetry.sdk.resources import Resource
-from opentelemetry.instrumentation.django import DjangoInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry._logs import set_logger_provider
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-from azure.monitor.opentelemetry.exporter import AzureMonitorMetricExporter
-from opentelemetry import trace
-from opentelemetry.sdk.resources import Resource
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from azure.monitor.opentelemetry.exporter import AzureMonitorTraceExporter
+# Web app monitoring
 
-from dotenv import load_dotenv
-import os
+The monitoring of the Django web application is achieved through **Azure Monitor** and **OpenTelemetry**.
 
+## Configuration
 
+An <code>opentelemetry_setup.py</code> file is created in the same directory as the <code>settings.py</code> file of the Django application. This file connects the application to Azure Monitor via the Application Insights URL. It also configures the logs, traces, and metrics to be monitored.
 
-load_dotenv()
-
+```python 
 APPLICATIONINSIGHTS_CONNECTION_STRING=os.getenv('APPLICATIONINSIGHTS_CONNECTION_STRING')
 if not APPLICATIONINSIGHTS_CONNECTION_STRING:
     raise ValueError("The APPLICATIONINSIGHTS_CONNECTION_STRING environment variable is not set or is empty.")
@@ -70,3 +54,26 @@ meter = metrics.get_meter_provider().get_meter("satisfaction_metrics")
 
 # Create custom metric 
 prediction_counter_per_minute = meter.create_counter("prediction_counter_per_minute")
+```
+
+## Logs
+
+Logs are available in Application Insights on Azure, providing detailed information about application activities and issues.
+
+![logs](../media/logs.png)
+
+## Metrics
+
+Azure Monitor, through automatic instrumentation, offers a range of metrics about the application, including request rate, response duration, and response status codes. It also provides performance metrics such as CPU usage and memory consumption. Additionally, log metrics such as log counts and severity levels are available. We have implemented a custom metric, prediction_per_minute, to track specific performance indicators relevant to our application.
+
+
+![metrics_dashboard](../media/metrics.png)
+
+![custom metric](../media/custom_metric.png)
+
+## Alerts
+
+Azure Monitor includes an alerting system that can be configured to notify administrators of significant events. We have set up an alerting rule to send an email to the administrator if the number of failed requests reaches 10.
+
+![alert](../media/alert
+.png)

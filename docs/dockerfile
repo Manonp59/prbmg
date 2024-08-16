@@ -1,0 +1,21 @@
+# Utilisation de l'image de base Python 3.10 slim
+FROM python:3.10-slim
+
+# Définition des variables d'environnement
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Définition du répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copy the MkDocs configuration and documentation files into the container
+COPY . /app
+
+# Install MkDocs and any required plugins
+RUN pip install --no-cache-dir -r requirements-doc.txt
+
+# Expose the port MkDocs will run on
+EXPOSE 8003
+
+# Run MkDocs server
+CMD ["mkdocs", "serve", "--dev-addr", "0.0.0.0:8003"]

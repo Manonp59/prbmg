@@ -1,1 +1,0 @@
-::: api_database.api.routers.incidents

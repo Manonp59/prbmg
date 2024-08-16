@@ -26,7 +26,7 @@ def get_incidents():
         HTTPError: If the HTTP request returned an unsuccessful status code.
     """
     url = "http://prbmg-api-database.francecentral.azurecontainer.io:8000/incidents/"
-    headers = {"X-API-Key":"ipNOJ2OiSAvkUAsjE554SVnwYyBKcXFT"}
+    headers = {"X-API-Key": database_api_key}
     response = requests.get(url, headers=headers)
     response.raise_for_status()  # Assurez-vous que la requête est réussie
     incidents = response.json()

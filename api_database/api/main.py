@@ -140,7 +140,6 @@ def create_incident(request: Request, incident: IncidentCreate, db: Session = De
     """Create a new incident.
 
     Args:
-        has_access (PROTECTED): The authenticated user.
         request (Request): The incoming request.
         incident (IncidentCreate): Information about the incident to be created.
         db (Session, optional): SQLAlchemy session to interact with the database. Defaults to Depends(get_db_azure).
@@ -156,7 +155,6 @@ def update_incident(request: Request, incident_number: str, incident: IncidentUp
     """Update an existing incident.
 
     Args:
-        has_access (PROTECTED): The authenticated user.
         request (Request): The incoming request.
         incident_number (str): The incident number.
         incident (IncidentUpdate): Information about the incident to be updated.
@@ -179,7 +177,6 @@ def delete_incident(request: Request, incident_number: str, db: Session = Depend
     """Delete an existing incident.
 
     Args:
-        has_access (PROTECTED): The authenticated user.
         request (Request): The incoming request.
         incident_number (str): The incident number.
         db (Session, optional): SQLAlchemy session to interact with the database. Defaults to Depends(get_db_azure).

@@ -2,26 +2,33 @@ version: '3.8'
 
 services:
   
-  api_database:
-    build: ./api_database
-    image: manon29/api_database:latest
-    ports:
-      - 8000:8000
+  # api_database:
+  #   build: ./api_database
+  #   image: manon29/api_database:latest
+  #   ports:
+  #     - 8000:8000
 
-  api_ia:
-    build: ./api_ia
-    image: manon29/api_ia:latest
-    ports:
-     - 8001:8001
+  # api_ia:
+  #   build: ./api_ia
+  #   image: manon29/api_ia:latest
+  #   ports:
+  #    - 8001:8001
 
-  app_web:
-    build: 
-      context: ./web_app
-      args:
-        APPLICATIONINSIGHTS_CONNECTION_STRING: ${APPLICATIONINSIGHTS_CONNECTION_STRING}
-    image: manon29/web_app:latest
-    ports: 
-      - 8002:8002
-    depends_on:
-      - api_ia
-      - api_database
+  # app_web:
+  #   build: 
+  #     context: ./web_app
+  #     args:
+  #       APPLICATIONINSIGHTS_CONNECTION_STRING: ${APPLICATIONINSIGHTS_CONNECTION_STRING}
+  #   image: manon29/web_app:latest
+  #   ports: 
+  #     - 8002:8002
+  #   depends_on:
+  #     - api_ia
+  #     - api_database
+
+  doc:
+    build: ./docs
+    image: manon29/doc:latest
+    ports:
+      - 8003:8003
+

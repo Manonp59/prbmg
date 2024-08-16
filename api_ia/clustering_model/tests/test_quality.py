@@ -12,6 +12,13 @@ import numpy as np
 
 @pytest.fixture
 def mock_connection():
+    """
+    Fixture that creates a mock connection object for SQL server queries.
+    This mock connection returns predefined cursor data when queried.
+
+    Returns:
+        MagicMock: A mock connection object.
+    """
     # Créer un objet mock pour la connexion
     mock_conn = MagicMock()
 
@@ -33,6 +40,15 @@ def mock_connection():
     return mock_conn
 
 def test_clean_dataset(mock_connection):
+    """
+    Test the clean_dataset function to ensure it removes duplicates and cleans the dataset as expected.
+
+    Args:
+        mock_connection (MagicMock): A mock connection object from the fixture.
+
+    Asserts:
+        assert_frame_equal: Ensures the cleaned dataset matches the expected output.
+    """
     mock_data = {
                     'incident number' :[0,1,1,3,4],
                     'description' : ['some description', 'description example','description example', 'some text','text example'],
@@ -69,6 +85,12 @@ def test_clean_dataset(mock_connection):
     assert_frame_equal(result_df, expected_df)
 
 def test_features_selection():
+    """
+    Test the features_selection function to ensure it selects the correct columns from the dataset.
+
+    Asserts:
+        assert: Ensures the selected columns match the expected column names.
+    """
     # Données d'entrée pour la fonction features_selection
     input_data = {
                     'incident_number' :[0,1,3,4],
@@ -95,6 +117,12 @@ def test_features_selection():
     assert result_df.columns.tolist() == expected_columns
 
 def test_make_embeddings():
+    """
+    Test the make_embeddings function to ensure it correctly adds embedding-related columns to the dataset.
+
+    Asserts:
+        assert: Ensures the DataFrame contains the expected columns after embedding.
+    """
     # Données d'entrée pour la fonction make_embeddings
     input_data = {
         'incident_number': [1, 2, 3],
@@ -119,6 +147,12 @@ def test_make_embeddings():
 
 @pytest.fixture
 def sample_dataframe():
+    """
+    Fixture that provides a sample DataFrame for testing the modelisation function.
+
+    Returns:
+        pd.DataFrame: A DataFrame with simulated embedding data.
+    """
     data = {
         "resulted_embeddings": ['[0.1, 0.2, 0.3]', '[0.4, 0.5, 0.6]', '[0.7, 0.8, 0.9]']
     }
@@ -126,6 +160,16 @@ def sample_dataframe():
 
 
 def test_modelisation(mocker, sample_dataframe):
+    """
+    Test the modelisation function to ensure it correctly clusters the data and logs the run with MLflow.
+
+    Args:
+        mocker (pytest_mock.MockerFixture): The mocker fixture to mock dependencies.
+        sample_dataframe (pd.DataFrame): A sample DataFrame for clustering.
+
+    Asserts:
+        assert: Ensures the result DataFrame contains the expected columns and data.
+    """
     # Mock create_sql_server_engine
     mock_engine = mocker.MagicMock()
     mocker.patch('api_ia.api.utils.connect_to_sql_server', return_value=mock_engine)

@@ -95,11 +95,17 @@ def clean_column_names(df:pd.DataFrame)  -> pd.DataFrame:
     return df
 
 
+### EXTRACTION ### 
+
 # Read table from the raw incidents database
 table_name = 'incidents_raw'
 df = pd.read_sql_table(table_name, con=engine_raw)
 
+# Read ci locations from a csv file
+ci_name = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/CMDB.CSV',delimiter='\t')
 
+
+### CLEANING ###
 # Execute filtering and cleaning functions
 df = filter_dataframe(df)
 
@@ -112,12 +118,6 @@ df = clean_column_names(df)
 df = df.drop_duplicates(subset='incident_number')
 df = df.dropna()
 
-# Save clean incidents in the new database
-df.to_sql('incidents',con=engine, if_exists='append',index=False)
-
-
-# Read ci locations from a csv file
-ci_name = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/CMDB.CSV',delimiter='\t')
 
 # Apply cleaning functions
 features = ["Location (Full)"]
@@ -129,11 +129,16 @@ ci_name = ci_name.rename(columns={'Name':'CI: Name'})
 ci_name = ci_name.drop_duplicates(subset='CI: Name')
 ci_name = clean_column_names(ci_name)
 
+
+### IMPORT AND AGREGATION ### 
+
+# Save clean incidents in the new database
+df.to_sql('incidents',con=engine, if_exists='append',index=False)
+
 # Save clean ci location on the database
 ci_name.to_sql('ci_location',con=engine, if_exists='append',index=False)
 
 
-# Connection to azure databse
 conn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 
 

@@ -107,5 +107,17 @@ jobs:
           DRIVER=${{ secrets.DRIVER }}
           APPLICATIONINSIGHTS_CONNECTION_STRING=${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING}}
 
+    - name: Deploy Doc to Azure Container Instances
+      uses: azure/aci-deploy@v1
+      with:
+        resource-group: ${{ secrets.RESOURCE_GROUP }}
+        dns-name-label: prbmg-doc
+        image: docker.io/manon29/doc:latest
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.DOCKERHUB_USERNAME }}
+        registry-password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        name: prbmg-doc
+        location: francecentral
+        ports: '8003'
 
     

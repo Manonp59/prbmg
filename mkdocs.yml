@@ -2,17 +2,34 @@ site_name: Problem management
 
 theme:
   name: "material"
+  features:
+    - toc.integrate
 
 plugins:
  - mkdocstrings
+ - include-markdown
+
 
 nav: 
   - Home: index.md
-  - API BDD: 
-    - Database : 
-      - authentication: api_bdd/database_authentication.md
-      - incidents: api_bdd/database_incidents.md
-      - core: api_bdd/database_core.md
-    - Routers:
-      - authentication: api_bdd/router_authentication.md
-      - incidents: api_bdd/router_incidents.md 
+  - Data management : 
+    - Database creation: gestion_donnees/database_creation.md
+    - Data extraction and import: gestion_donnees/extraction.md
+    - API Database : gestion_donnees/api_database.md
+  - IA : 
+    - Model: IA/model.md
+    - Monitoring: IA/monitoring.md
+    - Tests: IA/tests.md
+    - API IA : IA/api_ia.md
+  - Application: 
+    - Functionalities: application/functionalities.md
+    - Development environment: application/environment.md
+    - Tests: application/tests.md
+    - Continuous integration: application/ci.md
+    - Continuous deployment : application/cd.md
+  - Monitoring :
+    - Monitoring tools: monitoring/tools.md
+    - Incident resolution : monitoring/resolution.md
+
+
+      
