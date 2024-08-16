@@ -7,6 +7,7 @@
 ## Environment variables 
 
 We need to ensure that environment variables are set up : 
+
 - SECRET_KEY : to encrypt password ; 
 - API_IA_SECRET_KEY : to request the API_IA ; 
 - API_DATABASE_SECRET_KEY : to request the API_DATABASE ; 
