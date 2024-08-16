@@ -74,7 +74,7 @@ jobs:
             mkdocs-material-
       - run: pip install -r docs/requirements-doc.txt
 
-
+      - run: mkdocs build
       - run: mkdocs gh-deploy --force
       
 
