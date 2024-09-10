@@ -8,13 +8,11 @@ from api_ia.api.database import Base, get_db
 from api_ia.api.utils import PredictionInput
 from dotenv import load_dotenv
 
-
-
 load_dotenv()
 
 API_IA_SECRET_KEY = os.getenv('API_IA_SECRET_KEY')
 
-# Configure a test database URL (this should be a separate test database)
+# Configure a test database URL 
 TEST_DATABASE_URL = "sqlite:///./test2.db"
 
 engine = create_engine(TEST_DATABASE_URL)
@@ -39,18 +37,12 @@ def test_app():
     yield client
 
 def test_predict_route(test_app):
-    # Define a test incident
-    # test_incident = PredictionInput(
-    #     incident_number="1234",
-    #     description="Trigger: Host has been restarted (uptime < 15m) Responsible team: CORP_ISC_Wintel Trigger description:  Trigger severity: Warning Trigger nseverity: 2 Trigger tags: Application:Status, RT:CORP_ISC_Wintel Host: S273A12 Host group: Mumbai/Windows, PSRI, Windows/Mumbai Host description:  Zabbix event ID: 1037670088",
-    #     category_full="Incidents/Infrastructure/System/RDS",
-    #     ci_name="S273A12",
-    #     location_full="INDIA/INDIA/MUMBAI"
-    # )
 
     test_incident = {
         "incident_number":"1234",
-        "description":"Trigger: Host has been restarted (uptime < 15m) Responsible team: CORP_ISC_Wintel Trigger description:  Trigger severity: Warning Trigger nseverity: 2 Trigger tags: Application:Status, RT:CORP_ISC_Wintel Host: S273A12 Host group: Mumbai/Windows, PSRI, Windows/Mumbai Host description:  Zabbix event ID: 1037670088",
+        "description":"""Trigger: Host has been restarted (uptime < 15m) Responsible team: CORP_ISC_Wintel Trigger description:  
+        Trigger severity: Warning Trigger nseverity: 2 Trigger tags: Application:Status, RT:CORP_ISC_Wintel Host: S273A12 
+        Host group: Mumbai/Windows, PSRI, Windows/Mumbai Host description:  Zabbix event ID: 1037670088""",
         "category_full":"Incidents/Infrastructure/System/RDS",
         "ci_name":"S273A12",
         "location_full":"INDIA/INDIA/MUMBAI",

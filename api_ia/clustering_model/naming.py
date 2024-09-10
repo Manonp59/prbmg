@@ -42,7 +42,8 @@ def make_naming(df):
             model="gpt-4-1106-preview",
             messages=[
             {"role": "system", "content": "You're an IT Service Suppport Manager. You're helping me name each IT incident into problem."},
-            {"role": "user", "content": f"Using the following incident descriptions, write a problem title that summarizes all of them.\n\nIncidents:{docs_str}\n\nPROBLEM TITLE:"}
+            {"role": "user", "content": f"""Using the following incident descriptions, write a problem title that summarizes all of them.
+                                            \n\nIncidents:{docs_str}\n\nPROBLEM TITLE:"""}
         ]
         )
         problem_title = completion.choices[0].message.content

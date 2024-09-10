@@ -7,6 +7,10 @@ import os
 import pandas as pd
 from io import StringIO
 from prbmg import settings
+import pytest
+import requests_mock
+from unittest import mock
+from clustering.views import process_clustering 
 
 
 class HomeViewTests(TestCase):
@@ -335,6 +339,54 @@ class DashboardPredictionsViewTests(TestCase):
         self.assertIn('data_points', response.context)
 
 
+class ClusteringViewsTests(TestCase):
 
+    @mock.patch.dict(os.environ, {"API_IA_SECRET_KEY": "test_secret_key"})
+    @requests_mock.Mocker()  # Utilisation de requests_mock pour simuler les requêtes HTTP
+    def test_process_clustering(self, mock_request):
+        # Simuler l'URL de l'API avec requests_mock
+        api_url = "http://prbmg-api-ia.francecentral.azurecontainer.io:8001/predict"
+        mock_request.post(api_url, json={
+            "cluster_number": 123,
+            "problem_title": "Sample Problem Title"
+        })
 
+        # Créer un DataFrame de test
+        data = {
+            'incident_number': ['1234'],
+            'creation_date': ['2023-04-23 08:34'],
+            'description': ["Trigger: Host has been restarted..."],
+            'category_full': ['Incidents/Infrastructure/System/RDS'],
+            'ci_name': ['S273A12'],
+            'location_full': ['INDIA/INDIA/MUMBAI']
+        }
+        df = pd.DataFrame(data)
 
+        # Appeler la fonction de clustering
+        updated_df = process_clustering(df)
+
+        # Vérifier que les colonnes ont été correctement mises à jour
+        self.assertEqual(updated_df.at[0, 'cluster_number'], 123)
+        self.assertEqual(updated_df.at[0, 'problem_title'], "Sample Problem Title")
+
+        # Vérifier que la requête à l'API a bien été faite
+        expected_request_data = {
+            'incident_number': '1234',
+            'creation_date': '2023-04-23 08:34',
+            'description': "Trigger: Host has been restarted...",
+            'category_full': 'Incidents/Infrastructure/System/RDS',
+            'ci_name': 'S273A12',
+            'location_full': 'INDIA/INDIA/MUMBAI'
+        }
+
+        self.assertTrue(mock_request.called_once)
+        self.assertEqual(mock_request.request_history[0].json(), expected_request_data)
+
+        # Simuler une réponse d'erreur de l'API
+        mock_request.post(api_url, status_code=500)
+        df = pd.DataFrame(data)  # Recréer un DataFrame propre pour le test suivant
+        updated_df = process_clustering(df)
+
+        # Vérifier que les colonnes contiennent l'information d'erreur
+        self.assertEqual(updated_df.at[0, 'cluster_number'], 'Error')
+        self.assertEqual(updated_df.at[0, 'problem_title'], f"Error for incident 1234")

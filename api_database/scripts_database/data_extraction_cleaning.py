@@ -106,7 +106,6 @@ ci_name = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/CM
 
 
 ### CLEANING ###
-# Execute filtering and cleaning functions
 df = filter_dataframe(df)
 
 features = ['Description','Category (Full)','CI: Name', 'Owner Group','Urgency', 'Priority', 'SLA']
@@ -119,12 +118,10 @@ df = df.drop_duplicates(subset='incident_number')
 df = df.dropna()
 
 
-# Apply cleaning functions
+
 features = ["Location (Full)"]
 id = 'Name'
-
 ci_name = features_selection(ci_name, features, id)
-
 ci_name = ci_name.rename(columns={'Name':'CI: Name'})
 ci_name = ci_name.drop_duplicates(subset='CI: Name')
 ci_name = clean_column_names(ci_name)
