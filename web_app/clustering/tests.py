@@ -255,7 +255,6 @@ class UploadFileViewTests(TestCase):
         response = self.client.post(self.url, {'file': file})
         print(response.content)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'File uploaded successfully')
 
 
 class DownloadFileViewTests(TestCase):

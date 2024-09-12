@@ -52,5 +52,5 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8002
 
 # Commande pour exécuter Gunicorn avec votre application WSGI
-CMD ["gunicorn", "--bind", ":8002", "--timeout", "300", "prbmg.wsgi:application"]
+CMD ["gunicorn", "--bind", ":8002", "--timeout", "300", "--workers=4", "prbmg.wsgi:application"]
 
