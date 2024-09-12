@@ -31,19 +31,6 @@ class PredictionOuput(BaseModel):
 
 load_dotenv()
 
-# API configuration for embedding model
-azure_deployment = os.getenv('EMBEDDING_AZURE_DEPLOYMENT')
-openai_api_version = os.getenv('EMBEDDING_OPENAI_API_VERSION')
-api_key = os.getenv('EMBEDDING_API_KEY')
-azure_endpoint = os.getenv('EMBEDDING_AZURE_ENDPOINT')
-
-embeddings_model = AzureOpenAIEmbeddings(
-    azure_deployment=azure_deployment,
-    openai_api_version=openai_api_version,
-    api_key = api_key,
-    azure_endpoint = azure_endpoint
-)
-
 
 def connect_to_sql_server():
     """

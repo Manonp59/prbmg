@@ -340,10 +340,29 @@ class DashboardPredictionsViewTests(TestCase):
 
 
 class ClusteringViewsTests(TestCase):
-
     @mock.patch.dict(os.environ, {"API_IA_SECRET_KEY": "test_secret_key"})
     @requests_mock.Mocker()  # Utilisation de requests_mock pour simuler les requêtes HTTP
     def test_process_clustering(self, mock_request):
+        """
+        Test the `process_clustering` function to ensure it correctly processes a DataFrame of incidents and handles API responses.
+
+        This test performs the following checks:
+        
+        1. **Simulates an API Response**: Uses `requests_mock` to mock an API endpoint (`/predict`) and returns a sample response containing a `cluster_number` and `problem_title`.
+        
+        2. **Tests DataFrame Processing**: Creates a test DataFrame with incident data and calls the `process_clustering` function to update the DataFrame based on the mocked API response. Verifies that the DataFrame is updated correctly with the `cluster_number` and `problem_title`.
+
+        3. **Verifies API Request**: Ensures that the API request was made with the expected data and that it was called exactly once.
+
+        4. **Simulates API Error**: Simulates an API error response with a status code of 500, and checks that the `process_clustering` function handles the error by updating the DataFrame with appropriate error messages.
+
+        Args:
+            self: The test case instance.
+            mock_request: A `requests_mock.Mocker` instance used to mock HTTP requests.
+
+        Returns:
+            None. The function uses assertions to verify that the `process_clustering` function behaves as expected.
+        """
         # Simuler l'URL de l'API avec requests_mock
         api_url = "http://prbmg-api-ia.francecentral.azurecontainer.io:8001/predict"
         mock_request.post(api_url, json={

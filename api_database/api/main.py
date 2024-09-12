@@ -96,17 +96,17 @@ def get_incident(request: Request,  db: Session = Depends(get_db_azure)) -> List
 
 @app.get("/ci_location", response_model=List[CILocation])
 def get_ci_location(request: Request,  db: Session = Depends(get_db_azure)) -> List[CILocation]:
-    """Retrieve all incidents.
+    """Retrieve all incident locations.
 
     Args:
         request (Request): The incoming request.
         db (Session, optional): SQLAlchemy session to interact with the database. Defaults to Depends(get_db_azure).
 
     Returns:
-        List[Incident]: List of retrieved incidents.
+        List[Incident]: List of retrieved incident locations.
 
     Raises:
-        HTTPException: If no incidents are found.
+        HTTPException: If no incident locations are found.
     """
     try:
         db_ci_location = read_db_ci_location(db)

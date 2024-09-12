@@ -24,7 +24,8 @@ engine_raw = create_engine(azure_connection_string_raw)
 
 def filter_dataframe(df) -> pd.DataFrame:
     """
-    This function takes a DataFrame as input and returns a new DataFrame containing the rows that match the criteria
+    This function takes a DataFrame as input and returns a new DataFrame containing 
+    the rows that match the criteria
     "Origin of Request" = "Monitoring" and "Requesting Person" = "REST API - ZABBIX".
 
     Args:
@@ -102,7 +103,8 @@ table_name = 'incidents_raw'
 df = pd.read_sql_table(table_name, con=engine_raw)
 
 # Read ci locations from a csv file
-ci_name = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/CMDB.CSV',delimiter='\t')
+ci_name = pd.read_csv('/home/utilisateur/DevIA/prbmg/api_database/data/brutes/CMDB.CSV',
+                      delimiter='\t')
 
 
 ### CLEANING ###

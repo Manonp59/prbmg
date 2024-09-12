@@ -35,3 +35,9 @@ We can visualize the results and monitor the model training process by access to
 ## Monitoring dashboard 
 
 To visualize these metrics, a **Streamlit dashboard** is available locally. It retrieves the model parameters and associated metrics from MLFlow on Azure. Then, it analyzes the distribution of incidents across clusters and compares the distribution in the training dataset with that in the predictions table using a bar chart. Finally, it displays the incidents on a scatter plot using PCA, with colors representing the clusters. One scatter plot is created for the training dataset and another for the predictions table.
+
+To run the streamlit dashboard : 
+
+```bash
+streamlit run api_ia/model/dashboard_model.py
+```

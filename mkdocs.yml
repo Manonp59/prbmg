@@ -18,9 +18,10 @@ nav:
     - API Database : gestion_donnees/api_database.md
   - IA : 
     - Model: IA/model.md
-    - Monitoring: IA/monitoring.md
+    - API IA : IA/api_ia.md 
     - Tests: IA/tests.md
-    - API IA : IA/api_ia.md
+    - Monitoring: IA/monitoring.md
+    
   - Application: 
     - Functionalities: application/functionalities.md
     - Development environment: application/environment.md

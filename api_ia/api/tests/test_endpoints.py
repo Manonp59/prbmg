@@ -37,6 +37,22 @@ def test_app():
     yield client
 
 def test_predict_route(test_app):
+    """
+    Test the '/predict' API endpoint to ensure it correctly processes an incident and returns the expected response.
+
+    This test sends a sample incident payload to the '/predict' route with the appropriate API key and checks the following:
+    
+    1. The response status code is 200 (OK), indicating that the request was successful.
+    2. The response contains the expected keys: 'cluster_number' and 'problem_title'.
+
+    In case of an error (non-200 status code), the test will print the error response for debugging purposes.
+
+    Args:
+        test_app: A test client or fixture for sending requests to the app.
+    
+    Returns:
+        None. The function uses assertions to verify the correctness of the API response.
+    """
 
     test_incident = {
         "incident_number":"1234",

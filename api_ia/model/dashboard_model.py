@@ -104,7 +104,7 @@ query_predictions = "SELECT * FROM predictions"
 data_predictions = query_db(query_predictions)
 
 # Query for training dataset
-query_training = "SELECT * FROM kmeans_30_trainingdataset_titles"
+query_training = "SELECT * FROM kmeans_40_trainingdataset_titles"
 data_training = query_db(query_training)
 
 # Combine data for comparison
