@@ -117,7 +117,7 @@ df = features_selection(df,features, id)
 df = clean_column_names(df)
 
 df = df.drop_duplicates(subset='incident_number')
-df = df.dropna()
+df = df.dropna(subset="description")
 
 
 

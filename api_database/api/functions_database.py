@@ -6,8 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase, Mapped, mapped_column
 import os 
 from dotenv import load_dotenv
-from sqlalchemy import String
-from datetime import date,datetime
+from datetime import datetime
 
 
 load_dotenv()
