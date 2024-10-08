@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse
 from django.http import Http404
 from prbmg import settings
 from .forms import LoginForm,UpdateUserForm, SignUpForm, UploadFileForm
@@ -12,7 +12,7 @@ import requests
 import re
 import json 
 from datetime import datetime
-from prbmg.opentelemetry_setup import prediction_counter_per_minute, logger, tracer
+from prbmg.opentelemetry_setup import prediction_counter_per_minute, logger
 
 
 

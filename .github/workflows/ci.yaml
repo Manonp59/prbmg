@@ -47,7 +47,7 @@ jobs:
           echo "APPLICATIONINSIGHTS_CONNECTION_STRING=${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING}}" >> $GITHUB_ENV
 
       - name: Run Test 
-        run: pytest -v 
+        run: pytest --cov=web_app --cov=api_ia --cov=api_database --cov-fail-under=80 -v
 
       - name: Run Django Tests
         working-directory: web_app

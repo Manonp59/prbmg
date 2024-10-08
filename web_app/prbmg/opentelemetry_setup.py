@@ -58,7 +58,7 @@ tracer_provider.add_span_processor(BatchSpanProcessor(trace_exporter))
 trace.set_tracer_provider(tracer_provider)
 tracer = trace.get_tracer(__name__)
 
-
+# SET UP METRIC
 metric_exporter = AzureMonitorMetricExporter(
     connection_string=APPLICATIONINSIGHTS_CONNECTION_STRING
 )

@@ -5,9 +5,7 @@ from .models import User  # Remplacez par les modèles appropriés
 from django.core.files.uploadedfile import SimpleUploadedFile
 import os
 import pandas as pd
-from io import StringIO
 from prbmg import settings
-import pytest
 import requests_mock
 from unittest import mock
 from clustering.views import process_clustering 
